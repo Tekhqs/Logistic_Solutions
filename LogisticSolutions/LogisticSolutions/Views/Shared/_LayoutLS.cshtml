@@ -1,7 +1,37 @@
-﻿
-@{
-    ViewBag.Title = "_LayoutLS";
-}
+﻿<!DOCTYPE html>
+<html class="full-container-height" style="height: 100% !important;">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistic Solutions</title>
+    @RenderSection("styles", required: false)
+    <link href="~/Content/StyleLS.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
 
-<h2>_LayoutLS</h2>
+<body style="height: 100% !important;">
+    
+    <div class="row">
+        <div class="col-md-12 SideBarHeader">
+            <div class="col-md-3 SideBarHeaderLeft">
+                Sammar
+            </div>
+            <div class="col-md-9 SideBarHeaderRight ">
 
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-3 SideBarBody">
+
+            </div>
+            <div class="col-md-9 BodySection">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>
