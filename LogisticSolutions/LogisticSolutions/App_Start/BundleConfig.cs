@@ -25,6 +25,7 @@ namespace LogisticSolutions
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                       "~/Content/StyleLS.css",
                       "~/Content/site.css"));
         }
     }

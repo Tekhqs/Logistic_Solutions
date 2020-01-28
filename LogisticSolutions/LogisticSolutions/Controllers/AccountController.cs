@@ -11,7 +11,7 @@ namespace LogisticSolutions.Controllers
         // GET: Account
         public ActionResult SignIn()
         {
-            return View();
+            return View("SignIn", "_LoginLayout");
         }
     }
 }
