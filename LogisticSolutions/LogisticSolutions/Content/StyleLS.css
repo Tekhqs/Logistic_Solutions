@@ -1,6 +1,8 @@
-﻿/*LoginLayoutCss Starts*/ 
-
+﻿/*LoginLayoutCss Starts*/
 body {
+    font-family: 'Roboto' !important;
+}
+.bodyBg {
     background-image: url('../../Images/SignIn/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover
@@ -120,6 +122,105 @@ body {
 
 
 /*SlayoutCss Starts*/
+.BarHeaders{
+    height:17vh;
+}
+.SideBarHeaderLeft {
+    height: 17vh;
+    background-color: #C40035
+}
+.BarHeaderRight {
+    height: 17vh;
+    background-color: #FFFFFF
+}
+.SideBarBody {
+    height: 100vh;
+    background-color: #FFFFFF
+}
+.BodySection {
+    background-color: #F7F8F9;
+    height:100vh
+    }
+.RightItems{
+    width:fit-content;
+    margin-left:auto
+}
+.LayoutsH1 {
+    color: #32394D;
+    font-size:24px;
+}
+.HeaderIcons{
+    margin-left:20px;
+    width:40px
+}
 
+.menu {
+    margin: 0;
+    padding: 40px 0;
+    text-align: left;
+    padding-left: 10px;
+}
 
+     .menu li {
+        list-style: none;
+    }
+
+         .menu li a {
+            display: block;
+            padding: 10px 0;
+            color: #A6AEBC;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+            .menu li a:hover {
+                color: #C40035;
+            }
+
+         .menu li ul li a {
+            text-transform: capitalize;
+        }
+
+.menu .has-sub .arrow {
+    padding-left: 15px;
+}
+    .menu .TitleIcon{
+        padding-right:20px;
+    }
+
+    .menu ul {
+        padding: 5px 12px;
+        box-shadow: 10px 10px 10px 10px #f7f8f9;
+        margin:10px 0;
+        display: none;
+    }
+
+    .menu ul li {
+        padding: 3px 0;
+    }
+
+        .menu ul a {
+            display: block;
+            color: #A6AEBC;
+            font-size: 14px;
+            font-weight: inherit;
+        }
+
+        .menu ul a:hover {
+            color: #C40035;
+        }
+.SearchFeild {
+    border: 3px solid #EBEBEB;
+    width: 64vh;
+    height: 50px;
+    border-radius: 30px;
+    outline: none !important;
+    color: #EBEBEB;
+    padding-left: 30px;
+    background-image: url('../Images/LayoutSi/search (2).png');
+    overflow: hidden !important;
+    background-repeat: no-repeat !important;
+    background-size: 26px 22px !important;
+    background-position: center right 
+}
 
