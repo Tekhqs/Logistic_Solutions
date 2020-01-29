@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LogisticSolution_ImagesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LogisticSolution_ImagesDB.dbo.tblItemMasterImages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblItemMasterImages">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ItemCode" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="FileData" Type="varbinary(max)" />
+    <Property Name="ContentType" Type="varchar(max)" />
+    <Property Name="ContentLength" Type="int" />
+    <Property Name="PathName" Type="varchar(max)" />
+    <Property Name="ItemCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="isDeleted" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="20" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="20" />
+    <Property Name="UpdatedOn" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LogisticSolution_ImagesDB.dbo.tblUserProfileImages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblUserProfileImages">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="CustomerCode" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="FileData" Type="varbinary(max)" />
+    <Property Name="ContentType" Type="varchar(max)" />
+    <Property Name="ContentLength" Type="int" />
+    <Property Name="PathName" Type="varchar(max)" />
+    <Property Name="UserID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="isDeleted" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="20" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="20" />
+    <Property Name="UpdatedOn" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LogisticSolution_ImagesDB.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="LogisticSolution_ImagesDBModelStoreContainer">
+    <EntitySet Name="tblItemMasterImages" EntityType="Self.tblItemMasterImages" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblItemMasterImages].[ID] AS [ID], 
+    [tblItemMasterImages].[FileName] AS [FileName], 
+    [tblItemMasterImages].[FileData] AS [FileData], 
+    [tblItemMasterImages].[ContentType] AS [ContentType], 
+    [tblItemMasterImages].[ContentLength] AS [ContentLength], 
+    [tblItemMasterImages].[PathName] AS [PathName], 
+    [tblItemMasterImages].[ItemCode] AS [ItemCode], 
+    [tblItemMasterImages].[isDeleted] AS [isDeleted], 
+    [tblItemMasterImages].[CreatedBy] AS [CreatedBy], 
+    [tblItemMasterImages].[CreatedOn] AS [CreatedOn], 
+    [tblItemMasterImages].[UpdatedBy] AS [UpdatedBy], 
+    [tblItemMasterImages].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tblItemMasterImages] AS [tblItemMasterImages]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblUserProfileImages" EntityType="Self.tblUserProfileImages" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblUserProfileImages].[ID] AS [ID], 
+    [tblUserProfileImages].[FileName] AS [FileName], 
+    [tblUserProfileImages].[FileData] AS [FileData], 
+    [tblUserProfileImages].[ContentType] AS [ContentType], 
+    [tblUserProfileImages].[ContentLength] AS [ContentLength], 
+    [tblUserProfileImages].[PathName] AS [PathName], 
+    [tblUserProfileImages].[UserID] AS [UserID], 
+    [tblUserProfileImages].[CustomerCode] AS [CustomerCode], 
+    [tblUserProfileImages].[isDeleted] AS [isDeleted], 
+    [tblUserProfileImages].[CreatedBy] AS [CreatedBy], 
+    [tblUserProfileImages].[CreatedOn] AS [CreatedOn], 
+    [tblUserProfileImages].[UpdatedBy] AS [UpdatedBy], 
+    [tblUserProfileImages].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tblUserProfileImages] AS [tblUserProfileImages]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+      <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
