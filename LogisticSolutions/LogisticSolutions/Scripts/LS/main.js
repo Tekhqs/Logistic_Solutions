@@ -17,5 +17,8 @@
             return false;
         }
     });
+    $(".MobileMenuBtn").click(function () {
+        $(".MobileSideBar").toggleClass("MobileSideBaractive")
+    });
 
 });

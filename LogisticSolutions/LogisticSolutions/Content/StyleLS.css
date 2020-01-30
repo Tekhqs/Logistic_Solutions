@@ -122,16 +122,16 @@ body {
 
 
 /*SlayoutCss Starts*/
-.BarHeaders{
-    height:17vh;
-}
+
 .SideBarHeaderLeft {
     height: 17vh;
-    background-color: #C40035
+    background-color: #C40035;
+    z-index:6
 }
 .BarHeaderRight {
     height: 17vh;
-    background-color: #FFFFFF
+    background-color: #FFFFFF;
+    z-index: 6
 }
 .SideBarBody {
     height: 100vh;
@@ -215,12 +215,68 @@ body {
     height: 50px;
     border-radius: 30px;
     outline: none !important;
-    color: #EBEBEB;
+    color: #32394D;
     padding-left: 30px;
     background-image: url('../Images/LayoutSi/search (2).png');
     overflow: hidden !important;
     background-repeat: no-repeat !important;
-    background-size: 26px 22px !important;
-    background-position: center right 
+    background-size: 22px 22px !important;
+    background-position: 95% 50%
+}
+.mt0{
+    margin:0 0 !important;
 }
 
+
+@media only screen and (max-width: 1199px) {
+    .SearchFeild{
+        width:32vh;
+
+    }
+    .HeaderIcons{
+        margin-left:2px;
+        width:32px;
+    }
+    .LayoutsH1{
+        margin-left:15px;
+        margin-top:1vh
+    }
+
+}
+@media only screen and (max-width: 429px) {
+    .SearchFeild {
+        width: 20vh !important;
+        background: none
+    }
+    .HeaderIcons{
+        width:29px !important;
+    }
+
+}
+    .BurgerMenu {
+        display: block;
+        width: 35px;
+        height: 5px;
+        background-color: black;
+        margin: 6px 0;
+    }
+
+.MobileSideBar {
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 75%;
+    height: 100vh;
+    background-color: #FFFFFF;
+    transition: all 0.9s ease;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 5;
+    overflow-y: scroll;
+    padding-top:200px;
+        
+}
+    .MobileSideBar.MobileSideBaractive {
+        left: 0 !important;
+       
+    }

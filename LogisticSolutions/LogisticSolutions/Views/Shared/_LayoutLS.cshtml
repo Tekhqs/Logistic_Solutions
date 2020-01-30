@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logistic Solutions</title>
     @RenderSection("styles", required: false)
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/StyleLS.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-3.3.7.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 
@@ -15,14 +15,27 @@
 <body style="height: 100% !important;">
     <div class="container-fluid">
         <div class="row">
-
-            <div class="col-lg-2 col-md-3 hidden-sm hidden-xs  SideBarHeaderLeft VerticalyCenter">
+         
+            <div class=" col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12  SideBarHeaderLeft VerticalyCenter">
 
                 <img src="~/Images/LayoutSi/Logistic Logo.png" class="HorizontalyCenter img-fluid" />
 
             </div>
-            <div class="col-lg-10 col-md-9 BarHeaderRight VerticalyCenter ">
-                <p class="LayoutsH1">
+           
+
+
+           
+           
+
+            <div class="col-xl-10 col-lg-9 col-md-12 col-sm-12 col-12  BarHeaderRight VerticalyCenter ">
+                <div class="d-lg-none d-sm-block MobileMenuBtn">
+                    <div class="BurgerMenu mt0"></div>
+                    <div class=" BurgerMenu"></div>
+                    <div class=" BurgerMenu"></div>
+                </div>
+
+
+                <p class="LayoutsH1  d-none d-md-block">
                     Welcome to Dashboard
                 </p>
                 <div class="RightItems">
@@ -35,7 +48,13 @@
 
                 </div>
             </div>
-            <div class="col-lg-2 col-md-3 hidden-sm hidden-xs  SideBarBody">
+
+
+
+
+
+
+            <div class="col-xl-2 col-lg-3  d-none  d-lg-block   SideBarBody">
                 <ul class="menu">
                     <li> <a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Dashboard</a></li>
 
@@ -66,11 +85,49 @@
 
                 </ul>
             </div>
-            <div class="col-lg-10 col-md-9 BodySection">
-                @RenderBody()
-            </div>
 
-        </div>
+
+
+            <div class="MobileSideBar">
+                <ul class="menu">
+                    <li> <a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Dashboard</a></li>
+
+                    <li>
+                        <a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Orders</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Reports</a>
+                    </li>
+
+                    <li class='has-sub'>
+                        <a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Wearhouse <i class="fas fa-angle-down arrow "></i></a>
+                        <ul>
+                            <li><a href='#'><span> Transportation</span></a></li>
+
+                        </ul>
+                    </li>
+
+                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Yard</a></li>
+                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Buisness Partners</a></li>
+                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Users</a></li>
+                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Channels</a></li>
+                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Accounting Integrations</a></li>
+                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Import</a></li>
+                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Setting</a></li>
+                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Help/Support</a></li>
+
+
+                </ul>
+            </div>
+           
+            <div class="col-xl-10 col-lg-9 col-md-12 col-sm-12 col-12  BodySection">
+
+                    @RenderBody()
+                </div>
+              
+
+
+            </div>
 
     </div>
     <script src="~/Scripts/Jquery-3.4.1.js"></script>
