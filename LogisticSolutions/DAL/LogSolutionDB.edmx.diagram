@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6bffefeeffdb497e9f9c5f2329392944" Name="Diagram1">
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblBillingAddress" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblCity" Width="1.5" PointX="0.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblCountry" Width="1.5" PointX="1.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblCustomer" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblCustomerShippingAccount" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblItemInventory_Customer" Width="1.5" PointX="6" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblItemMaster" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblItemSKUMaster" Width="1.5" PointX="3.75" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblLocation" Width="1.5" PointX="3.75" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblOrderDetail" Width="1.5" PointX="8.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblOrderSource" Width="1.5" PointX="6.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblSecurityGroup" Width="1.5" PointX="3" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblSecurityGroupTask" Width="1.5" PointX="5.25" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblSecurityTask" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblShippingAddress" Width="1.5" PointX="6.25" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblShippingCarrier" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblShippingRatesMaster" Width="1.5" PointX="6.25" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblState" Width="1.5" PointX="1.5" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblStatu" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblUserProfile" Width="1.5" PointX="5.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblUserSecurityGroup" Width="1.5" PointX="7.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.tblWarehouseMaster" Width="1.5" PointX="3.75" PointY="44.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisticSolutionDevDBModel.database_firewall_rules" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_BillingAddress_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblBillingAddress_tblCities" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblBillingAddress_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblBillingAddress_tblStates" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblOrderDetail_tblBillingAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblCities_tblCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblCities_tblStates" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_Item_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_ShippingAddress_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_ItemInventory_Customer_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblCustomerShippingAccounts_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblOrderDetail_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblSecurityGroups_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblUserProfile_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblUserSecurityGroups_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblCustomerShippingAccounts_tblShippingCarriers" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_ItemInventory_Customer_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_ItemInventory_Customer_ItemSKU" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_ItemInventory_Customer_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_ItemInventory_Customer_Warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_ItemSKU_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_Warehouse_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblOrderDetail_tblOrderSource" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblOrderDetail_tblShippingAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblOrderDetail_tblShippingRatesMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblOrderDetail_tblUserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblSecurityGroupTasks_tblSecurityGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblUserProfile_tblSecurityGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblUserSecurityGroups_tblSecurityGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblSecurityGroupTasks_tblSecurityTasks" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisticSolutionDevDBModel.FK_tblUserSecurityGroups_tblUserProfile" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

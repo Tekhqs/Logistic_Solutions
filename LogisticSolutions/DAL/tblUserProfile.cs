@@ -25,10 +25,12 @@ namespace DAL
         public int CustomerID { get; set; }
         public string UserName { get; set; }
         public string EncryptedPassword { get; set; }
+        public string OldEncryptedPassword { get; set; }
         public int SecurityGroupID { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Mobile { get; set; }
+        public bool isPasswordReset { get; set; }
         public Nullable<bool> isDeleted { get; set; }
         public bool isActive { get; set; }
         public System.DateTime CreatedOn { get; set; }

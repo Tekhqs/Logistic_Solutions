@@ -14,11 +14,22 @@ namespace DAL
     
     public partial class tblCity
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblCity()
+        {
+            this.tblBillingAddresses = new HashSet<tblBillingAddress>();
+        }
+    
         public int CityID { get; set; }
         public string CityName { get; set; }
         public int StateID_Province { get; set; }
         public int CountryID { get; set; }
         public bool isActive { get; set; }
         public bool isDelete { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBillingAddress> tblBillingAddresses { get; set; }
+        public virtual tblCountry tblCountry { get; set; }
+        public virtual tblState tblState { get; set; }
     }
 }

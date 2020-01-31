@@ -1,10 +1,9 @@
-D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\bin\Debug\DAL.exe.config
-D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\bin\Debug\DAL.exe
+D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\bin\Debug\DAL.dll.config
+D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\bin\Debug\DAL.dll
 D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\bin\Debug\DAL.pdb
 D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\bin\Debug\EntityFramework.dll
 D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\bin\Debug\EntityFramework.SqlServer.dll
 D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\bin\Debug\EntityFramework.xml
 D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\obj\Debug\DAL.exe
+D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\obj\Debug\DAL.dll
 D:\Logistic Solutions\Logistic_Solutions\LogisticSolutions\DAL\obj\Debug\DAL.pdb

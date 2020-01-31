@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="58111b4c605e4c80b30a0a09c6050b25" Name="Diagram1">
+      <Diagram DiagramId="e497410347e64845a7d583a72f31f59f" Name="Diagram1">
         <EntityTypeShape EntityType="LogisticSolution_ImagesDBModel.tblItemMasterImage" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LogisticSolution_ImagesDBModel.tblUserProfileImage" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LogisticSolution_ImagesDBModel.database_firewall_rules" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />

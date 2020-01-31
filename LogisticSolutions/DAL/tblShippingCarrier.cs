@@ -14,9 +14,21 @@ namespace DAL
     
     public partial class tblShippingCarrier
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblShippingCarrier()
+        {
+            this.tblCustomerShippingAccounts = new HashSet<tblCustomerShippingAccount>();
+        }
+    
         public int ShippingCarrierID { get; set; }
-        public string CarrierName { get; set; }
+        public string CarrierCode { get; set; }
+        public string Description { get; set; }
+        public string CarrierType { get; set; }
+        public string SCAC { get; set; }
         public bool isActive { get; set; }
         public bool isDelete { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCustomerShippingAccount> tblCustomerShippingAccounts { get; set; }
     }
 }

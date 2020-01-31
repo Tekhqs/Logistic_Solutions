@@ -17,7 +17,9 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblCustomer()
         {
+            this.tblBillingAddresses = new HashSet<tblBillingAddress>();
             this.tblItemInventory_Customer = new HashSet<tblItemInventory_Customer>();
+            this.tblCustomerShippingAccounts = new HashSet<tblCustomerShippingAccount>();
             this.tblOrderDetails = new HashSet<tblOrderDetail>();
             this.tblSecurityGroups = new HashSet<tblSecurityGroup>();
             this.tblUserProfiles = new HashSet<tblUserProfile>();
@@ -42,7 +44,11 @@ namespace DAL
         public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBillingAddress> tblBillingAddresses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblItemInventory_Customer> tblItemInventory_Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCustomerShippingAccount> tblCustomerShippingAccounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblOrderDetail> tblOrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

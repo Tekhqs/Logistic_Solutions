@@ -36,7 +36,6 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblItemInventory_Customer> tblItemInventory_Customer { get; set; }
-        public virtual tblUserRole tblUserRole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblWarehouseMaster> tblWarehouseMasters { get; set; }
     }

@@ -18,6 +18,7 @@ namespace DAL
         public tblCountry()
         {
             this.tblBillingAddresses = new HashSet<tblBillingAddress>();
+            this.tblCities = new HashSet<tblCity>();
             this.tblItemMasters = new HashSet<tblItemMaster>();
             this.tblShippingAddresses = new HashSet<tblShippingAddress>();
         }
@@ -28,6 +29,8 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBillingAddress> tblBillingAddresses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCity> tblCities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblItemMaster> tblItemMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

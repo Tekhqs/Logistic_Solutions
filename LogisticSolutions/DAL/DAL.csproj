@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{684F5290-F36A-4402-8465-8C2D8977EE83}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{DD2BC1A4-3AF8-40FD-8B03-125741964A26}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAL</RootNamespace>
     <AssemblyName>DAL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -51,23 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="database_firewall_rules.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LS_Images.tt</DependentUpon>
     </Compile>
-    <Compile Include="LogSolution.Context.cs">
+    <Compile Include="LogSolutionDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LogSolution.Context.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="LogSolution.cs">
+    <Compile Include="LogSolutionDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="LogSolution.Designer.cs">
+    <Compile Include="LogSolutionDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LogSolution.edmx</DependentUpon>
+      <DependentUpon>LogSolutionDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="LS_Images.Context.cs">
       <AutoGen>True</AutoGen>
@@ -84,104 +83,99 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LS_Images.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBillingAddress.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCity.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCountry.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCustomer.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCustomerShippingAccount.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblItemInventory_Customer.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblItemMaster.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblItemMasterImage.cs">
       <DependentUpon>LS_Images.tt</DependentUpon>
     </Compile>
     <Compile Include="tblItemSKUMaster.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblLocation.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrderDetail.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrderSource.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSecurityGroup.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSecurityGroupTask.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSecurityTask.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblShippingAddress.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblShippingCarrier.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblShippingCarrierMaster.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblShippingRatesMaster.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblState.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblStatu.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUserProfile.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUserProfileImage.cs">
       <DependentUpon>LS_Images.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblUserRole.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblUserSecurityGroup.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWarehouseMaster.cs">
-      <DependentUpon>LogSolution.tt</DependentUpon>
+      <DependentUpon>LogSolutionDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <EntityDeploy Include="LogSolution.edmx">
+    <EntityDeploy Include="LogSolutionDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LogSolution.Designer.cs</LastGenOutput>
+      <LastGenOutput>LogSolutionDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="LogSolution.edmx.diagram">
-      <DependentUpon>LogSolution.edmx</DependentUpon>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="LogSolutionDB.edmx.diagram">
+      <DependentUpon>LogSolutionDB.edmx</DependentUpon>
     </None>
     <EntityDeploy Include="LS_Images.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -193,15 +187,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LogSolution.Context.tt">
+    <Content Include="LogSolutionDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>LogSolution.Context.cs</LastGenOutput>
-      <DependentUpon>LogSolution.edmx</DependentUpon>
+      <LastGenOutput>LogSolutionDB.Context.cs</LastGenOutput>
+      <DependentUpon>LogSolutionDB.edmx</DependentUpon>
     </Content>
-    <Content Include="LogSolution.tt">
+    <Content Include="LogSolutionDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LogSolution.edmx</DependentUpon>
-      <LastGenOutput>LogSolution.cs</LastGenOutput>
+      <DependentUpon>LogSolutionDB.edmx</DependentUpon>
+      <LastGenOutput>LogSolutionDB.cs</LastGenOutput>
     </Content>
     <Content Include="LS_Images.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

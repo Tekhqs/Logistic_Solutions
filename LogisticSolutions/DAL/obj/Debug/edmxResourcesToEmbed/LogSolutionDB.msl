@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LogisticSolutionDevDBModelStoreContainer" CdmEntityContainer="LogisticSolutionDevDBEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBillingAddresses">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblBillingAddress">
+        <MappingFragment StoreEntitySet="tblBillingAddress">
+          <ScalarProperty Name="BillingAddressID" ColumnName="BillingAddressID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateID_Province" ColumnName="StateID_Province" />
+          <ScalarProperty Name="Zip_PostalCode" ColumnName="Zip_PostalCode" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCities">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblCity">
+        <MappingFragment StoreEntitySet="tblCities">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="StateID_Province" ColumnName="StateID_Province" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCountries">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblCountry">
+        <MappingFragment StoreEntitySet="tblCountry">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCustomers">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblCustomer">
+        <MappingFragment StoreEntitySet="tblCustomer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactFax" ColumnName="ContactFax" />
+          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+          <ScalarProperty Name="EmailNotification" ColumnName="EmailNotification" />
+          <ScalarProperty Name="WarehouseCode" ColumnName="WarehouseCode" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCustomerShippingAccounts">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblCustomerShippingAccount">
+        <MappingFragment StoreEntitySet="tblCustomerShippingAccounts">
+          <ScalarProperty Name="ShippingAccountID" ColumnName="ShippingAccountID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ShippingCarrierID" ColumnName="ShippingCarrierID" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblItemInventory_Customer">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblItemInventory_Customer">
+        <MappingFragment StoreEntitySet="tblItemInventory_Customer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemSKUCode" ColumnName="ItemSKUCode" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="WarehouseCode" ColumnName="WarehouseCode" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="LotCode" ColumnName="LotCode" />
+          <ScalarProperty Name="SubLotCode" ColumnName="SubLotCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AvailableQuantity" ColumnName="AvailableQuantity" />
+          <ScalarProperty Name="TotalQuantity" ColumnName="TotalQuantity" />
+          <ScalarProperty Name="PhysicalQuantity" ColumnName="PhysicalQuantity" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblItemMasters">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblItemMaster">
+        <MappingFragment StoreEntitySet="tblItemMaster">
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="ItemContent" ColumnName="ItemContent" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="HTSCode" ColumnName="HTSCode" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Dimensions" ColumnName="Dimensions" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="GrossLBs" ColumnName="GrossLBs" />
+          <ScalarProperty Name="TareLBs" ColumnName="TareLBs" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="MaxTemprature" ColumnName="MaxTemprature" />
+          <ScalarProperty Name="MinTemprature" ColumnName="MinTemprature" />
+          <ScalarProperty Name="TempratureUnit" ColumnName="TempratureUnit" />
+          <ScalarProperty Name="HSID" ColumnName="HSID" />
+          <ScalarProperty Name="HSNumber1" ColumnName="HSNumber1" />
+          <ScalarProperty Name="HSNumber2" ColumnName="HSNumber2" />
+          <ScalarProperty Name="HSNumber3" ColumnName="HSNumber3" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblItemSKUMasters">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblItemSKUMaster">
+        <MappingFragment StoreEntitySet="tblItemSKUMaster">
+          <ScalarProperty Name="ItemSKUCode" ColumnName="ItemSKUCode" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="UPC" ColumnName="UPC" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="UOMAbbreviation" ColumnName="UOMAbbreviation" />
+          <ScalarProperty Name="InnerPackQuantity" ColumnName="InnerPackQuantity" />
+          <ScalarProperty Name="CasePack" ColumnName="CasePack" />
+          <ScalarProperty Name="Tie" ColumnName="Tie" />
+          <ScalarProperty Name="High" ColumnName="High" />
+          <ScalarProperty Name="NMFC" ColumnName="NMFC" />
+          <ScalarProperty Name="LTLClass" ColumnName="LTLClass" />
+          <ScalarProperty Name="TLClass" ColumnName="TLClass" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="HarmonizedTarrif" ColumnName="HarmonizedTarrif" />
+          <ScalarProperty Name="DeclaredValue" ColumnName="DeclaredValue" />
+          <ScalarProperty Name="CatlougDestination" ColumnName="CatlougDestination" />
+          <ScalarProperty Name="EDIPackCode" ColumnName="EDIPackCode" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLocations">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblLocation">
+        <MappingFragment StoreEntitySet="tblLocation">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+          <ScalarProperty Name="Zone" ColumnName="Zone" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="CubicDimensions" ColumnName="CubicDimensions" />
+          <ScalarProperty Name="TempratureRange" ColumnName="TempratureRange" />
+          <ScalarProperty Name="UserRoleCode" ColumnName="UserRoleCode" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrderDetails">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblOrderDetail">
+        <MappingFragment StoreEntitySet="tblOrderDetail">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+          <ScalarProperty Name="ShippingRateID" ColumnName="ShippingRateID" />
+          <ScalarProperty Name="ShippingAccountNumber" ColumnName="ShippingAccountNumber" />
+          <ScalarProperty Name="EDI" ColumnName="EDI" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserRoleCode" ColumnName="UserRoleCode" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="isEmailNotify" ColumnName="isEmailNotify" />
+          <ScalarProperty Name="BillingAddressID" ColumnName="BillingAddressID" />
+          <ScalarProperty Name="ShippingAddressID" ColumnName="ShippingAddressID" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrderSources">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblOrderSource">
+        <MappingFragment StoreEntitySet="tblOrderSource">
+          <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+          <ScalarProperty Name="SourceName" ColumnName="SourceName" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSecurityGroups">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblSecurityGroup">
+        <MappingFragment StoreEntitySet="tblSecurityGroups">
+          <ScalarProperty Name="SecurityGroupID" ColumnName="SecurityGroupID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="InBuilt" ColumnName="InBuilt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSecurityGroupTasks">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblSecurityGroupTask">
+        <MappingFragment StoreEntitySet="tblSecurityGroupTasks">
+          <ScalarProperty Name="SecurityGroupTasksID" ColumnName="SecurityGroupTasksID" />
+          <ScalarProperty Name="SecurityGroupID" ColumnName="SecurityGroupID" />
+          <ScalarProperty Name="SecurityTaskID" ColumnName="SecurityTaskID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CanSearch" ColumnName="CanSearch" />
+          <ScalarProperty Name="CanView" ColumnName="CanView" />
+          <ScalarProperty Name="CanAdd" ColumnName="CanAdd" />
+          <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+          <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+          <ScalarProperty Name="CanPrint" ColumnName="CanPrint" />
+          <ScalarProperty Name="CanFullControl" ColumnName="CanFullControl" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSecurityTasks">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblSecurityTask">
+        <MappingFragment StoreEntitySet="tblSecurityTasks">
+          <ScalarProperty Name="SecurityTaskID" ColumnName="SecurityTaskID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShippingAddresses">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblShippingAddress">
+        <MappingFragment StoreEntitySet="tblShippingAddress">
+          <ScalarProperty Name="ShippingAddressID" ColumnName="ShippingAddressID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateID_Province" ColumnName="StateID_Province" />
+          <ScalarProperty Name="Zip_PostalCode" ColumnName="Zip_PostalCode" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShippingCarriers">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblShippingCarrier">
+        <MappingFragment StoreEntitySet="tblShippingCarriers">
+          <ScalarProperty Name="ShippingCarrierID" ColumnName="ShippingCarrierID" />
+          <ScalarProperty Name="CarrierCode" ColumnName="CarrierCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CarrierType" ColumnName="CarrierType" />
+          <ScalarProperty Name="SCAC" ColumnName="SCAC" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShippingRatesMasters">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblShippingRatesMaster">
+        <MappingFragment StoreEntitySet="tblShippingRatesMaster">
+          <ScalarProperty Name="ShippingRateID" ColumnName="ShippingRateID" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Temprature" ColumnName="Temprature" />
+          <ScalarProperty Name="TempratureUnit" ColumnName="TempratureUnit" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStates">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblState">
+        <MappingFragment StoreEntitySet="tblStates">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStatus">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblStatu">
+        <MappingFragment StoreEntitySet="tblStatus">
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserProfiles">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblUserProfile">
+        <MappingFragment StoreEntitySet="tblUserProfile">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="EncryptedPassword" ColumnName="EncryptedPassword" />
+          <ScalarProperty Name="OldEncryptedPassword" ColumnName="OldEncryptedPassword" />
+          <ScalarProperty Name="SecurityGroupID" ColumnName="SecurityGroupID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="isPasswordReset" ColumnName="isPasswordReset" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserSecurityGroups">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblUserSecurityGroup">
+        <MappingFragment StoreEntitySet="tblUserSecurityGroups">
+          <ScalarProperty Name="UserSecuirtyGroupsID" ColumnName="UserSecuirtyGroupsID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="SecurityGroupID" ColumnName="SecurityGroupID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWarehouseMasters">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.tblWarehouseMaster">
+        <MappingFragment StoreEntitySet="tblWarehouseMaster">
+          <ScalarProperty Name="WarehouseID" ColumnName="WarehouseID" />
+          <ScalarProperty Name="WareHouseCode" ColumnName="WareHouseCode" />
+          <ScalarProperty Name="WarehouseDescription" ColumnName="WarehouseDescription" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="LogisticSolutionDevDBModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="LogisticSolutionDevDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="LogisticSolutionDevDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="LogisticSolutionDevDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="LogisticSolutionDevDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LogisticSolutionDevDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="LogisticSolutionDevDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LogisticSolutionDevDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LogisticSolutionDevDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LogisticSolutionDevDBModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

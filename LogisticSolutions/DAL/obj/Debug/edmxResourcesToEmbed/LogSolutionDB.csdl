@@ -1,0 +1,1033 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LogisticSolutionDevDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblBillingAddress">
+    <Key>
+      <PropertyRef Name="BillingAddressID" />
+    </Key>
+    <Property Name="BillingAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CityID" Type="Int32" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="StateID_Province" Type="Int32" Nullable="false" />
+    <Property Name="Zip_PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblCountry" Relationship="Self.FK_BillingAddress_Country" FromRole="tblBillingAddress" ToRole="tblCountry" />
+    <NavigationProperty Name="tblCity" Relationship="Self.FK_tblBillingAddress_tblCities" FromRole="tblBillingAddress" ToRole="tblCities" />
+    <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblBillingAddress_tblCustomer" FromRole="tblBillingAddress" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblState" Relationship="Self.FK_tblBillingAddress_tblStates" FromRole="tblBillingAddress" ToRole="tblStates" />
+    <NavigationProperty Name="tblOrderDetails" Relationship="Self.FK_tblOrderDetail_tblBillingAddress" FromRole="tblBillingAddress" ToRole="tblOrderDetail" />
+  </EntityType>
+  <EntityType Name="tblCity">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StateID_Province" Type="Int32" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="isDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblBillingAddresses" Relationship="Self.FK_tblBillingAddress_tblCities" FromRole="tblCities" ToRole="tblBillingAddress" />
+    <NavigationProperty Name="tblCountry" Relationship="Self.FK_tblCities_tblCountry" FromRole="tblCities" ToRole="tblCountry" />
+    <NavigationProperty Name="tblState" Relationship="Self.FK_tblCities_tblStates" FromRole="tblCities" ToRole="tblStates" />
+  </EntityType>
+  <EntityType Name="tblCountry">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+    <NavigationProperty Name="tblBillingAddresses" Relationship="Self.FK_BillingAddress_Country" FromRole="tblCountry" ToRole="tblBillingAddress" />
+    <NavigationProperty Name="tblCities" Relationship="Self.FK_tblCities_tblCountry" FromRole="tblCountry" ToRole="tblCities" />
+    <NavigationProperty Name="tblItemMasters" Relationship="Self.FK_Item_Country" FromRole="tblCountry" ToRole="tblItemMaster" />
+    <NavigationProperty Name="tblShippingAddresses" Relationship="Self.FK_ShippingAddress_Country" FromRole="tblCountry" ToRole="tblShippingAddress" />
+  </EntityType>
+  <EntityType Name="tblCustomer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="ContactName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ContactEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactFax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="EmailNotification" Type="Boolean" Nullable="false" />
+    <Property Name="WarehouseCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DivisionCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblBillingAddresses" Relationship="Self.FK_tblBillingAddress_tblCustomer" FromRole="tblCustomer" ToRole="tblBillingAddress" />
+    <NavigationProperty Name="tblItemInventory_Customer" Relationship="Self.FK_ItemInventory_Customer_Customer" FromRole="tblCustomer" ToRole="tblItemInventory_Customer" />
+    <NavigationProperty Name="tblCustomerShippingAccounts" Relationship="Self.FK_tblCustomerShippingAccounts_tblCustomer" FromRole="tblCustomer" ToRole="tblCustomerShippingAccounts" />
+    <NavigationProperty Name="tblOrderDetails" Relationship="Self.FK_tblOrderDetail_tblCustomer" FromRole="tblCustomer" ToRole="tblOrderDetail" />
+    <NavigationProperty Name="tblSecurityGroups" Relationship="Self.FK_tblSecurityGroups_tblCustomer" FromRole="tblCustomer" ToRole="tblSecurityGroups" />
+    <NavigationProperty Name="tblUserProfiles" Relationship="Self.FK_tblUserProfile_tblCustomer" FromRole="tblCustomer" ToRole="tblUserProfile" />
+    <NavigationProperty Name="tblUserSecurityGroups" Relationship="Self.FK_tblUserSecurityGroups_tblCustomer" FromRole="tblCustomer" ToRole="tblUserSecurityGroups" />
+  </EntityType>
+  <EntityType Name="tblCustomerShippingAccount">
+    <Key>
+      <PropertyRef Name="ShippingAccountID" />
+    </Key>
+    <Property Name="ShippingAccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="ShippingCarrierID" Type="Int32" Nullable="false" />
+    <Property Name="AccountNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblCustomerShippingAccounts_tblCustomer" FromRole="tblCustomerShippingAccounts" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblShippingCarrier" Relationship="Self.FK_tblCustomerShippingAccounts_tblShippingCarriers" FromRole="tblCustomerShippingAccounts" ToRole="tblShippingCarriers" />
+  </EntityType>
+  <EntityType Name="tblItemInventory_Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ItemSKUCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="WarehouseCode" Type="Int32" Nullable="false" />
+    <Property Name="LocationID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LotCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubLotCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AvailableQuantity" Type="Int32" />
+    <Property Name="TotalQuantity" Type="Int32" />
+    <Property Name="PhysicalQuantity" Type="Int32" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblCustomer" Relationship="Self.FK_ItemInventory_Customer_Customer" FromRole="tblItemInventory_Customer" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblItemMaster" Relationship="Self.FK_ItemInventory_Customer_Item" FromRole="tblItemInventory_Customer" ToRole="tblItemMaster" />
+    <NavigationProperty Name="tblItemSKUMaster" Relationship="Self.FK_ItemInventory_Customer_ItemSKU" FromRole="tblItemInventory_Customer" ToRole="tblItemSKUMaster" />
+    <NavigationProperty Name="tblLocation" Relationship="Self.FK_ItemInventory_Customer_Location" FromRole="tblItemInventory_Customer" ToRole="tblLocation" />
+    <NavigationProperty Name="tblWarehouseMaster" Relationship="Self.FK_ItemInventory_Customer_Warehouse" FromRole="tblItemInventory_Customer" ToRole="tblWarehouseMaster" />
+  </EntityType>
+  <EntityType Name="tblItemMaster">
+    <Key>
+      <PropertyRef Name="ItemCode" />
+    </Key>
+    <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ItemDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ItemType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemContent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HTSCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="Dimensions" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Length" Type="Double" />
+    <Property Name="Width" Type="Double" />
+    <Property Name="GrossLBs" Type="Double" />
+    <Property Name="TareLBs" Type="Double" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MaxTemprature" Type="Double" />
+    <Property Name="MinTemprature" Type="Double" />
+    <Property Name="TempratureUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="HSID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HSNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HSNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HSNumber3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblCountry" Relationship="Self.FK_Item_Country" FromRole="tblItemMaster" ToRole="tblCountry" />
+    <NavigationProperty Name="tblItemInventory_Customer" Relationship="Self.FK_ItemInventory_Customer_Item" FromRole="tblItemMaster" ToRole="tblItemInventory_Customer" />
+    <NavigationProperty Name="tblItemSKUMasters" Relationship="Self.FK_ItemSKU_Item" FromRole="tblItemMaster" ToRole="tblItemSKUMaster" />
+  </EntityType>
+  <EntityType Name="tblItemSKUMaster">
+    <Key>
+      <PropertyRef Name="ItemSKUCode" />
+    </Key>
+    <Property Name="ItemSKUCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UPC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UOMAbbreviation" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="InnerPackQuantity" Type="Double" />
+    <Property Name="CasePack" Type="Int32" />
+    <Property Name="Tie" Type="Int32" />
+    <Property Name="High" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NMFC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LTLClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TLClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HarmonizedTarrif" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DeclaredValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CatlougDestination" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="EDIPackCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblItemInventory_Customer" Relationship="Self.FK_ItemInventory_Customer_ItemSKU" FromRole="tblItemSKUMaster" ToRole="tblItemInventory_Customer" />
+    <NavigationProperty Name="tblItemMaster" Relationship="Self.FK_ItemSKU_Item" FromRole="tblItemSKUMaster" ToRole="tblItemMaster" />
+  </EntityType>
+  <EntityType Name="tblLocation">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LocationDesc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Zone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CubicDimensions" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TempratureRange" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="UserRoleCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblItemInventory_Customer" Relationship="Self.FK_ItemInventory_Customer_Location" FromRole="tblLocation" ToRole="tblItemInventory_Customer" />
+    <NavigationProperty Name="tblWarehouseMasters" Relationship="Self.FK_Warehouse_Location" FromRole="tblLocation" ToRole="tblWarehouseMaster" />
+  </EntityType>
+  <EntityType Name="tblOrderDetail">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OrderDescription" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+    <Property Name="OrderType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SourceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShippingRateID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShippingAccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EDI" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="UserRoleCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="isEmailNotify" Type="Boolean" />
+    <Property Name="BillingAddressID" Type="Int32" />
+    <Property Name="ShippingAddressID" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblBillingAddress" Relationship="Self.FK_tblOrderDetail_tblBillingAddress" FromRole="tblOrderDetail" ToRole="tblBillingAddress" />
+    <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblOrderDetail_tblCustomer" FromRole="tblOrderDetail" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblOrderSource" Relationship="Self.FK_tblOrderDetail_tblOrderSource" FromRole="tblOrderDetail" ToRole="tblOrderSource" />
+    <NavigationProperty Name="tblShippingAddress" Relationship="Self.FK_tblOrderDetail_tblShippingAddress" FromRole="tblOrderDetail" ToRole="tblShippingAddress" />
+    <NavigationProperty Name="tblShippingRatesMaster" Relationship="Self.FK_tblOrderDetail_tblShippingRatesMaster" FromRole="tblOrderDetail" ToRole="tblShippingRatesMaster" />
+    <NavigationProperty Name="tblUserProfile" Relationship="Self.FK_tblOrderDetail_tblUserProfile" FromRole="tblOrderDetail" ToRole="tblUserProfile" />
+  </EntityType>
+  <EntityType Name="tblOrderSource">
+    <Key>
+      <PropertyRef Name="SourceID" />
+    </Key>
+    <Property Name="SourceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SourceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblOrderDetails" Relationship="Self.FK_tblOrderDetail_tblOrderSource" FromRole="tblOrderSource" ToRole="tblOrderDetail" />
+  </EntityType>
+  <EntityType Name="tblSecurityGroup">
+    <Key>
+      <PropertyRef Name="SecurityGroupID" />
+    </Key>
+    <Property Name="SecurityGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InBuilt" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblSecurityGroups_tblCustomer" FromRole="tblSecurityGroups" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblSecurityGroupTasks" Relationship="Self.FK_tblSecurityGroupTasks_tblSecurityGroups" FromRole="tblSecurityGroups" ToRole="tblSecurityGroupTasks" />
+    <NavigationProperty Name="tblUserProfiles" Relationship="Self.FK_tblUserProfile_tblSecurityGroups" FromRole="tblSecurityGroups" ToRole="tblUserProfile" />
+    <NavigationProperty Name="tblUserSecurityGroups" Relationship="Self.FK_tblUserSecurityGroups_tblSecurityGroups" FromRole="tblSecurityGroups" ToRole="tblUserSecurityGroups" />
+  </EntityType>
+  <EntityType Name="tblSecurityGroupTask">
+    <Key>
+      <PropertyRef Name="SecurityGroupTasksID" />
+    </Key>
+    <Property Name="SecurityGroupTasksID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SecurityGroupID" Type="Int32" Nullable="false" />
+    <Property Name="SecurityTaskID" Type="Int32" Nullable="false" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="CanSearch" Type="Boolean" Nullable="false" />
+    <Property Name="CanView" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="CanEdit" Type="Boolean" Nullable="false" />
+    <Property Name="CanDelete" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanFullControl" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblSecurityGroup" Relationship="Self.FK_tblSecurityGroupTasks_tblSecurityGroups" FromRole="tblSecurityGroupTasks" ToRole="tblSecurityGroups" />
+    <NavigationProperty Name="tblSecurityTask" Relationship="Self.FK_tblSecurityGroupTasks_tblSecurityTasks" FromRole="tblSecurityGroupTasks" ToRole="tblSecurityTasks" />
+  </EntityType>
+  <EntityType Name="tblSecurityTask">
+    <Key>
+      <PropertyRef Name="SecurityTaskID" />
+    </Key>
+    <Property Name="SecurityTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblSecurityGroupTasks" Relationship="Self.FK_tblSecurityGroupTasks_tblSecurityTasks" FromRole="tblSecurityTasks" ToRole="tblSecurityGroupTasks" />
+  </EntityType>
+  <EntityType Name="tblShippingAddress">
+    <Key>
+      <PropertyRef Name="ShippingAddressID" />
+    </Key>
+    <Property Name="ShippingAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="Int32" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="StateID_Province" Type="Int32" Nullable="false" />
+    <Property Name="Zip_PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblCountry" Relationship="Self.FK_ShippingAddress_Country" FromRole="tblShippingAddress" ToRole="tblCountry" />
+    <NavigationProperty Name="tblOrderDetails" Relationship="Self.FK_tblOrderDetail_tblShippingAddress" FromRole="tblShippingAddress" ToRole="tblOrderDetail" />
+  </EntityType>
+  <EntityType Name="tblShippingCarrier">
+    <Key>
+      <PropertyRef Name="ShippingCarrierID" />
+    </Key>
+    <Property Name="ShippingCarrierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarrierCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CarrierType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SCAC" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="isDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblCustomerShippingAccounts" Relationship="Self.FK_tblCustomerShippingAccounts_tblShippingCarriers" FromRole="tblShippingCarriers" ToRole="tblCustomerShippingAccounts" />
+  </EntityType>
+  <EntityType Name="tblShippingRatesMaster">
+    <Key>
+      <PropertyRef Name="ShippingRateID" />
+    </Key>
+    <Property Name="ShippingRateID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rate" Type="Double" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Temprature" Type="Double" />
+    <Property Name="TempratureUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Unit" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="DiscountPercentage" Type="Double" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblOrderDetails" Relationship="Self.FK_tblOrderDetail_tblShippingRatesMaster" FromRole="tblShippingRatesMaster" ToRole="tblOrderDetail" />
+  </EntityType>
+  <EntityType Name="tblState">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="isDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblBillingAddresses" Relationship="Self.FK_tblBillingAddress_tblStates" FromRole="tblStates" ToRole="tblBillingAddress" />
+    <NavigationProperty Name="tblCities" Relationship="Self.FK_tblCities_tblStates" FromRole="tblStates" ToRole="tblCities" />
+  </EntityType>
+  <EntityType Name="tblStatu">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblUserProfile">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="EncryptedPassword" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OldEncryptedPassword" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityGroupID" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isPasswordReset" Type="Boolean" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblUserProfile_tblCustomer" FromRole="tblUserProfile" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblOrderDetails" Relationship="Self.FK_tblOrderDetail_tblUserProfile" FromRole="tblUserProfile" ToRole="tblOrderDetail" />
+    <NavigationProperty Name="tblSecurityGroup" Relationship="Self.FK_tblUserProfile_tblSecurityGroups" FromRole="tblUserProfile" ToRole="tblSecurityGroups" />
+    <NavigationProperty Name="tblUserSecurityGroups" Relationship="Self.FK_tblUserSecurityGroups_tblUserProfile" FromRole="tblUserProfile" ToRole="tblUserSecurityGroups" />
+  </EntityType>
+  <EntityType Name="tblUserSecurityGroup">
+    <Key>
+      <PropertyRef Name="UserSecuirtyGroupsID" />
+    </Key>
+    <Property Name="UserSecuirtyGroupsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="SecurityGroupID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblUserSecurityGroups_tblCustomer" FromRole="tblUserSecurityGroups" ToRole="tblCustomer" />
+    <NavigationProperty Name="tblSecurityGroup" Relationship="Self.FK_tblUserSecurityGroups_tblSecurityGroups" FromRole="tblUserSecurityGroups" ToRole="tblSecurityGroups" />
+    <NavigationProperty Name="tblUserProfile" Relationship="Self.FK_tblUserSecurityGroups_tblUserProfile" FromRole="tblUserSecurityGroups" ToRole="tblUserProfile" />
+  </EntityType>
+  <EntityType Name="tblWarehouseMaster">
+    <Key>
+      <PropertyRef Name="WarehouseID" />
+    </Key>
+    <Property Name="WarehouseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WareHouseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WarehouseDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="LocationID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblItemInventory_Customer" Relationship="Self.FK_ItemInventory_Customer_Warehouse" FromRole="tblWarehouseMaster" ToRole="tblItemInventory_Customer" />
+    <NavigationProperty Name="tblLocation" Relationship="Self.FK_Warehouse_Location" FromRole="tblWarehouseMaster" ToRole="tblLocation" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_BillingAddress_Country">
+    <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="1" />
+    <End Role="tblBillingAddress" Type="Self.tblBillingAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCountry">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="tblBillingAddress">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBillingAddress_tblCities">
+    <End Role="tblCities" Type="Self.tblCity" Multiplicity="1" />
+    <End Role="tblBillingAddress" Type="Self.tblBillingAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCities">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="tblBillingAddress">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBillingAddress_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+    <End Role="tblBillingAddress" Type="Self.tblBillingAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="tblBillingAddress">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBillingAddress_tblStates">
+    <End Role="tblStates" Type="Self.tblState" Multiplicity="1" />
+    <End Role="tblBillingAddress" Type="Self.tblBillingAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStates">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="tblBillingAddress">
+        <PropertyRef Name="StateID_Province" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrderDetail_tblBillingAddress">
+    <End Role="tblBillingAddress" Type="Self.tblBillingAddress" Multiplicity="0..1" />
+    <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBillingAddress">
+        <PropertyRef Name="BillingAddressID" />
+      </Principal>
+      <Dependent Role="tblOrderDetail">
+        <PropertyRef Name="BillingAddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCities_tblCountry">
+    <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="1" />
+    <End Role="tblCities" Type="Self.tblCity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCountry">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="tblCities">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCities_tblStates">
+    <End Role="tblStates" Type="Self.tblState" Multiplicity="1" />
+    <End Role="tblCities" Type="Self.tblCity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStates">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="tblCities">
+        <PropertyRef Name="StateID_Province" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_Country">
+    <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="0..1" />
+    <End Role="tblItemMaster" Type="Self.tblItemMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCountry">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="tblItemMaster">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShippingAddress_Country">
+    <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="1" />
+    <End Role="tblShippingAddress" Type="Self.tblShippingAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCountry">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="tblShippingAddress">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemInventory_Customer_Customer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+    <End Role="tblItemInventory_Customer" Type="Self.tblItemInventory_Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="tblItemInventory_Customer">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCustomerShippingAccounts_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+    <End Role="tblCustomerShippingAccounts" Type="Self.tblCustomerShippingAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="tblCustomerShippingAccounts">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrderDetail_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="0..1" />
+    <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="tblOrderDetail">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSecurityGroups_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+    <End Role="tblSecurityGroups" Type="Self.tblSecurityGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="tblSecurityGroups">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserProfile_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+    <End Role="tblUserProfile" Type="Self.tblUserProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="tblUserProfile">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserSecurityGroups_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+    <End Role="tblUserSecurityGroups" Type="Self.tblUserSecurityGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="tblUserSecurityGroups">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCustomerShippingAccounts_tblShippingCarriers">
+    <End Role="tblShippingCarriers" Type="Self.tblShippingCarrier" Multiplicity="1" />
+    <End Role="tblCustomerShippingAccounts" Type="Self.tblCustomerShippingAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblShippingCarriers">
+        <PropertyRef Name="ShippingCarrierID" />
+      </Principal>
+      <Dependent Role="tblCustomerShippingAccounts">
+        <PropertyRef Name="ShippingCarrierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemInventory_Customer_Item">
+    <End Role="tblItemMaster" Type="Self.tblItemMaster" Multiplicity="1" />
+    <End Role="tblItemInventory_Customer" Type="Self.tblItemInventory_Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblItemMaster">
+        <PropertyRef Name="ItemCode" />
+      </Principal>
+      <Dependent Role="tblItemInventory_Customer">
+        <PropertyRef Name="ItemCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemInventory_Customer_ItemSKU">
+    <End Role="tblItemSKUMaster" Type="Self.tblItemSKUMaster" Multiplicity="1" />
+    <End Role="tblItemInventory_Customer" Type="Self.tblItemInventory_Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblItemSKUMaster">
+        <PropertyRef Name="ItemSKUCode" />
+      </Principal>
+      <Dependent Role="tblItemInventory_Customer">
+        <PropertyRef Name="ItemSKUCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemInventory_Customer_Location">
+    <End Role="tblLocation" Type="Self.tblLocation" Multiplicity="1" />
+    <End Role="tblItemInventory_Customer" Type="Self.tblItemInventory_Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLocation">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="tblItemInventory_Customer">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemInventory_Customer_Warehouse">
+    <End Role="tblWarehouseMaster" Type="Self.tblWarehouseMaster" Multiplicity="1" />
+    <End Role="tblItemInventory_Customer" Type="Self.tblItemInventory_Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblWarehouseMaster">
+        <PropertyRef Name="WarehouseID" />
+      </Principal>
+      <Dependent Role="tblItemInventory_Customer">
+        <PropertyRef Name="WarehouseCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSKU_Item">
+    <End Role="tblItemMaster" Type="Self.tblItemMaster" Multiplicity="0..1" />
+    <End Role="tblItemSKUMaster" Type="Self.tblItemSKUMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblItemMaster">
+        <PropertyRef Name="ItemCode" />
+      </Principal>
+      <Dependent Role="tblItemSKUMaster">
+        <PropertyRef Name="ItemCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Warehouse_Location">
+    <End Role="tblLocation" Type="Self.tblLocation" Multiplicity="0..1" />
+    <End Role="tblWarehouseMaster" Type="Self.tblWarehouseMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLocation">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="tblWarehouseMaster">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrderDetail_tblOrderSource">
+    <End Role="tblOrderSource" Type="Self.tblOrderSource" Multiplicity="0..1" />
+    <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrderSource">
+        <PropertyRef Name="SourceID" />
+      </Principal>
+      <Dependent Role="tblOrderDetail">
+        <PropertyRef Name="SourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrderDetail_tblShippingAddress">
+    <End Role="tblShippingAddress" Type="Self.tblShippingAddress" Multiplicity="0..1" />
+    <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblShippingAddress">
+        <PropertyRef Name="ShippingAddressID" />
+      </Principal>
+      <Dependent Role="tblOrderDetail">
+        <PropertyRef Name="ShippingAddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrderDetail_tblShippingRatesMaster">
+    <End Role="tblShippingRatesMaster" Type="Self.tblShippingRatesMaster" Multiplicity="0..1" />
+    <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblShippingRatesMaster">
+        <PropertyRef Name="ShippingRateID" />
+      </Principal>
+      <Dependent Role="tblOrderDetail">
+        <PropertyRef Name="ShippingRateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrderDetail_tblUserProfile">
+    <End Role="tblUserProfile" Type="Self.tblUserProfile" Multiplicity="0..1" />
+    <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserProfile">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblOrderDetail">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSecurityGroupTasks_tblSecurityGroups">
+    <End Role="tblSecurityGroups" Type="Self.tblSecurityGroup" Multiplicity="1" />
+    <End Role="tblSecurityGroupTasks" Type="Self.tblSecurityGroupTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSecurityGroups">
+        <PropertyRef Name="SecurityGroupID" />
+      </Principal>
+      <Dependent Role="tblSecurityGroupTasks">
+        <PropertyRef Name="SecurityGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserProfile_tblSecurityGroups">
+    <End Role="tblSecurityGroups" Type="Self.tblSecurityGroup" Multiplicity="1" />
+    <End Role="tblUserProfile" Type="Self.tblUserProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSecurityGroups">
+        <PropertyRef Name="SecurityGroupID" />
+      </Principal>
+      <Dependent Role="tblUserProfile">
+        <PropertyRef Name="SecurityGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserSecurityGroups_tblSecurityGroups">
+    <End Role="tblSecurityGroups" Type="Self.tblSecurityGroup" Multiplicity="1" />
+    <End Role="tblUserSecurityGroups" Type="Self.tblUserSecurityGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSecurityGroups">
+        <PropertyRef Name="SecurityGroupID" />
+      </Principal>
+      <Dependent Role="tblUserSecurityGroups">
+        <PropertyRef Name="SecurityGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSecurityGroupTasks_tblSecurityTasks">
+    <End Role="tblSecurityTasks" Type="Self.tblSecurityTask" Multiplicity="1" />
+    <End Role="tblSecurityGroupTasks" Type="Self.tblSecurityGroupTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSecurityTasks">
+        <PropertyRef Name="SecurityTaskID" />
+      </Principal>
+      <Dependent Role="tblSecurityGroupTasks">
+        <PropertyRef Name="SecurityTaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserSecurityGroups_tblUserProfile">
+    <End Role="tblUserProfile" Type="Self.tblUserProfile" Multiplicity="1" />
+    <End Role="tblUserSecurityGroups" Type="Self.tblUserSecurityGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserProfile">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblUserSecurityGroups">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LogisticSolutionDevDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tblBillingAddresses" EntityType="Self.tblBillingAddress" />
+    <EntitySet Name="tblCities" EntityType="Self.tblCity" />
+    <EntitySet Name="tblCountries" EntityType="Self.tblCountry" />
+    <EntitySet Name="tblCustomers" EntityType="Self.tblCustomer" />
+    <EntitySet Name="tblCustomerShippingAccounts" EntityType="Self.tblCustomerShippingAccount" />
+    <EntitySet Name="tblItemInventory_Customer" EntityType="Self.tblItemInventory_Customer" />
+    <EntitySet Name="tblItemMasters" EntityType="Self.tblItemMaster" />
+    <EntitySet Name="tblItemSKUMasters" EntityType="Self.tblItemSKUMaster" />
+    <EntitySet Name="tblLocations" EntityType="Self.tblLocation" />
+    <EntitySet Name="tblOrderDetails" EntityType="Self.tblOrderDetail" />
+    <EntitySet Name="tblOrderSources" EntityType="Self.tblOrderSource" />
+    <EntitySet Name="tblSecurityGroups" EntityType="Self.tblSecurityGroup" />
+    <EntitySet Name="tblSecurityGroupTasks" EntityType="Self.tblSecurityGroupTask" />
+    <EntitySet Name="tblSecurityTasks" EntityType="Self.tblSecurityTask" />
+    <EntitySet Name="tblShippingAddresses" EntityType="Self.tblShippingAddress" />
+    <EntitySet Name="tblShippingCarriers" EntityType="Self.tblShippingCarrier" />
+    <EntitySet Name="tblShippingRatesMasters" EntityType="Self.tblShippingRatesMaster" />
+    <EntitySet Name="tblStates" EntityType="Self.tblState" />
+    <EntitySet Name="tblStatus" EntityType="Self.tblStatu" />
+    <EntitySet Name="tblUserProfiles" EntityType="Self.tblUserProfile" />
+    <EntitySet Name="tblUserSecurityGroups" EntityType="Self.tblUserSecurityGroup" />
+    <EntitySet Name="tblWarehouseMasters" EntityType="Self.tblWarehouseMaster" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+    <AssociationSet Name="FK_BillingAddress_Country" Association="Self.FK_BillingAddress_Country">
+      <End Role="tblCountry" EntitySet="tblCountries" />
+      <End Role="tblBillingAddress" EntitySet="tblBillingAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBillingAddress_tblCities" Association="Self.FK_tblBillingAddress_tblCities">
+      <End Role="tblCities" EntitySet="tblCities" />
+      <End Role="tblBillingAddress" EntitySet="tblBillingAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBillingAddress_tblCustomer" Association="Self.FK_tblBillingAddress_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblBillingAddress" EntitySet="tblBillingAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBillingAddress_tblStates" Association="Self.FK_tblBillingAddress_tblStates">
+      <End Role="tblStates" EntitySet="tblStates" />
+      <End Role="tblBillingAddress" EntitySet="tblBillingAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrderDetail_tblBillingAddress" Association="Self.FK_tblOrderDetail_tblBillingAddress">
+      <End Role="tblBillingAddress" EntitySet="tblBillingAddresses" />
+      <End Role="tblOrderDetail" EntitySet="tblOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCities_tblCountry" Association="Self.FK_tblCities_tblCountry">
+      <End Role="tblCountry" EntitySet="tblCountries" />
+      <End Role="tblCities" EntitySet="tblCities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCities_tblStates" Association="Self.FK_tblCities_tblStates">
+      <End Role="tblStates" EntitySet="tblStates" />
+      <End Role="tblCities" EntitySet="tblCities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_Country" Association="Self.FK_Item_Country">
+      <End Role="tblCountry" EntitySet="tblCountries" />
+      <End Role="tblItemMaster" EntitySet="tblItemMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShippingAddress_Country" Association="Self.FK_ShippingAddress_Country">
+      <End Role="tblCountry" EntitySet="tblCountries" />
+      <End Role="tblShippingAddress" EntitySet="tblShippingAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemInventory_Customer_Customer" Association="Self.FK_ItemInventory_Customer_Customer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblItemInventory_Customer" EntitySet="tblItemInventory_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCustomerShippingAccounts_tblCustomer" Association="Self.FK_tblCustomerShippingAccounts_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblCustomerShippingAccounts" EntitySet="tblCustomerShippingAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrderDetail_tblCustomer" Association="Self.FK_tblOrderDetail_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblOrderDetail" EntitySet="tblOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSecurityGroups_tblCustomer" Association="Self.FK_tblSecurityGroups_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblSecurityGroups" EntitySet="tblSecurityGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserProfile_tblCustomer" Association="Self.FK_tblUserProfile_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblUserProfile" EntitySet="tblUserProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserSecurityGroups_tblCustomer" Association="Self.FK_tblUserSecurityGroups_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomers" />
+      <End Role="tblUserSecurityGroups" EntitySet="tblUserSecurityGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCustomerShippingAccounts_tblShippingCarriers" Association="Self.FK_tblCustomerShippingAccounts_tblShippingCarriers">
+      <End Role="tblShippingCarriers" EntitySet="tblShippingCarriers" />
+      <End Role="tblCustomerShippingAccounts" EntitySet="tblCustomerShippingAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemInventory_Customer_Item" Association="Self.FK_ItemInventory_Customer_Item">
+      <End Role="tblItemMaster" EntitySet="tblItemMasters" />
+      <End Role="tblItemInventory_Customer" EntitySet="tblItemInventory_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemInventory_Customer_ItemSKU" Association="Self.FK_ItemInventory_Customer_ItemSKU">
+      <End Role="tblItemSKUMaster" EntitySet="tblItemSKUMasters" />
+      <End Role="tblItemInventory_Customer" EntitySet="tblItemInventory_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemInventory_Customer_Location" Association="Self.FK_ItemInventory_Customer_Location">
+      <End Role="tblLocation" EntitySet="tblLocations" />
+      <End Role="tblItemInventory_Customer" EntitySet="tblItemInventory_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemInventory_Customer_Warehouse" Association="Self.FK_ItemInventory_Customer_Warehouse">
+      <End Role="tblWarehouseMaster" EntitySet="tblWarehouseMasters" />
+      <End Role="tblItemInventory_Customer" EntitySet="tblItemInventory_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSKU_Item" Association="Self.FK_ItemSKU_Item">
+      <End Role="tblItemMaster" EntitySet="tblItemMasters" />
+      <End Role="tblItemSKUMaster" EntitySet="tblItemSKUMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Warehouse_Location" Association="Self.FK_Warehouse_Location">
+      <End Role="tblLocation" EntitySet="tblLocations" />
+      <End Role="tblWarehouseMaster" EntitySet="tblWarehouseMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrderDetail_tblOrderSource" Association="Self.FK_tblOrderDetail_tblOrderSource">
+      <End Role="tblOrderSource" EntitySet="tblOrderSources" />
+      <End Role="tblOrderDetail" EntitySet="tblOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrderDetail_tblShippingAddress" Association="Self.FK_tblOrderDetail_tblShippingAddress">
+      <End Role="tblShippingAddress" EntitySet="tblShippingAddresses" />
+      <End Role="tblOrderDetail" EntitySet="tblOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrderDetail_tblShippingRatesMaster" Association="Self.FK_tblOrderDetail_tblShippingRatesMaster">
+      <End Role="tblShippingRatesMaster" EntitySet="tblShippingRatesMasters" />
+      <End Role="tblOrderDetail" EntitySet="tblOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrderDetail_tblUserProfile" Association="Self.FK_tblOrderDetail_tblUserProfile">
+      <End Role="tblUserProfile" EntitySet="tblUserProfiles" />
+      <End Role="tblOrderDetail" EntitySet="tblOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSecurityGroupTasks_tblSecurityGroups" Association="Self.FK_tblSecurityGroupTasks_tblSecurityGroups">
+      <End Role="tblSecurityGroups" EntitySet="tblSecurityGroups" />
+      <End Role="tblSecurityGroupTasks" EntitySet="tblSecurityGroupTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserProfile_tblSecurityGroups" Association="Self.FK_tblUserProfile_tblSecurityGroups">
+      <End Role="tblSecurityGroups" EntitySet="tblSecurityGroups" />
+      <End Role="tblUserProfile" EntitySet="tblUserProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserSecurityGroups_tblSecurityGroups" Association="Self.FK_tblUserSecurityGroups_tblSecurityGroups">
+      <End Role="tblSecurityGroups" EntitySet="tblSecurityGroups" />
+      <End Role="tblUserSecurityGroups" EntitySet="tblUserSecurityGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSecurityGroupTasks_tblSecurityTasks" Association="Self.FK_tblSecurityGroupTasks_tblSecurityTasks">
+      <End Role="tblSecurityTasks" EntitySet="tblSecurityTasks" />
+      <End Role="tblSecurityGroupTasks" EntitySet="tblSecurityGroupTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserSecurityGroups_tblUserProfile" Association="Self.FK_tblUserSecurityGroups_tblUserProfile">
+      <End Role="tblUserProfile" EntitySet="tblUserProfiles" />
+      <End Role="tblUserSecurityGroups" EntitySet="tblUserSecurityGroups" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(LogisticSolutionDevDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(LogisticSolutionDevDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

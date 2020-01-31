@@ -36,6 +36,9 @@ namespace DAL
         public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         public virtual tblCountry tblCountry { get; set; }
+        public virtual tblCity tblCity { get; set; }
+        public virtual tblCustomer tblCustomer { get; set; }
+        public virtual tblState tblState { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblOrderDetail> tblOrderDetails { get; set; }
     }

@@ -39,6 +39,5 @@ namespace DAL
         public virtual tblShippingAddress tblShippingAddress { get; set; }
         public virtual tblShippingRatesMaster tblShippingRatesMaster { get; set; }
         public virtual tblUserProfile tblUserProfile { get; set; }
-        public virtual tblUserRole tblUserRole { get; set; }
     }
 }

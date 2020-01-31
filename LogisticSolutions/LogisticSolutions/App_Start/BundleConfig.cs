@@ -20,13 +20,26 @@ namespace LogisticSolutions
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap.min.js",
                       "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+         "~/Scripts/Jquery-3.4.1.js", 
 
+         "~/Scripts/bootstrap.min.js",
+         "~/Scripts/respond.min.js",
+         "~/Scripts/jquery.validate.min.js",
+
+              "~/Scripts/kendo/kendo.all.min.js",
+          "~/Scripts/kendo/kendo.web.min.js",
+          "~/Scripts/kendo/kendo.aspnetmvc.min.js",
+         "~/Scripts/moment.js"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                        "~/Content/StyleLS.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
+              "~/Content/kendo/kendo.common.min.css", "~/Content/kendo/kendo.material.min.css"));
         }
     }
 }

@@ -22,36 +22,120 @@
                     </div>
 
                 </div>
-                <div class="col-md-7  InputSection VerticalyCenter">
-                    <div class="col-md-9 HorizontalyCenter" style="padding-left:0; padding-right:0">
-                        <p class="Heading">
-                            Sign In
-                        </p>
-                        <input type="text" placeholder="UserId/ Name *" class="form-control" />
-                        <input type="text" placeholder="Password *" class="form-control" />
-                        <div class="RightAlign">
-                            <p>
-                                Forget Password?
-                            </p>
-                        </div>
-                        <div class=" Actions ">
-                            <a href="#" class="backAction ">
-                                Back
-                            </a>
-
-                            <a href="#" class="SignInAction ">
+                <form id="id-loginForm">
+                    <div class="col-md-7  InputSection VerticalyCenter">
+                        <div class="col-md-9 HorizontalyCenter" style="padding-left:0; padding-right:0">
+                            <p class="Heading">
                                 Sign In
-                            </a>
+                            </p>
+                            @*<input type="text" placeholder="UserId/ Name *" class="form-control" />
+                                <input type="text" placeholder="Password *" class="form-control" />*@
+                            <div class="form-group">
+                                @*<label class="label-Login" for="id-TxtUserId">
+                                        Username
+                                    </label>*@
+                                @(Html.Kendo().TextBox().Name("id-TxtUserId").HtmlAttributes(new { @class = "form-control",@placeholder= "UserId/ Name *", @required = "required", @validationMessage = "Username is required", @tabindex = 5, @style = "width:381px; height: 36px" }).Deferred())
+                                <span class="k-invalid-msg" data-for="id-TxtUserId"></span>
+                            </div>
+                            <div class="form-group">
+                                @*<label class="label-Login" for="id-TxtPassword">
+                                        Password
+                                    </label>*@
+                                @(Html.Kendo().TextBox().Name("id-TxtPassword").HtmlAttributes(new { @class = "form-control", @placeholder = "Password *", @required = "required", @validationMessage = "Password is required", @type = "password", @tabindex = 9, @style = "width:381px; height: 36px" }).Deferred())
+                                <span class="k-invalid-msg" data-for="id-TxtPassword"></span>
+                            </div>
+                            <div class="RightAlign">
+                                <p>
+                                    Forget Password?
+                                </p>
+                            </div>
+                            <div class=" Actions ">
+                                <a href="#" class="backAction ">
+                                    Back
+                                </a>
+
+                                <button id="#id-btnLogin" href="#" class="SignInAction ">
+                                    Sign In
+                                </button>
+                            </div>
+
+
                         </div>
 
 
                     </div>
-
-
-                </div>
+                </form>
 
             </div>
         </div>
 
     </div>
 </section>
+<script src="~/Scripts/Jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+     
+        var loginFormValidate = $("#id-loginForm").kendoValidator().data("kendoValidator");
+        $("#id-btnLogin").click(function () {
+            debugger;
+            ///Validate login form
+
+            //if (!loginFormValidate.validate()) {
+            //    return false;
+            //}
+
+
+            let loginButtonText = false;
+            const postData = {
+                prmUserId: $("#id-TxtUserId").val(),
+                prmPassword: $("#id-TxtPassword").val(),
+               // IsRememberMe: $("#id-chkBxRememberMe").is(':checked')
+            }
+
+            $.ajax({
+                url: "/Account/Login",
+                type: "POST",
+                dataType: "JSON",
+                data: postData,
+                beforeSend: function () {
+
+                    $("#id-btnLogin").text("Logging In - Please Wait...");
+                    $("#id-btnLogin").css("disabled", true);
+                },
+                success: function (result) {
+                    if (result.data.unknownStatus) {
+                        showError(result.data.unknownMessage)
+                    }
+                    else if (result.data.status) {
+                        window.location.href = "/Home/Index";
+                        loginButtonText = true;
+
+                    }
+                    else {
+                        $(".class-lblLoginMsg").text(result.data.message);
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                complete: function () {
+                    if (!loginButtonText) {
+                        $("#id-btnLogin").text("Sign In");
+                        $("#id-btnLogin").css("disabled", false);
+                    }
+                }
+            })
+
+        });
+
+
+    })
+
+    $(document).keypress(function (e) {
+        let key = e.which;
+        if (key == 13) {
+            $("#id-btnLogin").trigger('click');
+        }
+    })
+</script>

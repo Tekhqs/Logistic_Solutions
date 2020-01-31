@@ -22,5 +22,8 @@ namespace DAL
         public System.DateTime CreatedOn { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+    
+        public virtual tblCustomer tblCustomer { get; set; }
+        public virtual tblShippingCarrier tblShippingCarrier { get; set; }
     }
 }
