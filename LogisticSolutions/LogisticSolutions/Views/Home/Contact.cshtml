@@ -10,15 +10,21 @@
 
     .breadcrumb {
         padding: 0px;
+        background-color:transparent !important
     }
 
         .breadcrumb li {
-            color: #C40035;
+            color: #2A3142;
+            padding-left: 12px;
         }
 
             .breadcrumb li:nth-last-child(1) {
-                color: black;
+                color: #ccc;
             }
+        .breadcrumb i {
+            font-size: 23px;
+            color: #ccc;
+        }
 
     .CreateUser,
     .PageTabs {
@@ -38,7 +44,7 @@
     }
 
         .Button:hover {
-            background-color: #C40035;
+            background-color: #2A3142;
             color: #fff;
             transition: all 0.7s ease-in-out;
         }
@@ -55,7 +61,7 @@
     }
 
         .CreateUserform label span {
-            color: #C40035;
+            color: #2A3142;
         }
 
     .CreateUserform input,
@@ -83,10 +89,13 @@
     <div class="FormBody col-md-12">
         <div class="col-md-12 bread">
             <ul class="breadcrumb">
-                <em class="fas fa-angle-left"></em>
-                <li>Dashboard</li>
-                <li>Users</li>
-                <li>User Management</li>
+                <li>
+                    <i class="fas fa-angle-left"></i>
+                </li>
+                
+                <li>Dashboard<span class="slash">/</span></li>
+                <li>Users<span class="slash">/</span></li>
+                <li>User Management<span class="slash">/</span></li>
                 <li>Create User</li>
             </ul>
         </div>
@@ -95,6 +104,9 @@
             <button class="Button">General</button>
             <button class="Button">Acounts</button>
             <button class="Button">Shippers</button>
+            <button class="Button">Zendesk</button>
+            <button class="Button">RF</button>
+            <button class="Button">Edit History</button>
         </div>
 
         <div class="col-xs-12 CreateUserSection">
@@ -118,22 +130,22 @@
 
                     <div class="SingleInput">
                         <label for="Phone">Phone</label>
-                        <input type="tel" class="form-control" placeholder="Enter password Here" id="Phone" />
+                        <input type="tel" class="form-control" placeholder="Optional" id="Phone" />
                     </div>
 
                     <div class="SingleInput">
                         <label for="Mobile">Mobile<span>*</span></label>
-                        <input type="tel" class="form-control" placeholder="Enter password Here" id="Mobile" />
+                        <input type="tel" class="form-control" placeholder="Enter Your Active Contact No." id="Mobile" />
                     </div>
 
                     <div class="SingleInput">
                         <label for="Pager">Pager</label>
-                        <input type="tel" class="form-control" placeholder="Enter password Here" id="Pager" />
+                        <input type="tel" class="form-control" placeholder="Optional" id="Pager" />
                     </div>
 
                     <div class="SingleInput">
                         <label for="Description">Description<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter password Here" id="Description" />
+                        <input type="text" class="form-control" placeholder="Enter Description" id="Description" />
                     </div>
 
                 </div>

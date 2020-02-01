@@ -35,4 +35,10 @@
         //]
     });
 
+    
+    $("#example_previous").html($('<i/>', { class: 'fas fa-caret-left' }))
+    $("#example_next").html($('<i/>', { class: 'fas fa-caret-right' }))
+
+   
+
 });

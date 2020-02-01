@@ -139,7 +139,8 @@ body {
 }
 .BodySection {
     background-color: #F7F8F9;
-    height:100vh
+    height:auto;
+    padding:50px
     }
 .RightItems{
     width:fit-content;
@@ -149,9 +150,10 @@ body {
     color: #32394D;
     font-size:24px;
 }
-.HeaderIcons{
-    margin-left:20px;
-    width:40px
+.HeaderIcons {
+    margin-left: 20px;
+    font-size: 25px;
+    color: #2A3142;
 }
 
 .menu {
@@ -190,8 +192,9 @@ body {
 
     .menu ul {
         padding: 5px 12px;
-        box-shadow: 10px 10px 10px 10px #f7f8f9;
-        margin:10px 0;
+        border-left: 1px solid #ccc;
+        margin: 10px 0;
+        margin-left: 8px;
         display: none;
     }
 
@@ -293,12 +296,14 @@ body {
 
 
 
-
+.dataTables_wrapper{
+    padding:30px;
+}
 .dataTables_scroll .THeader th {
     padding: 25px 18px !important;
     border-bottom: 1px solid #ddd !important;
     color: #212121 !important;
-    font-weight:500
+    font-weight: 500
 }
 .dataTables_scrollBody .THeader th {
     padding: 0 0 !important;
@@ -313,4 +318,134 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
 }
 .THeader{
     background:white
+}
+.TiteSEction{
+    padding-left:50px;
+}
+.LinksSEction{
+    text-align:right;
+}
+    .LayoutActionLink {
+        background-color: #fff;
+        color: #ccc;
+        padding: 5px 15px;
+        border-radius: 20px;
+        border-color: #ccc;
+        border: 1px solid #ccc;
+        margin-right: 30px;
+    }
+
+        .LayoutActionLink:hover {
+            background-color: #2A3142;
+            color: #fff;
+            transition: all 0.7s ease-in-out;
+            text-decoration: none
+        }
+.TableSection {
+    padding-top: 50px;
+    background: white;
+    padding-bottom:50px;
+}
+.btnTopSection {
+    padding-top: 23px;
+    padding-bottom: 23px;
+    background: white;
+    margin-bottom:50px;
+}
+.footerSection {
+    padding: 23px;
+    background: white;
+    
+    margin-top: 50px;
+}
+.footerSection p {
+    display:inline-block;
+    padding-right:30px;
+    font-size:14px;
+    color:#212121
+
+}
+.roles {
+    width: fit-content;
+    padding: 4px 15px;
+    font-size: 12px;
+    color: black;
+    margin: 0;
+    border-radius:3px
+}
+.yellow{
+    background-color:orange;
+    color:white
+}
+.DarkGrey{
+    background-color:#32394D;
+    color:white;
+}
+.activeDOt {
+    color: #00e600;
+    margin-right: 10px;
+}
+.LastSeen {
+    width: fit-content;
+    font-size: 12px;
+    color: black;
+    margin: 0;
+    padding-left: 25px;
+}
+.parrot {
+    color: #00e600
+}
+.red{
+    color:red !important
+}
+.GeryDark {
+   color: #32394D !important;
+}
+.green{
+    color:darkseagreen;
+}
+.purple{
+    color:mediumpurple
+}
+.orange{
+    color:orange
+}
+.skyBlue{
+    color:deepskyblue
+}
+.paginate_button{
+    background:transparent !important;
+    border:none !important;
+    color:#ccc !important
+}
+    .paginate_button i {
+       
+        color: #ccc !important
+    }
+    .paginate_button.previous {
+        background: transparent !important;
+        border: 1px solid #ccc !important;
+        border-radius: 100% !important;
+        color: #ccc !important
+    }
+    .paginate_button.next {
+        background: transparent !important;
+        border: 1px solid #ccc !important;
+        border-radius: 100% !important;
+        color: #ccc !important
+    }
+.TblCHk{
+    margin-right:10px;
+
+}
+.ActionsEdit i{
+    margin-right:10px;
+    font-size:16px;
+}
+
+/*UserCreate*/
+
+.slash{
+    padding-left:12px;
+    color:#ccc
 }

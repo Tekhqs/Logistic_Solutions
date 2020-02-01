@@ -26,5 +26,11 @@ namespace LogisticSolutions.Controllers
 
             return View();
         }
+        public ActionResult Order()
+        {
+            ViewBag.Message = "Your Order page.";
+
+            return View();
+        }
     }
 }

@@ -1,0 +1,119 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLS.cshtml";
+}
+
+
+<section class="btnTopSection">
+    <div class="row">
+        <div class="col-md-7 TiteSEction">
+            <a class="LayoutActionLink" href="#">
+                All Orders
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Open
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Pending
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Delivered
+            </a>
+            <a class="LayoutActionLink" href="#">
+                UnPaid
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Paid
+            </a>
+        </div>
+        <div class="col-md-5 LinksSEction">
+            <a class="LayoutActionLink" href="#">
+                Export to Excel
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Add Orders +
+            </a>
+           
+        </div>
+
+    </div>
+
+</section>
+<section class="TableSection ">
+    <div class="row">
+        <div class="col-md-2 TiteSEction">
+            <p class="LayoutsH1">
+                Order List
+            </p>
+        </div>
+        <div class="col-md-10 LinksSEction">
+            <a class="LayoutActionLink" href="#">
+                Today
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Week
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Month
+            </a>
+        </div>
+
+    </div>
+    <table id="example" class="display nowrap" style="width:100%">
+        <thead class="THeader">
+            <tr>
+                <th> <input type="checkbox" class="TblCHk">OrderId</th>
+                <th>Shipping Adress</th>
+                <th>Shipping Date</th>
+                <th>Status</th>
+                <th>Type</th>
+                <th>User Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
+                <td>New Adarish Para Road, Rangpur</td>
+                <td>28 feb 2020</td>
+                <td><span class="red"> Pending</span></td>
+                <td><span class="skyBlue">Online</span></td>
+                <td><span class="red">click here</span></td>
+                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
+                <td>New Adarish Para Road, Rangpur</td>
+                <td>28 feb 2020</td>
+                <td><span class="green">Deliverd</span></td>
+                <td><span class="skyBlue">Online</span></td>
+                <td><span class="red">click here</span></td>
+                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
+                <td>New Adarish Para Road, Rangpur</td>
+                <td>28 feb 2020</td>
+                <td><span class="purple">UnPaid</span></td>
+                <td><span class="orange">Offline</span></td>
+                <td><span class="red">click here</span></td>
+                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
+                <td>New Adarish Para Road, Rangpur</td>
+                <td>28 feb 2020</td>
+                <td><span class="green">Paid</span></td>
+                <td><span class="skyBlue">Online</span></td>
+                <td><span class="red">click here</span></td>
+                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+

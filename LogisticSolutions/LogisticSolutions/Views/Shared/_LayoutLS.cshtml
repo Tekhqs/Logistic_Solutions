@@ -42,12 +42,10 @@
                 </p>
                 <div class="RightItems">
                     <input type="text" placeholder="Search" class="SearchFeild" />
-                    <img src="~/Images/LayoutSi/message.png" class="img-fluid HeaderIcons" />
-                    <img src="~/Images/LayoutSi/bell.png" class="img-fluid  HeaderIcons" />
-
-                    <img src="~/Images/LayoutSi/user.png" class="img-fluid  HeaderIcons" />
-                    <img src="~/Images/LayoutSi/cart.png" class="img-fluid  HeaderIcons" />
-
+                    <i class="fas fa-bell HeaderIcons"></i>
+                    <i class="fas fa-envelope-open-text HeaderIcons"></i>
+                    <i class="fas fa-user-tie HeaderIcons"></i>
+                    <i class="fas fa-shopping-cart HeaderIcons"></i>
                 </div>
             </div>
 
@@ -60,7 +58,7 @@
                 <ul class="menu">
                     <li> <a href="#"><i class="fas fa-chart-pie TitleIcon"></i>Dashboard</a></li>
                     <li>
-                        <a href="#"><i class="fas fa-file-signature TitleIcon"></i>Orders</a>
+                        <a href="/home/Order"><i class="fas fa-file-signature TitleIcon"></i>Orders</a>
                     </li>
                     <li>
                         <a href="#"><i class="fas fa-paste TitleIcon"></i>Reports</a>
@@ -75,14 +73,14 @@
                     </li>
 
                     <li><a href="#"><i class="fas fa-truck-moving TitleIcon"></i>Transportation</a></li>
-                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Yard</a></li>
-                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Buisness Partners</a></li>
-                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Users</a></li>
-                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Channels</a></li>
-                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Accounting Integrations</a></li>
-                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Import</a></li>
-                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Setting</a></li>
-                    <li><a href="#"><i class="fas fa-tachometer-alt TitleIcon"></i>Help/Support</a></li>
+                    <li><a href="#"><i class="fas fa-boxes TitleIcon"></i>Yard</a></li>
+                    <li><a href="#"><i class="fas fa-user-tie TitleIcon"></i>Buisness Partners</a></li>
+                    <li><a href="/Home/About"><i class="fas fa-users TitleIcon"></i>Users</a></li>
+                    <li><a href="#"><i class="fas fa-recycle TitleIcon"></i>Channels</a></li>
+                    <li><a href="#"><i class="fas fa-calculator  TitleIcon"></i>Accounting Integrations</a></li>
+                    <li><a href="#"><i class="fas fa-dolly-flatbed TitleIcon"></i>Import</a></li>
+                    <li><a href="#"><i class="fas fa-cog TitleIcon"></i>Setting</a></li>
+                    <li><a href="#"><i class="fas fa-headset  TitleIcon"></i>Help/Support</a></li>
 
 
                 </ul>
@@ -125,7 +123,38 @@
             <div class="col-xl-10 col-lg-9 col-md-12 col-sm-12 col-12  BodySection">
 
                 @RenderBody()
+
+                <section class="footerSection">
+                    <div class="row">
+                        <div class="col-md-7 ">
+
+                            <p>
+                                About Us
+                            </p>
+                            <p>
+                                FAQ(s)
+                            </p>
+                            <p>
+                                Term & conditions
+                            </p>
+                            <p>
+                                Feedback
+                            </p>
+
+                        </div>
+                        <div class="col-md-5 LinksSEction">
+                            <p>
+                                Logistic Solutions 	&copy; 2020 all right reserved
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
             </div>
+         
 
 
 
