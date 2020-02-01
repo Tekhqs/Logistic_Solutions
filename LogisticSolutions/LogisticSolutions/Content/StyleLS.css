@@ -3,7 +3,7 @@ body {
     font-family: 'Roboto' !important;
 }
 .bodyBg {
-    background-image: url('../../Images/SignIn/bg.jpg');
+    background-image: url('/Content/Images/SignIn/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover
 }
@@ -32,10 +32,9 @@ body {
 }
 
 .ImgSection {
-    background-image: url('../../Images/SignIn/SignIn.png');
+    background-image: url('/Content/Images/SignIn/SignIn.png');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100%
 }
 
     .ImgSection img {
@@ -69,24 +68,26 @@ body {
     }
 
 .backAction {
-    padding: 12px 30px;
-    font-size: 14px;
-    border: 1px solid #A7A9AC;
-    border-radius: 25px;
+    padding: 8px 30px !important;
+    font-size: 14px !important;
+    border: 1px solid #A7A9AC !important;
+    border-radius: 25px !important;
     text-decoration: none !important;
     color: #A7A9AC !important;
-    margin-right: 7px;
+    margin-right: 7px !important;
+    height: 40px !important;
 }
 
 .SignInAction {
-    padding: 12px 30px;
-    font-size: 14px;
-    border: 1px solid #2A3142;
-    border-radius: 25px;
+    padding: 8px 30px !important;
+    font-size: 14px !important;
+    border: 1px solid #2A3142 !important;
+    border-radius: 25px !important;
     text-decoration: none !important;
     color: white !important;
-    background-color: #2A3142;
-    margin-left: 7px
+    background-color: #2A3142 !important;
+    margin-left: 7px !important;
+    height: 40px !important;
 }
 
 .Actions {
@@ -150,12 +151,15 @@ body {
     color: #32394D;
     font-size:24px;
 }
+/*.HeaderIcons {
+    margin-left: 20px;
+    /*font-size: 25px;
+    color: #2A3142;
+}*/
 .HeaderIcons {
     margin-left: 20px;
-    font-size: 25px;
-    color: #2A3142;
+    width: 40px
 }
-
 .menu {
     margin: 0;
     padding: 40px 0;

@@ -8,6 +8,8 @@ namespace LogisticSolutions
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            BundleTable.EnableOptimizations = true;
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -18,13 +20,15 @@ namespace LogisticSolutions
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                    "~/Scripts/LS/main.js"));
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/respond.js"));
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-         "~/Scripts/Jquery-3.4.1.js", 
 
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+         "~/Scripts/Jquery-3.4.1.js",
+          "~/Scripts/umd/popper.min.js",
          "~/Scripts/bootstrap.min.js",
          "~/Scripts/respond.min.js",
          "~/Scripts/jquery.validate.min.js",
@@ -33,6 +37,7 @@ namespace LogisticSolutions
           "~/Scripts/kendo/kendo.web.min.js",
           "~/Scripts/kendo/kendo.aspnetmvc.min.js",
          "~/Scripts/moment.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                        "~/Content/StyleLS.css",

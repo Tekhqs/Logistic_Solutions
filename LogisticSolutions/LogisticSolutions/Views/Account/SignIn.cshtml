@@ -3,94 +3,82 @@
     ViewBag.Title = "SignIn";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
+<div class="row class-divLoginForm pt-5 pl-5 ml-5">
+    <div class="col-3 VerticalyCenter ImgSection" style="padding-left: 2px;">
+        <div class="col-12">
+            <p class="text">
+                Welcome to
+            </p>
+            <p class="Main-heading">
+                Logistics <span style="font-weight:bold">Solutions</span>
+            </p>
 
-<section class="SignInSection">
-    <div class="row ">
-        <div class="col-md-9 Contain HorizontalyCenter">
-            <div class="row">
-
-
-                <div class="col-md-5  VerticalyCenter  ImgSection">
-                    <div class="col-md-12">
-                        <p class="text">
-                            Welcome to
-                        </p>
-                        <p class="Main-heading">
-                            Logistics <span style="font-weight:bold">Solutions</span>
-                        </p>
-
-                    </div>
-
-                </div>
-                <form id="id-loginForm">
-                    <div class="col-md-7  InputSection VerticalyCenter">
-                        <div class="col-md-9 HorizontalyCenter" style="padding-left:0; padding-right:0">
-                            <p class="Heading">
-                                Sign In
-                            </p>
-                            @*<input type="text" placeholder="UserId/ Name *" class="form-control" />
-                                <input type="text" placeholder="Password *" class="form-control" />*@
-                            <div class="form-group">
-                                @*<label class="label-Login" for="id-TxtUserId">
-                                        Username
-                                    </label>*@
-                                @(Html.Kendo().TextBox().Name("id-TxtUserId").HtmlAttributes(new { @class = "form-control",@placeholder= "UserId/ Name *", @required = "required", @validationMessage = "Username is required", @tabindex = 5, @style = "width:381px; height: 36px" }).Deferred())
-                                <span class="k-invalid-msg" data-for="id-TxtUserId"></span>
-                            </div>
-                            <div class="form-group">
-                                @*<label class="label-Login" for="id-TxtPassword">
-                                        Password
-                                    </label>*@
-                                @(Html.Kendo().TextBox().Name("id-TxtPassword").HtmlAttributes(new { @class = "form-control", @placeholder = "Password *", @required = "required", @validationMessage = "Password is required", @type = "password", @tabindex = 9, @style = "width:381px; height: 36px" }).Deferred())
-                                <span class="k-invalid-msg" data-for="id-TxtPassword"></span>
-                            </div>
-                            <div class="RightAlign">
-                                <p>
-                                    Forget Password?
-                                </p>
-                            </div>
-                            <div class=" Actions ">
-                                <a href="#" class="backAction ">
-                                    Back
-                                </a>
-
-                                <button id="#id-btnLogin" href="#" class="SignInAction ">
-                                    Sign In
-                                </button>
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-                </form>
-
-            </div>
         </div>
-
     </div>
-</section>
-<script src="~/Scripts/Jquery-3.4.1.js"></script>
+    <div class="InputSection align-items-center col-6 flex-column pr-4 pt-5">
+        <div class="Heading form-row ml-5 mt-5 pl-4 pt-5">
+            <p>
+                Sign In
+            </p>
+        </div>
+      
+        <div class="col-9 justify-content-center ml-5">
+            
+            <form id="id-loginForm">
+                <div class="form-group">
+                    @(Html.Kendo().TextBox().Name("id-TxtUserId").HtmlAttributes(new { @class = "form-control", @placeholder = "UserId/ Name *", @required = "required", @validationMessage = "Username is required" }).Deferred())
+                    <span class="k-invalid-msg" data-for="id-TxtUserId"></span>
+                </div>
+                <div class="form-group">
+                    @(Html.Kendo().TextBox().Name("id-TxtPassword").HtmlAttributes(new { @class = "form-control", @placeholder = "Password *", @required = "required", @validationMessage = "Password is required", @type = "password" }).Deferred())
+                    <span class="k-invalid-msg" data-for="id-TxtPassword"></span>
+                </div>
+                <div class="RightAlign">
+                    <p>
+                        Forget Password?
+                    </p>
+                </div>
+                <div class="form-group justify-content-center">
+                    <div>
+                        <label class="class-lblLoginMsg text-danger"></label>
+                    </div>
+                </div>
+                <div class="form-group Actions ">
+                    <button type="button" class="backAction ">
+                        Back
+                    </button>
+
+                    <button id="btnLogin" type="button"  class="SignInAction ">
+                        Sign In
+                    </button>
+                </div>
+              
+                <div class="form-group pb-3">
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
 <script type="text/javascript">
 
     $(document).ready(function () {
      
         var loginFormValidate = $("#id-loginForm").kendoValidator().data("kendoValidator");
-        $("#id-btnLogin").click(function () {
-            debugger;
+
+       $("#btnLogin").click(function () {
             ///Validate login form
 
-            //if (!loginFormValidate.validate()) {
-            //    return false;
-            //}
-
+            if (!loginFormValidate.validate()) {
+                return false;
+            }
 
             let loginButtonText = false;
             const postData = {
                 prmUserId: $("#id-TxtUserId").val(),
-                prmPassword: $("#id-TxtPassword").val(),
-               // IsRememberMe: $("#id-chkBxRememberMe").is(':checked')
+                prmPassword: $("#id-TxtPassword").val()
             }
 
             $.ajax({
@@ -100,14 +88,16 @@
                 data: postData,
                 beforeSend: function () {
 
-                    $("#id-btnLogin").text("Logging In - Please Wait...");
-                    $("#id-btnLogin").css("disabled", true);
+                    $("#btnLogin").text("Logging In - Please Wait...");
+                    $("#btnLogin").css("disabled", true);
                 },
                 success: function (result) {
-                    if (result.data.unknownStatus) {
+                    if (result.data.unknownStatus)
+                    {
                         showError(result.data.unknownMessage)
                     }
-                    else if (result.data.status) {
+                    else if (result.data.status)
+                    {
                         window.location.href = "/Home/Index";
                         loginButtonText = true;
 
@@ -121,8 +111,8 @@
                 },
                 complete: function () {
                     if (!loginButtonText) {
-                        $("#id-btnLogin").text("Sign In");
-                        $("#id-btnLogin").css("disabled", false);
+                        $("#btnLogin").text("Sign In");
+                        $("#btnLogin").css("disabled", false);
                     }
                 }
             })
@@ -135,7 +125,8 @@
     $(document).keypress(function (e) {
         let key = e.which;
         if (key == 13) {
-            $("#id-btnLogin").trigger('click');
+            $("#btnLogin").trigger('click');
         }
     })
+
 </script>

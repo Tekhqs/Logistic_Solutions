@@ -4,11 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
+using LogisticSolutions.Models;
+using System.Web.Security;
+
 namespace LogisticSolutions.Controllers
 {
     public class AccountController : Controller
     {
         LogisticSolutionDevDBEntities db = new LogisticSolutionDevDBEntities();
+        LSMessages lsMsg = new LSMessages();
+
         // GET: Account
         [HttpGet]
         [AllowAnonymous]
@@ -18,34 +23,42 @@ namespace LogisticSolutions.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(string prmUserId, string prmPassword, bool IsRememberMe)
+        public JsonResult Login(string prmUserId, string prmPassword)
         {
-            string encryptedPassword = EncryptDecrypt.Encrypt(prmPassword);
-            var loginDetails = AuthUser(prmUserId, encryptedPassword);
+            try
+            {
+                string encryptedPassword = EncryptDecrypt.Encrypt(prmPassword);
+                var loginDetails = db.tblUserProfiles.Where(x => x.UserName == prmUserId && x.EncryptedPassword == encryptedPassword).FirstOrDefault();
 
-            if (loginDetails != null)
-            {
-                return RedirectToAction("Index", "Home");
+                if (loginDetails != null)
+                {
+                    lsMsg.status = true;
+                    lsMsg.message = "Login Successfull";
+                    //return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    lsMsg.status = false;
+                    lsMsg.message = "Invalid Username or Password";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Invalid Username or Password";
+                lsMsg.unknownStatus = true;
+                lsMsg.unknownMessage = ex.Message;
             }
-            return View();
+
+            var jsonResult = new
+            {
+                data = lsMsg
+            };
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
         }
-        public string AuthUser(string username, string encryptedPassword)
+        public ActionResult Logout()
         {
-            var StoredUserName = db.tblUserProfiles.Where(x => x.UserName == username).Select(y => y.UserName).FirstOrDefault();
-            var StoredPassword = EncryptDecrypt.Decrypt(db.tblUserProfiles.Where(x => x.EncryptedPassword == encryptedPassword).Select(y => y.EncryptedPassword).FirstOrDefault());
-
-            if (encryptedPassword.Equals(StoredPassword) && username.Equals(StoredUserName))
-            {
-                Session["UserName"] = username;
-                return username;
-            }
-
-            else
-                return null;
+            Session.Abandon();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("SignIn", "Account");
         }
     }
 }

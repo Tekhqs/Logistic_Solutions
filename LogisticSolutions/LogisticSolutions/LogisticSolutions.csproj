@@ -49,7 +49,7 @@
   <ItemGroup>
     <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
+      <HintPath>bin\DAL.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -177,6 +177,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LSMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -531,14 +532,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\LayoutSi\bell.png" />
-    <Content Include="Images\LayoutSi\cart.png" />
-    <Content Include="Images\LayoutSi\Logistic Logo.png" />
-    <Content Include="Images\LayoutSi\message.png" />
-    <Content Include="Images\LayoutSi\search %282%29.png" />
-    <Content Include="Images\LayoutSi\user.png" />
-    <Content Include="Images\SignIn\bg.jpg" />
-    <Content Include="Images\SignIn\SignIn.png" />
+    <Content Include="Content\Images\LayoutSi\bell.png" />
+    <Content Include="Content\Images\LayoutSi\cart.png" />
+    <Content Include="Content\Images\LayoutSi\Logistic Logo.png" />
+    <Content Include="Content\Images\LayoutSi\message.png" />
+    <Content Include="Content\Images\LayoutSi\search %282%29.png" />
+    <Content Include="Content\Images\LayoutSi\user.png" />
+    <Content Include="Content\Images\SignIn\bg.jpg" />
+    <Content Include="Content\Images\SignIn\SignIn.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1833,8 +1834,13 @@
     <Content Include="Scripts\kendo\pako_deflate.min.js" />
     <Content Include="Scripts\LS\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3004,10 +3010,14 @@
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-CN.min.js.map" />
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-HK.min.js.map" />
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-TW.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Views\Home\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
