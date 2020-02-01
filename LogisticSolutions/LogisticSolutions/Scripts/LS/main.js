@@ -17,8 +17,22 @@
             return false;
         }
     });
+
+
     $(".MobileMenuBtn").click(function () {
         $(".MobileSideBar").toggleClass("MobileSideBaractive")
+    });
+
+
+    $('#example').DataTable({
+        "scrollX": true,
+        "bSort": false,
+        "bLengthChange": false,
+        //dom: 'Bfrtip',
+        "bFilter": false,
+        //buttons: [
+        //    'copy', 'csv', 'excel', 'pdf', 'print'
+        //]
     });
 
 });

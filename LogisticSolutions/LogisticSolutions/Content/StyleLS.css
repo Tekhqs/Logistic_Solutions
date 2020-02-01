@@ -48,7 +48,7 @@ body {
 }
 
 .Heading {
-    color: #C40035;
+    color: #2A3142;
     font-size: 24px;
 }
 
@@ -65,7 +65,7 @@ body {
 
     .RightAlign p {
         padding-top: 15px;
-        color: #C40035
+        color: #2A3142
     }
 
 .backAction {
@@ -81,11 +81,11 @@ body {
 .SignInAction {
     padding: 12px 30px;
     font-size: 14px;
-    border: 1px solid #C40035;
+    border: 1px solid #2A3142;
     border-radius: 25px;
     text-decoration: none !important;
     color: white !important;
-    background-color: #C40035;
+    background-color: #2A3142;
     margin-left: 7px
 }
 
@@ -125,7 +125,7 @@ body {
 
 .SideBarHeaderLeft {
     height: 17vh;
-    background-color: #C40035;
+    background-color: #2A3142;
     z-index:6
 }
 .BarHeaderRight {
@@ -174,7 +174,7 @@ body {
         }
 
             .menu li a:hover {
-                color: #C40035;
+                color: #2A3142;
             }
 
          .menu li ul li a {
@@ -207,7 +207,7 @@ body {
         }
 
         .menu ul a:hover {
-            color: #C40035;
+            color: #2A3142;
         }
 .SearchFeild {
     border: 3px solid #EBEBEB;
@@ -280,3 +280,37 @@ body {
         left: 0 !important;
        
     }
+
+
+    /*TablePadding*/
+/*.TableSection{
+    padding-top:100px;
+}*/
+
+
+/*DAtatablesEditing*/
+
+
+
+
+
+.dataTables_scroll .THeader th {
+    padding: 25px 18px !important;
+    border-bottom: 1px solid #ddd !important;
+    color: #212121 !important;
+    font-weight:500
+}
+.dataTables_scrollBody .THeader th {
+    padding: 0 0 !important;
+    border-bottom: none !important;
+}
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 25px 18px !important;
+    color: #A6AEBC !important
+}
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
+    background-color:white !important
+}
+.THeader{
+    background:white
+}

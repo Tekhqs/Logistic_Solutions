@@ -1,48 +1,195 @@
-﻿<section class="SignInSection">
-    <div class="row ">
-        <div class="col-md-9 Contain HorizontalyCenter">
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLS.cshtml";
+}
 
-            <div class="col-md-5 col-sm-5 col-xs-5 VerticalyCenter  ImgSection">
-                <div class="col-md-12">
-                    <p class="text">
-                        Welcome to
-                    </p>
-                    <p class="Main-heading">
-                        Logistics <span style="font-weight:bold">Solutions</span>
-                    </p>
+<style>
+
+    .FormBody {
+        padding: 15px;
+    }
+
+    .breadcrumb {
+        padding: 0px;
+    }
+
+        .breadcrumb li {
+            color: #C40035;
+        }
+
+            .breadcrumb li:nth-last-child(1) {
+                color: black;
+            }
+
+    .CreateUser,
+    .PageTabs {
+        background-color: #fff;
+        padding-top: 10px;
+        padding-bottom: 10px
+    }
+
+    .Button {
+        background-color: #fff;
+        color: #ccc;
+        padding: 5px 25px;
+        border-radius: 20px;
+        border-color: #ccc;
+        border: 1px solid #ccc;
+        margin-right: 5px;
+    }
+
+        .Button:hover {
+            background-color: #C40035;
+            color: #fff;
+            transition: all 0.7s ease-in-out;
+        }
+
+    .CreateUserSection {
+        background-color: #fff;
+        margin-top: 15px;
+        padding: 15px 15px 30px;
+    }
+
+    .CreateUserform label {
+        min-width: 30%;
+        display: inline-block;
+    }
+
+        .CreateUserform label span {
+            color: #C40035;
+        }
+
+    .CreateUserform input,
+    .CreateUserform select {
+        max-width: 60%;
+        display: inline-block;
+    }
+
+    .CreateUserform .SingleInput {
+        margin-bottom: 15px;
+    }
+
+    .CreateUserform .CheckBoxSection {
+        margin-top: 30px;
+    }
+
+        .CreateUserform .CheckBoxSection .SingleInput {
+            margin-bottom: 5px;
+        }
+</style>
+
+
+<div class="row">
+
+    <div class="FormBody col-md-12">
+        <div class="col-md-12 bread">
+            <ul class="breadcrumb">
+                <em class="fas fa-angle-left"></em>
+                <li>Dashboard</li>
+                <li>Users</li>
+                <li>User Management</li>
+                <li>Create User</li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 PageTabs">
+            <button class="Button">General</button>
+            <button class="Button">Acounts</button>
+            <button class="Button">Shippers</button>
+        </div>
+
+        <div class="col-xs-12 CreateUserSection">
+            <h4 class="text-left">Create User</h4>
+            <div class="row CreateUserform">
+                <div class="col-sm-6 col-xs-12 form-group">
+                    <div class="SingleInput">
+                        <label for="Email">Email<span>*</span></label>
+                        <input type="email" class="form-control input-group" placeholder="Enter Email Here" id="Email" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="Password">Password<span>*</span></label>
+                        <input type="password" class="form-control" placeholder="Enter password Here" id="Password" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="ConfirmPassword">Confirm Password<span>*</span></label>
+                        <input type="password" class="form-control" placeholder="Enter password Here" id="ConfirmPassword" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="Phone">Phone</label>
+                        <input type="tel" class="form-control" placeholder="Enter password Here" id="Phone" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="Mobile">Mobile<span>*</span></label>
+                        <input type="tel" class="form-control" placeholder="Enter password Here" id="Mobile" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="Pager">Pager</label>
+                        <input type="tel" class="form-control" placeholder="Enter password Here" id="Pager" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="Description">Description<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter password Here" id="Description" />
+                    </div>
+
+                </div>
+                <div class="col-sm-6 col-xs-12 form-group">
+
+                    <div class="SingleInput">
+                        <label for="UserID">UserID<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter User ID" id="UserID" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label>User Group <span>*</span></label>
+                        <select class="form-control">
+                            <option>-- Select --</option>
+                        </select>
+                    </div>
+
+                    <div class="CheckBoxSection">
+                        <div class="SingleInput">
+                            <label for="IsEnabled">Enabled <span>*</span></label>
+                            <input type="checkbox" id="IsEnabled" />
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="SalesRep">Sales Rep <span>*</span></label>
+                            <input type="checkbox" id="SalesRep" />
+                        </div>
+                    </div>
+
+                    <div class="CheckBoxSection">
+                        <h4>Wharehouse / Terminal Access</h4>
+                        <div class="SingleInput">
+                            <label for="IsSelected">Select / Unselect all <span>*</span></label>
+                            <input type="checkbox" id="IsSelected" />
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="CTKPARCO">1-CTK-PARCO<span>*</span></label>
+                            <input type="checkbox" id="CTKPARCO" />
+                        </div>
+                    </div>
 
                 </div>
 
             </div>
-            <div class="col-md-7  InputSection VerticalyCenter">
-                <div class="col-md-9 HorizontalyCenter" style="padding-left:0; padding-right:0">
-                    <p class="Heading">
-                        Sign In
-                    </p>
-                    <input type="text" placeholder="UserId/ Name *" class="form-control" />
-                    <input type="text" placeholder="Password *" class="form-control" />
-                    <div class="RightAlign">
-                        <p>
-                            Forget Password?
-                        </p>
-                    </div>
-                    <div class=" Actions ">
-                        <a href="#" class="backAction ">
-                            Back
-                        </a>
 
-                        <a href="#" class="SignInAction ">
-                            Sign In
-                        </a>
-                    </div>
-
-
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="Button">Cancel</button>
+                    <button class="Button">Create</button>
                 </div>
-
-
             </div>
+
         </div>
 
     </div>
-</section>
 
+
+</div>
