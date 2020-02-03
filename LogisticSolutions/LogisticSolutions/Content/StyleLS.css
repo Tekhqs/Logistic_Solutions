@@ -453,3 +453,83 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
     padding-left:12px;
     color:#ccc
 }
+
+
+.FormBody {
+    padding: 15px;
+}
+
+.breadcrumb {
+    padding: 0px;
+    background-color: transparent !important
+}
+
+    .breadcrumb li {
+        color: #2A3142;
+        padding-left: 12px;
+    }
+
+        .breadcrumb li:nth-last-child(1) {
+            color: #ccc;
+        }
+
+    .breadcrumb i {
+        font-size: 23px;
+        color: #ccc;
+    }
+
+.CreateUser,
+.PageTabs {
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+.Button {
+    background-color: #fff;
+    color: #ccc;
+    padding: 5px 25px;
+    border-radius: 20px;
+    border-color: #ccc;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+    .Button:hover {
+        background-color: #2A3142;
+        color: #fff;
+        transition: all 0.7s ease-in-out;
+    }
+
+.CreateUserSection {
+    background-color: #fff;
+    margin-top: 15px;
+    padding: 15px 15px 30px;
+}
+
+.CreateUserform label {
+    min-width: 30%;
+    display: inline-block;
+}
+
+    .CreateUserform label span {
+        color: #2A3142;
+    }
+
+.CreateUserform input,
+.CreateUserform select {
+    max-width: 60%;
+    display: inline-block;
+}
+
+.CreateUserform .SingleInput {
+    margin-bottom: 15px;
+}
+
+.CreateUserform .CheckBoxSection {
+    margin-top: 30px;
+}
+
+    .CreateUserform .CheckBoxSection .SingleInput {
+        margin-bottom: 5px;
+    }

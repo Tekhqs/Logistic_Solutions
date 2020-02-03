@@ -34,7 +34,7 @@ namespace LogisticSolutions.Controllers
                 {
                     lsMsg.status = true;
                     lsMsg.message = "Login Successfull";
-                    //return RedirectToAction("Index", "Home");
+                    Session["UserName"] = loginDetails.UserName;
                 }
                 else
                 {

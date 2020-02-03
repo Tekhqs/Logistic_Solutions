@@ -189,6 +189,15 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Datatables..css" />
+    <Content Include="Content\Images\RefImages\DailyRecveiveRod.jpg" />
+    <Content Include="Content\Images\RefImages\DailySendReceive.jpg" />
+    <Content Include="Content\Images\RefImages\DailyShippingOrder.jpg" />
+    <Content Include="Content\Images\RefImages\Order.jpg" />
+    <Content Include="Content\Images\RefImages\Parcel.jpg" />
+    <Content Include="Content\Images\RefImages\Receive.jpg" />
+    <Content Include="Content\Images\RefImages\RevenueStatistics.jpg" />
+    <Content Include="Content\Images\RefImages\Shipping.jpg" />
+    <Content Include="Content\Images\RefImages\Untitled.png" />
     <Content Include="Content\kendo\Black\editor.png" />
     <Content Include="Content\kendo\Black\imagebrowser.png" />
     <Content Include="Content\kendo\Black\indeterminate.gif" />

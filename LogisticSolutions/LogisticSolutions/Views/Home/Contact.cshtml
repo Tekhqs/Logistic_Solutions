@@ -1,87 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutLS.cshtml";
 }
-
-<style>
-
-    .FormBody {
-        padding: 15px;
-    }
-
-    .breadcrumb {
-        padding: 0px;
-        background-color:transparent !important
-    }
-
-        .breadcrumb li {
-            color: #2A3142;
-            padding-left: 12px;
-        }
-
-            .breadcrumb li:nth-last-child(1) {
-                color: #ccc;
-            }
-        .breadcrumb i {
-            font-size: 23px;
-            color: #ccc;
-        }
-
-    .CreateUser,
-    .PageTabs {
-        background-color: #fff;
-        padding-top: 10px;
-        padding-bottom: 10px
-    }
-
-    .Button {
-        background-color: #fff;
-        color: #ccc;
-        padding: 5px 25px;
-        border-radius: 20px;
-        border-color: #ccc;
-        border: 1px solid #ccc;
-        margin-right: 5px;
-    }
-
-        .Button:hover {
-            background-color: #2A3142;
-            color: #fff;
-            transition: all 0.7s ease-in-out;
-        }
-
-    .CreateUserSection {
-        background-color: #fff;
-        margin-top: 15px;
-        padding: 15px 15px 30px;
-    }
-
-    .CreateUserform label {
-        min-width: 30%;
-        display: inline-block;
-    }
-
-        .CreateUserform label span {
-            color: #2A3142;
-        }
-
-    .CreateUserform input,
-    .CreateUserform select {
-        max-width: 60%;
-        display: inline-block;
-    }
-
-    .CreateUserform .SingleInput {
-        margin-bottom: 15px;
-    }
-
-    .CreateUserform .CheckBoxSection {
-        margin-top: 30px;
-    }
-
-        .CreateUserform .CheckBoxSection .SingleInput {
-            margin-bottom: 5px;
-        }
-</style>
+\
 
 
 <div class="row">
@@ -100,7 +20,7 @@
             </ul>
         </div>
 
-        <div class="col-xs-12 PageTabs">
+        <div class="col-xs-12 PageTabs pl-5">
             <button class="Button">General</button>
             <button class="Button">Acounts</button>
             <button class="Button">Shippers</button>
@@ -109,7 +29,7 @@
             <button class="Button">Edit History</button>
         </div>
 
-        <div class="col-xs-12 CreateUserSection">
+        <div class="col-xs-12 CreateUserSection pl-5">
             <h4 class="text-left">Create User</h4>
             <div class="row CreateUserform">
                 <div class="col-sm-6 col-xs-12 form-group">
