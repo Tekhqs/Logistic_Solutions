@@ -60,6 +60,7 @@
     </div>
     <table id="example" class="display nowrap" style="width:100%">
         <thead class="THeader">
+
             <tr>
                 <th> <input type="checkbox" class="TblCHk">OrderId</th>
                 <th>Shipping Adress</th>
@@ -71,42 +72,46 @@
             </tr>
         </thead>
         <tbody>
+            @foreach (var item in ViewBag.orders)
+            {
             <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>New Adarish Para Road, Rangpur</td>
-                <td>28 feb 2020</td>
-                <td><span class="red"> Pending</span></td>
-                <td><span class="skyBlue">Online</span></td>
+
+                <td><input type="checkbox" class="TblCHk">@item.OrderId</td>
+                <td>@item.ShippingAdress</td>
+                <td>@item.ShippingDate</td>
+                @if (item.Status == "Pending")
+                {
+                    <td><span class="red"> @item.Status</span></td>
+
+                }
+                else if (item.Status == "Unpaid")
+                {
+
+                    <td><span class="purple"> @item.Status</span></td>
+
+                }
+                else
+                {
+                    <td><span class="green"> @item.Status</span></td>
+
+                }
+                @if (item.type == "Online")
+                {
+                    <td><span class="skyBlue"> @item.type</span></td>
+
+                }
+
+                else
+                {
+                    <td><span class="orange"> @item.type</span></td>
+
+                }
                 <td><span class="red">click here</span></td>
                 <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
             </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>New Adarish Para Road, Rangpur</td>
-                <td>28 feb 2020</td>
-                <td><span class="green">Delivered</span></td>
-                <td><span class="skyBlue">Online</span></td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>New Adarish Para Road, Rangpur</td>
-                <td>28 feb 2020</td>
-                <td><span class="purple">UnPaid</span></td>
-                <td><span class="orange">Offline</span></td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>New Adarish Para Road, Rangpur</td>
-                <td>28 feb 2020</td>
-                <td><span class="green">Paid</span></td>
-                <td><span class="skyBlue">Online</span></td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
+
+            }
+
 
         </tbody>
     </table>

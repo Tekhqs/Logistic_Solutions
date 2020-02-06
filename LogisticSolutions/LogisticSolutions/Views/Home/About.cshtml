@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-md-2 TiteSEction pl-5">
             <p class="LayoutsH1">
-               User List
+                User List
             </p>
         </div>
         <div class="col-md-10 LinksSEction">
@@ -60,291 +60,62 @@
             </tr>
         </thead>
         <tbody>
+            @foreach (var item in ViewBag.users)
+            {
             <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="red">Basic</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt red"></i>Inactive <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>Pending <p class="LastSeen">Since 3 hours</p></td>
-                <td>Pro</td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="red">Basic</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt red"></i>Inactive <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>Pending <p class="LastSeen">Since 3 hours</p></td>
-                <td>Pro</td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
+                <td><input type="checkbox" class="TblCHk">@item.UserId</td>
+                @if (item.UserROle == "User")
+                {
+                    <td>@item.User <p class="roles yellow">@item.UserROle</p></td>
 
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="red">Basic</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt red"></i>Inactive <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>Pending <p class="LastSeen">Since 3 hours</p></td>
-                <td>Pro</td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
+                }
 
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="red">Basic</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt red"></i>Inactive <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>Pending <p class="LastSeen">Since 3 hours</p></td>
-                <td>Pro</td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
+                else
+                {
+                    <td>Steve Horton <p class="roles DarkGrey">@item.UserROle</p></td>
 
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="red">Basic</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt red"></i>Inactive <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>Pending <p class="LastSeen">Since 3 hours</p></td>
-                <td>Pro</td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
+                }
 
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="red">Basic</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt red"></i>Inactive <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>Pending <p class="LastSeen">Since 3 hours</p></td>
-                <td>Pro</td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
+                <td>@item.EmailAdress</td>
+                @if (item.Status == "Active")
+                {
+                    <td><i class="fas fa-dot-circle activeDOt parrot"></i>@item.Status <p class="LastSeen">Since @item.SinceActivetime hours</p></td>
 
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="red">Basic</span></td>
-                <td>28 Feb 2020</td>
+                }
+                else if (item.Status == "Inactive")
+                {
+
+                    <td><i class="fas fa-dot-circle activeDOt red"></i>@item.Status <p class="LastSeen">Since @item.SinceActivetime hours</p></td>
+
+                }
+                else
+                {
+                    <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>@item.Status <p class="LastSeen">Since @item.SinceActivetime hours</p></td>
+
+                }
+                @if (item.plans == "Basic")
+                {
+                    <td><span class="red">@item.plans</span></td>
+
+                }
+                else if (item.plans == "Advanced")
+                {
+
+                    <td><span class="parrot">@item.plans</span></td>
+
+                }
+                else
+                {
+                    <td><span >@item.plans</span></td>
+
+                }
+
+                <td>@item.DateCreated</td>
                 <td><span class="red">click here</span></td>
                 <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
             </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles yellow">User</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt"></i>Active <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt red"></i>Inactive <p class="LastSeen">Since 3 hours</p></td>
-                <td><span class="parrot">Advanced</span></td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="TblCHk">55670-122-PA</td>
-                <td>Steve Horton <p class="roles DarkGrey">Admin</p></td>
-                <td>Steve@gmail.com</td>
-                <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>Pending <p class="LastSeen">Since 3 hours</p></td>
-                <td>Pro</td>
-                <td>28 Feb 2020</td>
-                <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-            </tr>
+            }
+
 
 
         </tbody>

@@ -200,6 +200,7 @@ body {
         margin: 10px 0;
         margin-left: 8px;
         display: none;
+        
     }
 
     .menu ul li {
@@ -533,3 +534,7 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
     .CreateUserform .CheckBoxSection .SingleInput {
         margin-bottom: 5px;
     }
+    /*HighCharts*/
+.highcharts-credits{
+    display:none
+}
