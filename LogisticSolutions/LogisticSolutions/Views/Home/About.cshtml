@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<DAL.tblUserProfile>
+
+@{
     Layout = "~/Views/Shared/_LayoutLS.cshtml";
 }
 
@@ -50,50 +52,49 @@
         <thead class="THeader">
             <tr>
                 <th> <input type="checkbox" class="TblCHk">User Id</th>
-                <th>User</th>
+                @*<th>User</th>*@
                 <th>Email Adress</th>
                 <th>Status</th>
-                <th>Plans</th>
                 <th>Date Created</th>
                 <th>User Details</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in ViewBag.users)
+            @foreach (var item in Model)
             {
             <tr>
-                <td><input type="checkbox" class="TblCHk">@item.UserId</td>
-                @if (item.UserROle == "User")
+                <td><input type="checkbox" class="TblCHk">@item.UserID</td>
+                @*@if (item.UserROle == "User")
+        {
+            <td>@item.User <p class="roles yellow">@item.UserROle</p></td>
+
+        }*@
+
+                @*else
+        {
+            <td>Steve Horton <p class="roles DarkGrey">@item.UserROle</p></td>
+
+        }*@
+
+                <td>@item.Email</td>
+                @if (item.isActive == true)
                 {
-                    <td>@item.User <p class="roles yellow">@item.UserROle</p></td>
+                    <td><i class="fas fa-dot-circle activeDOt parrot"></i>Active <p class="LastSeen">Since 3 hours</p></td>
+
+                        }
+            else  
+                {
+
+                    <td><i class="fas fa-dot-circle activeDOt red"></i>Inactive <p class="LastSeen">Since 3 hours</p></td>
 
                 }
+               @*else
+               {
+                   <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>@item.Status <p class="LastSeen">Since @item.SinceActivetime hours</p></td>
 
-                else
-                {
-                    <td>Steve Horton <p class="roles DarkGrey">@item.UserROle</p></td>
-
-                }
-
-                <td>@item.EmailAdress</td>
-                @if (item.Status == "Active")
-                {
-                    <td><i class="fas fa-dot-circle activeDOt parrot"></i>@item.Status <p class="LastSeen">Since @item.SinceActivetime hours</p></td>
-
-                }
-                else if (item.Status == "Inactive")
-                {
-
-                    <td><i class="fas fa-dot-circle activeDOt red"></i>@item.Status <p class="LastSeen">Since @item.SinceActivetime hours</p></td>
-
-                }
-                else
-                {
-                    <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>@item.Status <p class="LastSeen">Since @item.SinceActivetime hours</p></td>
-
-                }
-                @if (item.plans == "Basic")
+                }*@
+                @*@if (item.plans == "Basic")
                 {
                     <td><span class="red">@item.plans</span></td>
 
@@ -106,13 +107,13 @@
                 }
                 else
                 {
-                    <td><span >@item.plans</span></td>
+                    <td><span>@item.plans</span></td>
 
-                }
+                }*@
 
-                <td>@item.DateCreated</td>
+                <td>@item.CreatedOn</td>
                 <td><span class="red">click here</span></td>
-                <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
+                <td class="ActionsEdit"><a href="/Home/UserEdit/@item.UserID"> <i class="far fa-edit"></i></a> <i class="fas fa-trash-alt red"></i></td>
             </tr>
             }
 

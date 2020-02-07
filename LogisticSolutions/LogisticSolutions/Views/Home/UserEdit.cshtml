@@ -1,10 +1,14 @@
-﻿@{
+﻿@model DAL.tblUserProfile
+
+
+@{
     Layout = "~/Views/Shared/_LayoutLS.cshtml";
 }
 
 
 
 <div class="row">
+                <input type="hidden" name="Id" value="@Model.UserID" />
 
     <div class="FormBody col-md-12">
         <div class="col-md-12 bread">
@@ -12,7 +16,7 @@
                 <li>
                     <i class="fas fa-angle-left"></i>
                 </li>
-                
+
                 <li>Dashboard<span class="slash">/</span></li>
                 <li>Users<span class="slash">/</span></li>
                 <li>User Management<span class="slash">/</span></li>
@@ -35,68 +39,68 @@
                 <div class="col-sm-6 col-xs-12 form-group">
                     <div class="SingleInput">
                         <label for="Email">Email<span>*</span></label>
-                        <input type="email" class="form-control input-group" placeholder="Enter Email Here" id="Email" />
+                        <input type="email" class="form-control input-group" placeholder="Enter Email Here" value="@Model.Email" id="Email" />
                     </div>
 
                     <div class="SingleInput">
                         <label for="Password">Password<span>*</span></label>
-                        <input type="password" class="form-control" placeholder="Enter password Here" id="Password" />
+                        <input type="password" class="form-control" value="@Model.EncryptedPassword" placeholder="Enter password Here" id="Password" />
                     </div>
 
                     <div class="SingleInput">
                         <label for="ConfirmPassword">Confirm Password<span>*</span></label>
-                        <input type="password" class="form-control" placeholder="Enter password Here" id="ConfirmPassword" />
+                        <input type="password" class="form-control" value="@Model.EncryptedPassword" placeholder="Enter password Here" id="ConfirmPassword" />
                     </div>
 
                     <div class="SingleInput">
                         <label for="Phone">Phone</label>
-                        <input type="tel" class="form-control" placeholder="Optional" id="Phone" />
+                        <input type="tel" class="form-control" value="@Model.PhoneNumber" placeholder="Optional" id="Phone" />
                     </div>
 
                     <div class="SingleInput">
                         <label for="Mobile">Mobile<span>*</span></label>
-                        <input type="tel" class="form-control" placeholder="Enter Your Active Contact No." id="Mobile" />
+                        <input value="@Model.Mobile" type="tel" class="form-control" placeholder="Enter Your Active Contact No." id="Mobile" />
                     </div>
 
                     @*<div class="SingleInput">
-                        <label for="Pager">Pager</label>
-                        <input type="tel" class="form-control" placeholder="Optional" id="Pager" />
-                    </div>*@
+                            <label for="Pager">Pager</label>
+                            <input type="tel" class="form-control" placeholder="Optional" id="Pager" />
+                        </div>*@
 
                     @*<div class="SingleInput">
-                        <label for="Description">Description<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Description" id="Description" />
-                    </div>*@
+                            <label for="Description">Description<span>*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter Description" id="Description" />
+                        </div>*@
 
                 </div>
                 <div class="col-sm-6 col-xs-12 form-group">
 
-                   
+
 
                     <div class="SingleInput">
                         <label>User Group <span>*</span></label>
-                        @Html.DropDownList("GroupId", new SelectList(ViewBag.Group, "SecurityGroupID", "GroupName"), "-- Select  --", new { @class=" form-control" })
+                        @Html.DropDownListFor(c=>c.SecurityGroupID , new SelectList(ViewBag.Group, "SecurityGroupID", "GroupName"), "-- Select  --", new {@id="GroupId" , @class = " form-control" })
 
                     </div>
 
                     <div class="CheckBoxSection">
                         <div class="SingleInput">
-                            <label for="IsEnabled">Enabled <span>*</span></label>
-                            <input type="checkbox" id="IsEnabled" />
+                            <label for="IsEnabled" >Enabled <span>*</span></label>
+                            <input type="checkbox" value="@Model.isActive" id="IsEnabled" />
                         </div>
 
                         @*<div class="SingleInput">
-                            <label>User Role <span>*</span></label>
-                            @Html.DropDownList("RoleId", new SelectList(ViewBag.UserRole, "UserRoleID", "UserRoleName"), "-- Select --", new { @class = " form-control" })
+                                <label>User Role <span>*</span></label>
+                                @Html.DropDownList("RoleId", new SelectList(ViewBag.UserRole, "UserRoleID", "UserRoleName"), "-- Select --", new { @class = " form-control" })
 
-                        </div>*@
+                            </div>*@
                     </div>
 
                     <div class="CheckBoxSection">
                         <h4>Wharehouse / Terminal Access</h4>
                         <div class="SingleInput">
                             <label>WearHouse <span>*</span></label>
-                            @Html.DropDownList("WeareHouseId", new SelectList(ViewBag.Wearhouse, "WarehouseID", "WareHouseCode"), "-- Select --", new { @class = " form-control" })
+                            @Html.DropDownListFor(z=>z.WarehouseID, new SelectList(ViewBag.Wearhouse, "WarehouseID", "WareHouseCode"), "-- Select --", new {@id= "WeareHouseId", @class = " form-control" })
                         </div>
                     </div>
 
@@ -119,7 +123,22 @@
 </div>
 
 <script>
+      $(document).ready(function () {
+            debugger;
+            var SetGroupId = '@Model.SecurityGroupID';
+        var SetWareHouseId = '@Model.WarehouseID';
+
+            $('#GroupId').filter(function () {
+                return ($(this).val() == '@Model.SecurityGroupID'); //To select Blue
+            }).prop('selected', true);
+
+            });
+
     function CreateUsers() {
+       
+                    var userId = '@Model.UserID';
+
+
         debugger;
         var Email = $("#Email").val();
         var Password = $("#Password").val();
@@ -132,7 +151,7 @@
         var passwordCheck = false;
         var confirmPasswordCheck = false;
         var isActive = false;
-        
+
 
 
         if (Email == "") {
@@ -191,7 +210,7 @@
             $("#Mobile").css({ "border-color": "#ced4da" });
 
         }
-        
+
         if (WeareHouseId == "") {
             $("#WeareHouseId").css({ "border-color": "red" });
 
@@ -209,25 +228,25 @@
 
         }
 
-        
+
 
         if (Email != "" && Password != "" && ConfirmPassword != ""
-            && Mobile != ""  && GroupId != ""
+            && Mobile != "" && GroupId != ""
             && WeareHouseId != "" && passwordCheck == true
-            && EmailCheck == true)
-        {
-            var UserDetail ={
-                Email : Email,
-                PhoneNumber : Phone,
+            && EmailCheck == true) {
+            var UserDetail = {
+                Email: Email,
+                PhoneNumber: Phone,
                 EncryptedPassword: Password,
                 SecurityGroupID: GroupId,
-                Mobile : Mobile,
-                isActive : IsEnabled,
-                WarehouseID : WeareHouseId,
+                Mobile: Mobile,
+                isActive: IsEnabled,
+                WarehouseID: WeareHouseId,
+                UserId: userId
 
             };
             $.ajax({
-                url: "/Home/Contact",
+                url: "/Home/UserEdit",
                 type: "POST",
                 dataType: "JSON",
                 data: UserDetail,
@@ -252,7 +271,7 @@
             })
 
         }
-    
+
 
 
         function validateEmail(email) {
@@ -265,8 +284,7 @@
             var upperCaseLetters = /[A-Z]/g;
             var numbers = /[0-9]/g;
 
-            if (Password.match(lowerCaseLetters) && Password.match(upperCaseLetters) && Password.match(numbers) && Password.length>=8)
-            {
+            if (Password.match(lowerCaseLetters) && Password.match(lowerCaseLetters) && Password.match(numbers) && Password.length >= 8) {
                 passwordCheck = true;
             }
 

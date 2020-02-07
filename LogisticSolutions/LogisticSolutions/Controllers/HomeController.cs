@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace LogisticSolutions.Controllers
 {
     public class HomeController : Controller
     {
+        LogisticSolutionDevDBEntities db = new LogisticSolutionDevDBEntities();
+
         public ActionResult Index()
         {
             IList<order> OrderList = new List<order>() {
@@ -53,49 +56,103 @@ namespace LogisticSolutions.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-            IList<user> UserList = new List<user>() {
-                new user(){ UserId="55670-122-PA",
-                    User ="Steve Horton",
-                    EmailAdress ="Steve@gmail.com",
-                    Status="Active",
-                    plans="Basic",
-                    DateCreated="28 Feb 2020",
-                    UserROle="Admin",
-                    SinceActivetime="3"
-
-
-                }, new user(){ UserId="55670-122-PA",
-                  User ="Steve Horton",
-                    EmailAdress ="Steve@gmail.com",
-                    Status="Pending",
-                    plans="Advanced",
-                    DateCreated="28 Feb 2020",
-                    UserROle="User",
-                    SinceActivetime="3"
-
-
-                }, new user(){ UserId="55670-122-PA",
-                    User ="Steve Horton",
-                    EmailAdress ="Steve@gmail.com",
-                    Status="Inactive",
-                    plans="Pro",
-                    DateCreated="28 Feb 2020",
-                    UserROle="Admin",
-                    SinceActivetime="3"
-
-                },
-
-            };
-            ViewBag.users = UserList;
-            return View();
+            var Users = db.tblUserProfiles.ToList();
+           
+            return View(Users);
 
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+            ViewBag.Group = db.tblSecurityGroups.ToList();
+            ViewBag.Wearhouse = db.tblWarehouseMasters.ToList();
+
+
+
+
+
+
+
+
+
 
             return View();
+        }
+        public ActionResult UserEdit(int id)
+        {
+            ViewBag.Group = db.tblSecurityGroups.ToList();
+            ViewBag.Wearhouse = db.tblWarehouseMasters.ToList();
+            var User = db.tblUserProfiles.Where(c=>c.UserID==id). FirstOrDefault();
+            User.EncryptedPassword = User.EncryptedPassword = EncryptDecrypt.Decrypt(User.EncryptedPassword);
+
+
+
+
+
+
+
+
+
+
+
+
+            return View(User);
+        }
+        [HttpPost]
+        public JsonResult UserEdit(tblUserProfile userProfile)
+        {
+            try
+            {
+                var userId = Convert.ToInt32(Session["UserId"]);
+
+                var User = db.tblUserProfiles.Where(c => c.UserID == userProfile.UserID).FirstOrDefault();
+                User.UpdatedBy = userId;
+                User.UpdatedOn = DateTime.Now;
+                User.Email = userProfile.Email;
+                User.EncryptedPassword = EncryptDecrypt.Encrypt(userProfile.EncryptedPassword);
+                User.SecurityGroupID = userProfile.SecurityGroupID;
+                User.WarehouseID = userProfile.WarehouseID;
+                User.isActive = userProfile.isActive;
+                User.PhoneNumber = userProfile.PhoneNumber;
+                User.Mobile = userProfile.Mobile;
+               
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+       
+
+
+
+
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult Contact(tblUserProfile userProfile)
+        {
+            try
+            {
+                var userId = Convert.ToInt32(Session["UserId"]);
+                userProfile.EncryptedPassword = EncryptDecrypt.Encrypt(userProfile.EncryptedPassword);
+                userProfile.CreatedOn = DateTime.Now;
+                userProfile.CreatedBy = userId;
+                userProfile.CustomerID = 2;
+                db.tblUserProfiles.Add(userProfile);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+
+            return Json(true, JsonRequestBehavior.AllowGet);
+
         }
         public ActionResult Order()
         {
@@ -137,6 +194,33 @@ namespace LogisticSolutions.Controllers
             ViewBag.orders = OrderList;
 
             return View();
+        }
+        public JsonResult ChangePassword(string COldPassword, string CPassword)
+        {
+            var userId = Convert.ToInt32(Session["UserId"]);
+            var USerpassword = db.tblUserProfiles.Where(c => c.UserID == userId).FirstOrDefault().EncryptedPassword;
+
+
+
+            var oldPassword =EncryptDecrypt.Decrypt(USerpassword);
+            if (oldPassword == COldPassword)
+            {
+                var User = db.tblUserProfiles.Where(c => c.UserID == userId).FirstOrDefault();
+                User.EncryptedPassword = EncryptDecrypt.Encrypt(CPassword);
+                db.SaveChanges();
+
+                return Json(true, JsonRequestBehavior.AllowGet);
+
+
+            }
+            else
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+
+            }
+
+
+
         }
 
 
