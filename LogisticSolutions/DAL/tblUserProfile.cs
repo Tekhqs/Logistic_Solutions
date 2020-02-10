@@ -17,7 +17,6 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblUserProfile()
         {
-            this.tblOrderDetails = new HashSet<tblOrderDetail>();
             this.tblUserSecurityGroups = new HashSet<tblUserSecurityGroup>();
         }
     
@@ -25,22 +24,19 @@ namespace DAL
         public int CustomerID { get; set; }
         public string UserName { get; set; }
         public string EncryptedPassword { get; set; }
-        public string OldEncryptedPassword { get; set; }
         public int SecurityGroupID { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Mobile { get; set; }
-        public bool isPasswordReset { get; set; }
         public Nullable<bool> isDeleted { get; set; }
         public bool isActive { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<int> WarehouseID { get; set; }
     
         public virtual tblCustomer tblCustomer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOrderDetail> tblOrderDetails { get; set; }
         public virtual tblSecurityGroup tblSecurityGroup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblUserSecurityGroup> tblUserSecurityGroups { get; set; }

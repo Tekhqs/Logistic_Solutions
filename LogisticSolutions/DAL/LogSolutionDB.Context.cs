@@ -36,7 +36,6 @@ namespace DAL
         public virtual DbSet<tblItemInventory_Customer> tblItemInventory_Customer { get; set; }
         public virtual DbSet<tblItemMaster> tblItemMasters { get; set; }
         public virtual DbSet<tblItemSKUMaster> tblItemSKUMasters { get; set; }
-        public virtual DbSet<tblLocation> tblLocations { get; set; }
         public virtual DbSet<tblOrderDetail> tblOrderDetails { get; set; }
         public virtual DbSet<tblOrderSource> tblOrderSources { get; set; }
         public virtual DbSet<tblSecurityGroup> tblSecurityGroups { get; set; }
@@ -47,7 +46,9 @@ namespace DAL
         public virtual DbSet<tblShippingRatesMaster> tblShippingRatesMasters { get; set; }
         public virtual DbSet<tblState> tblStates { get; set; }
         public virtual DbSet<tblStatu> tblStatus { get; set; }
+        public virtual DbSet<tblStorageLocation> tblStorageLocations { get; set; }
         public virtual DbSet<tblUserProfile> tblUserProfiles { get; set; }
+        public virtual DbSet<tblUserRole> tblUserRoles { get; set; }
         public virtual DbSet<tblUserSecurityGroup> tblUserSecurityGroups { get; set; }
         public virtual DbSet<tblWarehouseMaster> tblWarehouseMasters { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }

@@ -18,8 +18,8 @@ namespace DAL
         public string ItemCode { get; set; }
         public string ItemSKUCode { get; set; }
         public int CustomerID { get; set; }
-        public int WarehouseCode { get; set; }
-        public string LocationID { get; set; }
+        public int WarehouseID { get; set; }
+        public int LocationID { get; set; }
         public string UOM { get; set; }
         public string LotCode { get; set; }
         public string SubLotCode { get; set; }
@@ -36,7 +36,7 @@ namespace DAL
         public virtual tblCustomer tblCustomer { get; set; }
         public virtual tblItemMaster tblItemMaster { get; set; }
         public virtual tblItemSKUMaster tblItemSKUMaster { get; set; }
-        public virtual tblLocation tblLocation { get; set; }
+        public virtual tblStorageLocation tblStorageLocation { get; set; }
         public virtual tblWarehouseMaster tblWarehouseMaster { get; set; }
     }
 }

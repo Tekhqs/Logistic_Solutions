@@ -18,9 +18,8 @@ namespace DAL
         public tblCustomer()
         {
             this.tblBillingAddresses = new HashSet<tblBillingAddress>();
-            this.tblItemInventory_Customer = new HashSet<tblItemInventory_Customer>();
             this.tblCustomerShippingAccounts = new HashSet<tblCustomerShippingAccount>();
-            this.tblOrderDetails = new HashSet<tblOrderDetail>();
+            this.tblItemInventory_Customer = new HashSet<tblItemInventory_Customer>();
             this.tblSecurityGroups = new HashSet<tblSecurityGroup>();
             this.tblUserProfiles = new HashSet<tblUserProfile>();
             this.tblUserSecurityGroups = new HashSet<tblUserSecurityGroup>();
@@ -46,11 +45,9 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBillingAddress> tblBillingAddresses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblItemInventory_Customer> tblItemInventory_Customer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCustomerShippingAccount> tblCustomerShippingAccounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOrderDetail> tblOrderDetails { get; set; }
+        public virtual ICollection<tblItemInventory_Customer> tblItemInventory_Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSecurityGroup> tblSecurityGroups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

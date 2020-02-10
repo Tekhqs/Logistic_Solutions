@@ -34,10 +34,8 @@ namespace DAL
         public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         public virtual tblBillingAddress tblBillingAddress { get; set; }
-        public virtual tblCustomer tblCustomer { get; set; }
         public virtual tblOrderSource tblOrderSource { get; set; }
         public virtual tblShippingAddress tblShippingAddress { get; set; }
         public virtual tblShippingRatesMaster tblShippingRatesMaster { get; set; }
-        public virtual tblUserProfile tblUserProfile { get; set; }
     }
 }

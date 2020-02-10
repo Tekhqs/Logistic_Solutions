@@ -12,31 +12,32 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class tblLocation
+    public partial class tblStorageLocation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblLocation()
+        public tblStorageLocation()
         {
             this.tblItemInventory_Customer = new HashSet<tblItemInventory_Customer>();
-            this.tblWarehouseMasters = new HashSet<tblWarehouseMaster>();
         }
     
-        public string LocationID { get; set; }
+        public int LocationID { get; set; }
+        public int WarehouseID { get; set; }
+        public string LocationCode { get; set; }
         public string LocationDesc { get; set; }
         public string Zone { get; set; }
         public string Class { get; set; }
         public string CubicDimensions { get; set; }
         public string TempratureRange { get; set; }
         public string UserRoleCode { get; set; }
-        public Nullable<bool> isDeleted { get; set; }
-        public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public string UpdatedBy { get; set; }
+        public bool isActive { get; set; }
+        public bool isDeleted { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedOn { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblItemInventory_Customer> tblItemInventory_Customer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblWarehouseMaster> tblWarehouseMasters { get; set; }
+        public virtual tblWarehouseMaster tblWarehouseMaster { get; set; }
     }
 }

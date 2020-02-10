@@ -21,7 +21,10 @@ namespace DAL
         }
     
         public int SecurityTaskID { get; set; }
+        public Nullable<int> ParentTaskID { get; set; }
         public string Description { get; set; }
+        public bool IsParent { get; set; }
+        public Nullable<int> DisplayOrder { get; set; }
         public bool Active { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
