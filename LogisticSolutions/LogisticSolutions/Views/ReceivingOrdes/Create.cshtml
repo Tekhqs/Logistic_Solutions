@@ -1,0 +1,191 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_LayoutLS.cshtml";
+}
+
+
+
+<div class="row">
+
+    <div class="FormBody col-md-12">
+        <div class="col-md-12 bread">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="fas fa-angle-left"></i>
+                </li>
+
+                <li>Dashboard<span class="slash">/</span></li>
+                <li>Users<span class="slash">/</span></li>
+                <li>User Management<span class="slash">/</span></li>
+                <li>Create User</li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 PageTabs pl-5">
+            <button class="Button">General</button>
+            <button class="Button">Acounts</button>
+            <button class="Button">Shippers</button>
+            <button class="Button">Zendesk</button>
+            <button class="Button">RF</button>
+            <button class="Button">Edit History</button>
+        </div>
+
+        <div class="col-xs-12 CreateUserSection pl-5">
+            <h4 class="text-left">Create Receiving</h4>
+            <div class="row CreateUserform">
+                <div class="col-sm-6 col-xs-12 form-group">
+
+                    <div class="SingleInput">
+                        <label for="status">Status<span>*</span></label>
+                        <select id="Status" class="form-control">
+                            <option> Open </option>
+                            <option> Inprocess </option>
+                            <option> Hold </option>
+                            <option> Completed </option>
+                            <option> Void </option>
+                        </select>
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="orderNumber">Order Number<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Order Number" id="OrderNumber" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="poNumber">PO Number<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="PONumber" id="PONumber" />
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div class="col-sm-6 col-xs-12 form-group">
+                    <div class="SingleInput">
+                        <label for="equipment">Equipment<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Equipment" id="Equipment" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="equipment">Seal(s)<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Seal(s)" id="Equipment" />
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="col-xs-12 CreateUserSection pl-5">
+            <h4 class="text-left">Partners</h4>
+            <div class="row CreateUserform">
+                <div class="col-sm-6 col-xs-12 form-group">
+                    <div class="SingleInput">
+                        <label for="acount">Account<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Partner description" id="Account" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="supplier">Supplier<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Partner description" id="Suplier" />
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div class="col-sm-6 col-xs-12 form-group">
+
+
+                    <div class="SingleInput">
+                        <label for="carrier">Carrier<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Partner description" id="Carrier" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="rForm">Received Form<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Partner description" id="RForm" />
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+        <div class="col-xs-12 CreateUserSection pl-5">
+            <h4 class="text-left">Dates</h4>
+            <div class="row CreateUserform">
+                <div class="col-sm-6 col-xs-12 form-group">
+                    <div class="SingleInput">
+                        <label for="arrivalDate">Expected Arrival Date<span>*</span></label>
+                        <input type="datetime" class="form-control" placeholder="Date" id="ArrivalDate" />
+                    </div>
+
+                </div>
+                <div class="col-sm-6 col-xs-12 form-group">
+                    <div class="SingleInput">
+                        <label for="aarrivalDate">Actual Arrival Date<span>*</span></label>
+                        <input type="datetime" class="form-control" placeholder="Date" id="AArrivalDate" />
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="col-xs-12 CreateUserSection pl-5">
+            <h4 class="text-left">Other Instuctions</h4>
+            <div class="row CreateUserform">
+                <div class="col-sm-12 col-xs-12 form-group">
+                    <div class="SingleInput">
+                        <textarea type="datetime" class="form-control" placeholder="Add Instructions Here" id="ArrivalDate"></textarea>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+        
+
+
+        <div class="col-xs-12 CreateUserSection pl-5">
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="Button">Cancel</button>
+                    <button id="CreateUser" onclick="CreateUsers()" class="Button">Create</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+

@@ -224,19 +224,7 @@ namespace LogisticSolutions.Controllers
         }
 
 
-        public class user
-        {
-            public string UserId { get; set; }
-            public string User { get; set; }
-            public string EmailAdress { get; set; }
-            public string Status { get; set; }
-            public string SinceActivetime { get; set; }
-            public string plans { get; set; }
-            public string DateCreated { get; set; }
-            public string UserROle { get; set; }
-
-
-        }
+  
         public class order
         {
             public string OrderId { get; set; }

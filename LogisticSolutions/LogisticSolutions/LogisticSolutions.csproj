@@ -173,6 +173,9 @@
     <Compile Include="AuthorizationFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PurchaseOrdersController.cs" />
+    <Compile Include="Controllers\ReceivingOrdesController.cs" />
+    <Compile Include="Controllers\ShippingOrdersController.cs" />
     <Compile Include="EncryptDecrypt.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3029,6 +3032,12 @@
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Home\UserEdit.cshtml" />
+    <Content Include="Views\PurchaseOrders\Index.cshtml" />
+    <Content Include="Views\ReceivingOrdes\Index.cshtml" />
+    <Content Include="Views\ShippingOrders\Index.cshtml" />
+    <Content Include="Views\ReceivingOrdes\Create.cshtml" />
+    <Content Include="Views\ShippingOrders\Create.cshtml" />
+    <Content Include="Views\PurchaseOrders\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

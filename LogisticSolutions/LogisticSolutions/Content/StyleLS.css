@@ -518,7 +518,8 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
     }
 
 .CreateUserform input,
-.CreateUserform select {
+.CreateUserform select,
+.CreateUserform .form-control {
     max-width: 60%;
     display: inline-block;
 }
@@ -537,4 +538,39 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
     /*HighCharts*/
 .highcharts-credits{
     display:none
+}
+
+.k-dropdown{
+    background-color:transparent !important;
+    border: none !important;
+    outline: none !important;
+    width:60% !important
+}
+.k-dropdown-wrap {
+    background-color: transparent !important;
+    outline: none !important;
+    
+}
+.k-state-selected {
+    background-color: #2A3142 !important;
+    color: white !important;
+    box-shadow: inset 0 0 3px 1px #2A3142 !important;
+}
+.k-list-optionlabel
+{
+    display:none !important
+}
+.k-header{
+    background:white !important
+}
+.k-list-container{
+    background:white !important
+}
+
+#CreatUserModal .modal-dialog,
+#CreatCareerModal .modal-dialog {
+    max-width: 1000px;
+}
+.linkColor {
+    color: #0056b3 !important
 }

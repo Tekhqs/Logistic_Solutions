@@ -29,12 +29,16 @@ namespace LogisticSolutions.Controllers
             {
                 string encryptedPassword = EncryptDecrypt.Encrypt(prmPassword);
                 var loginDetails = db.tblUserProfiles.Where(x => x.UserName == prmUserId && x.EncryptedPassword == encryptedPassword).FirstOrDefault();
+              
+
 
                 if (loginDetails != null)
                 {
                     lsMsg.status = true;
                     lsMsg.message = "Login Successfull";
                     Session["UserName"] = loginDetails.UserName;
+                    Session["UserPassword"] = loginDetails.EncryptedPassword;
+                    Session["UserId"] = loginDetails.UserID;
                 }
                 else
                 {

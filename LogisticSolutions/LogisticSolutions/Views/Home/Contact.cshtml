@@ -12,7 +12,7 @@
                 <li>
                     <i class="fas fa-angle-left"></i>
                 </li>
-                
+
                 <li>Dashboard<span class="slash">/</span></li>
                 <li>Users<span class="slash">/</span></li>
                 <li>User Management<span class="slash">/</span></li>
@@ -33,6 +33,10 @@
             <h4 class="text-left">Create User</h4>
             <div class="row CreateUserform">
                 <div class="col-sm-6 col-xs-12 form-group">
+                    <div class="SingleInput">
+                        <label for="AccountId">Account ID<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Account ID" id="AccountId" />
+                    </div>
                     <div class="SingleInput">
                         <label for="Email">Email<span>*</span></label>
                         <input type="email" class="form-control input-group" placeholder="Enter Email Here" id="Email" />
@@ -57,25 +61,38 @@
                         <label for="Mobile">Mobile<span>*</span></label>
                         <input type="tel" class="form-control" placeholder="Enter Your Active Contact No." id="Mobile" />
                     </div>
+                    <div class="SingleInput">
+                        <label for="Desc">Description<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Description" id="Description" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="Multilpyer">Billing Rate Multiplier<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Multiplier" id="Multiplier" />
+                    </div>
+
+
 
                     @*<div class="SingleInput">
-                        <label for="Pager">Pager</label>
-                        <input type="tel" class="form-control" placeholder="Optional" id="Pager" />
-                    </div>*@
+            <label for="Pager">Pager</label>
+            <input type="tel" class="form-control" placeholder="Optional" id="Pager" />
+        </div>*@
 
                     @*<div class="SingleInput">
-                        <label for="Description">Description<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Description" id="Description" />
-                    </div>*@
+            <label for="Description">Description<span>*</span></label>
+            <input type="text" class="form-control" placeholder="Enter Description" id="Description" />
+        </div>*@
 
                 </div>
                 <div class="col-sm-6 col-xs-12 form-group">
 
                    
-
+                    <div class="SingleInput">
+                        <label for="Bound">Bounded<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Bounded" id="Bounded" />
+                    </div>
                     <div class="SingleInput">
                         <label>User Group <span>*</span></label>
-                        @Html.DropDownList("GroupId", new SelectList(ViewBag.Group, "SecurityGroupID", "GroupName"), "-- Select  --", new { @class=" form-control" })
+                        @Html.DropDownList("GroupId", new SelectList(ViewBag.Group, "SecurityGroupID", "GroupName"), "-- Select  --", new { @class = " form-control" })
 
                     </div>
 
@@ -91,6 +108,14 @@
 
                         </div>*@
                     </div>
+                    <div class="SingleInput">
+                        <label for="Billing">Billing Id<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Billing Id" id="BillingId" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="Multilpyer">Default NEMC<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="NEMC" id="NEMC" />
+                    </div>
 
                     <div class="CheckBoxSection">
                         <h4>Wharehouse / Terminal Access</h4>
@@ -98,6 +123,131 @@
                             <label>WearHouse <span>*</span></label>
                             @Html.DropDownList("WeareHouseId", new SelectList(ViewBag.Wearhouse, "WarehouseID", "WareHouseCode"), "-- Select --", new { @class = " form-control" })
                         </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="col-xs-12 CreateUserSection pl-5">
+            <h4 class="text-left">Billing Adress</h4>
+            <div class="row CreateUserform">
+                <div class="col-sm-6 col-xs-12 form-group">
+                    <div class="SingleInput">
+                        <label for="Adres1">Adress 1<span>*</span></label>
+                        <input type="text" class="form-control input-group" placeholder="Enter Adress Here" id="Adress1" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="Adres2">Adress 2<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Adress 2" id="Adress2" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="Adres3">Adress 3<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Adress 3" id="Adress3" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="Adres4">Adress 4<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Adress 4" id="Adress4" />
+                    </div>
+
+
+
+
+                </div>
+                <div class="col-sm-6 col-xs-12 form-group">
+
+
+
+                    <div class="SingleInput">
+                        <label for="city">City<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Your City" id="City" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="state">State<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Your State" id="State" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="postalCode">Postal Code<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Your Postal Code" id="PostalCode" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="country">Country<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Your Country" id="Country" />
+                    </div>
+
+                </div>
+
+            </div>
+
+          
+
+        </div>
+
+
+
+        <div class="col-xs-12 CreateUserSection pl-5">
+            <h4 class="text-left">Shipping  Adress</h4>
+            <div class="row CreateUserform">
+                <div class="col-sm-6 col-xs-12 form-group">
+                    <div class="SingleInput">
+                        <label for="usePrev">Use Billing Adresses <span>*</span></label>
+                        <input onclick="setBillingValue()" type="checkbox" id="UsePrev" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="ShippingAdres1">Adress 1<span>*</span></label>
+                        <input type="text" class="form-control input-group" placeholder="Enter Adress Here" id="ShippingAdress1" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="ShippingAdres2">Adress 2<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Adress 2" id="ShippingAdress2" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="ShippingAdres3">Adress 3<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Adress 3" id="ShippingAdress3" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="ShippingAdres4">Adress 4<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Adress 4" id="ShippingAdress4" />
+                    </div>
+
+
+
+
+                </div>
+                <div class="col-sm-6 col-xs-12 form-group">
+
+
+
+                    <div class="SingleInput">
+                        <label for="Shippingcity">City<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Your City" id="ShippingCity" />
+                    </div>
+
+                    <div class="SingleInput">
+                        <label for="Shippingstate">State<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Your State" id="ShippingState" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="ShippingpostalCode">Postal Code<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Your Postal Code" id="ShippingPostalCode" />
+                    </div>
+                    <div class="SingleInput">
+                        <label for="Shippingcountry">Country<span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Your Country" id="ShippingCountry" />
                     </div>
 
                 </div>
@@ -283,4 +433,5 @@
 
 
     }
+
 </script>

@@ -12,10 +12,15 @@
     <link href="~/Content/Datatable.min.css" rel="stylesheet" />
 
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.default.mobile.min.css" rel="stylesheet" />
     <script src="~/Scripts/Jquery.min.js"></script>
     <script src="~/Scripts/Popper.min.js"></script>
     <script src="~/Scripts/Bootstrap.min.js"></script>
     <script src="~/Scripts/datatable.min.js" defer></script>
+    <script src="~/Scripts/kendo/jszip.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.all.min.js"></script>
 
 </head>
 
@@ -76,8 +81,15 @@
             <div class="col-xl-2 col-lg-3  d-none  d-lg-block   SideBarBody">
                 <ul class="menu">
                     <li> <a href="/Home/Index"><i class="fas fa-chart-pie TitleIcon"></i>Dashboard</a></li>
-                    <li>
-                        <a href="/home/Order"><i class="fas fa-file-signature TitleIcon"></i>Orders</a>
+
+                    <li class='has-sub'>
+                        <a href="#"><i class="fas fa-file-signature TitleIcon"></i>Orders <i class="fas fa-angle-down arrow "></i></a>
+                        <ul>
+                            <li><a href='/PurchaseOrders/Index'><span> Purchase Orders</span></a></li>
+                            <li><a href='/ReceivingOrdes/Index'><span> Receive Orders</span></a></li>
+                            <li><a href='/ShippingOrders/Index'><span> Shipping Orders</span></a></li>
+
+                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fas fa-paste TitleIcon"></i>Reports</a>
@@ -193,30 +205,39 @@
                     <div class="modal-body">
                         <div class="col-sm-12 col-xs-12 form-group">
                             <div class="SingleInput">
-                                <label for="Email">Old Password<span>*</span></label>
+                                <label for="OldPas">Old Password<span>*</span></label>
                                 <input type="email" class="form-control input-group" placeholder="Old Password" id="COldPassword" />
+                                <label id="COldPasswordL" style="color:red"></label>
+
                             </div>
 
                             <div class="SingleInput">
                                 <label for="Password">New Password<span>*</span></label>
                                 <input type="password" class="form-control" placeholder="Enter password Here" id="CPassword" />
+                                <label id="CPasswordL" style="color:red"></label>
+
                             </div>
                             <div class="SingleInput">
                                 <label for="Password">Confirm New Password<span>*</span></label>
                                 <input type="password" class="form-control" placeholder="Enter password Here" id="CConfirmPassword" />
+                                <label id="CConfirmPasswordL" style="color:red"></label>
+
                             </div>
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="ChangePassword()" class="btn btn-primary">Save changes</button>
+                        <button class="Button" data-dismiss="modal">Close</button>
+                        <button class="Button" onclick="ChangePassword()">Save changes</button>
+
 
 
                     </div>
                 </div>
             </div>
         </div>
+
+        
 
     </div>
 
@@ -262,14 +283,20 @@
             var passwordCheck = false;
             if (COldPassword == "") {
                 $("#COldPassword").css({ "border-color": "red" });
+                $("#COldPasswordL").text("Feild cannot be empty");
+
             }
             else {
 
                 $("#COldPassword").css({ "border-color": "#ced4da" });
+                $("#COldPasswordL").text("");
+
             }
 
             if (CPassword == "") {
                 $("#CPassword").css({ "border-color": "red" });
+                $("#CPasswordL").text("Feild cannot be empty");
+
 
 
             }
@@ -277,10 +304,14 @@
                 passwordValidaion(CPassword);
                 if (passwordCheck == true) {
                     $("#CPassword").css({ "border-color": "#ced4da" });
+                    $("#CPasswordL").text("");
+
 
                 }
                 else {
                     $("#CPassword").css({ "border-color": "red" });
+                    $("#CPasswordL").text("Password must be atlest 8 characters with one Small and capital letters");
+
 
                 }
 
@@ -288,15 +319,22 @@
 
             if (CConfirmPassword == "") {
                 $("#CConfirmPassword").css({ "border-color": "red" });
+                $("#CConfirmPasswordL").text("Feild cannot be empty");
 
             }
             else {
+                $("#CConfirmPassword").css({ "border-color": "red" });
+                
                 ConfirmPasswordValidation(CPassword);
                 if (confirmPasswordCheck == true) {
                     $("#CConfirmPassword").css({ "border-color": "#ced4da" });
+                    $("#CConfirmPasswordL").text("");
+
                 }
                 else {
                     $("#CConfirmPassword").css({ "border-color": "red" });
+                    $("#CConfirmPasswordL").text("Not Match");
+
                 }
 
 
@@ -316,10 +354,11 @@
                     },
                     success: function (result) {
                         if (result == true) {
-                            alert("Yes")
+                            $("#COldPasswordL").text("");
                         }
                         else {
-                            alert("false")
+
+                            $("#COldPasswordL").text("Sorry Old Passsword is Incorrect");
                         }
                     },
                     error: function (error) {
@@ -355,6 +394,47 @@
                 }
             }
 
+        }
+        function ClickForModal() {
+            $("#ClikeMeToOpen").click();
+        }
+        function ClickForModalCareer() {
+            $("#ClikeMeToOpenCareer").click();
+        }
+        function setBillingValue() {
+
+
+            $('#UsePrev').val();
+            if ($('#UsePrev').is(":checked")) {
+                var Adress1 = $("#Adress1").val();
+                var Adress2 = $("#Adress2").val();
+                var Adress3 = $("#Adress3").val();
+                var Adress4 = $("#Adress4").val();
+                var City = $("#City").val();
+                var State = $("#State").val();
+                var PostalCode = $("#PostalCode").val();
+                var Country = $("#Country").val();
+                $("#ShippingAdress1").val(Adress1);
+                $("#ShippingAdress2").val(Adress2);
+                $("#ShippingAdress3").val(Adress3);
+                $("#ShippingAdress4").val(Adress4);
+                $("#ShippingCity").val(City);
+                $("#ShippingState").val(State);
+                $("#ShippingPostalCode").val(PostalCode);
+                $("#ShippingCountry").val(Country);
+            }
+
+            else {
+
+                $("#ShippingAdress1").val("");
+                $("#ShippingAdress2").val("");
+                $("#ShippingAdress3").val("");
+                $("#ShippingAdress4").val("");
+                $("#ShippingCity").val("");
+                $("#ShippingState").val("");
+                $("#ShippingPostalCode").val("");
+                $("#ShippingCountry").val("");
+            }
         }
 
     </script>
