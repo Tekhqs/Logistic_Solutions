@@ -574,3 +574,12 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
 .linkColor {
     color: #0056b3 !important
 }
+.CreateUserSection .text-left{
+    padding-bottom:15px;
+}
+span.k-widget.k-tooltip-validation {
+    color: red;
+    background: none;
+    box-shadow: none;
+    border: 0;
+}

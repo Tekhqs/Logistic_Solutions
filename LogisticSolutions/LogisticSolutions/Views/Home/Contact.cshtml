@@ -28,410 +28,269 @@
             <button class="Button">RF</button>
             <button class="Button">Edit History</button>
         </div>
-
-        <div class="col-xs-12 CreateUserSection pl-5">
-            <h4 class="text-left">Create User</h4>
-            <div class="row CreateUserform">
-                <div class="col-sm-6 col-xs-12 form-group">
-                    <div class="SingleInput">
-                        <label for="AccountId">Account ID<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Account ID" id="AccountId" />
-                    </div>
-                    <div class="SingleInput">
-                        <label for="Email">Email<span>*</span></label>
-                        <input type="email" class="form-control input-group" placeholder="Enter Email Here" id="Email" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="Password">Password<span>*</span></label>
-                        <input type="password" class="form-control" placeholder="Enter password Here" id="Password" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="ConfirmPassword">Confirm Password<span>*</span></label>
-                        <input type="password" class="form-control" placeholder="Enter password Here" id="ConfirmPassword" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="Phone">Phone</label>
-                        <input type="tel" class="form-control" placeholder="Optional" id="Phone" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="Mobile">Mobile<span>*</span></label>
-                        <input type="tel" class="form-control" placeholder="Enter Your Active Contact No." id="Mobile" />
-                    </div>
-                    <div class="SingleInput">
-                        <label for="Desc">Description<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Description" id="Description" />
-                    </div>
-                    <div class="SingleInput">
-                        <label for="Multilpyer">Billing Rate Multiplier<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Multiplier" id="Multiplier" />
-                    </div>
-
-
-
-                    @*<div class="SingleInput">
-            <label for="Pager">Pager</label>
-            <input type="tel" class="form-control" placeholder="Optional" id="Pager" />
-        </div>*@
-
-                    @*<div class="SingleInput">
-            <label for="Description">Description<span>*</span></label>
-            <input type="text" class="form-control" placeholder="Enter Description" id="Description" />
-        </div>*@
-
-                </div>
-                <div class="col-sm-6 col-xs-12 form-group">
-
-                   
-                    <div class="SingleInput">
-                        <label for="Bound">Bounded<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Bounded" id="Bounded" />
-                    </div>
-                    <div class="SingleInput">
-                        <label>User Group <span>*</span></label>
-                        @Html.DropDownList("GroupId", new SelectList(ViewBag.Group, "SecurityGroupID", "GroupName"), "-- Select  --", new { @class = " form-control" })
-
-                    </div>
-
-                    <div class="CheckBoxSection">
+        <form id="FormUser">
+            <div class="col-xs-12 CreateUserSection pl-5">
+                <h4 class="text-left">Create User</h4>
+                <div class="row CreateUserform">
+                    <div class="col-sm-6 col-xs-12 form-group">
                         <div class="SingleInput">
-                            <label for="IsEnabled">Enabled <span>*</span></label>
-                            <input type="checkbox" id="IsEnabled" />
+                            <label for="AccountId">Account ID<span>*</span></label>
+                            @(Html.Kendo().TextBox().Name("AccountId").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  AccountId", @required = "required", @validationMessage = "AccountId is required", @style = "width:100%" }))
+
+                        </div>
+                        <div class="SingleInput">
+                            <label for="Email">Email</label>
+                            @(Html.Kendo().TextBox().Name("Email").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Email", @required = "required", @data_email_msg = "Email format is not valid", @validationMessage = "Email is required", @style = "width:100%", @type="email" }))
+
                         </div>
 
+                        <div class="SingleInput">
+                            <label for="Password">Password</label>
+                       @(Html.Kendo().TextBox().Name("password").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Password", @required = "required", @validationMessage = "Password is required", @style = "width:100%", @type = "password" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="ConfirmPassword">Confirm Password</label>
+                            @(Html.Kendo().TextBox().Name("ConfirmPassword").HtmlAttributes(new { @class = "form-control", @placeholder = "Password Should match", @required = "required", @validationMessage = "Password is required", @style = "width:100%", @type = "password" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="Phone">Phone</label>
+                       @(Html.Kendo().TextBox().Name("Phone").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Phone", @style = "width:100%", @type = "tel" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="Mobile">Mobile</label>
+                            @(Html.Kendo().TextBox().Name("Phone").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Phone", @style = "width:100%", @type = "tel" }))
+
+
+                        </div>
+                        <div class="SingleInput">
+                            <label for="Description">Description<span>*</span></label>
+                            @(Html.Kendo().TextBox().Name("Description").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Description", @required = "required", @validationMessage = "Description is required", @style = "width:100%" }))
+
+                        </div>
+                        <div class="SingleInput">
+                            <label for="Multilpyer">Billing Rate Multiplier</label>
+                            @(Html.Kendo().TextBox().Name("Multiplier").HtmlAttributes(new { @class = "form-control", @placeholder = "Multiplier", @style = "width:100%", @type = "number" }))
+
+                        </div>
+
+
+
                         @*<div class="SingleInput">
-                            <label>User Role <span>*</span></label>
+                        <label for="Pager">Pager</label>
+                        <input type="tel" class="form-control" placeholder="Optional" id="Pager" />
+                    </div>*@
+
+                        @*<div class="SingleInput">
+                        <label for="Description">Description</label>
+                        <input type="text" class="form-control" placeholder="Enter Description" id="Description" />
+                    </div>*@
+
+                    </div>
+                    <div class="col-sm-6 col-xs-12 form-group">
+
+
+                        <div class="SingleInput">
+                            <label for="Bounded">Bounded</label>
+                            @(Html.Kendo().TextBox().Name("Bounded").HtmlAttributes(new { @class = "form-control", @placeholder = "Bounded", @style = "width:100%", @type = "number" }))
+                        </div>
+                        <div class="SingleInput">
+                            <label>User Group </label>
+                            @Html.DropDownList("GroupId", new SelectList(ViewBag.Group, "SecurityGroupID", "GroupName"), "-- Select  --", new { @class = " form-control" })
+
+                        </div>
+
+                        <div class="CheckBoxSection">
+                            <div class="SingleInput">
+                                <label for="IsEnabled">Enabled </label>
+                                <input type="checkbox" id="IsEnabled" />
+                            </div>
+
+                            @*<div class="SingleInput">
+                            <label>User Role </label>
                             @Html.DropDownList("RoleId", new SelectList(ViewBag.UserRole, "UserRoleID", "UserRoleName"), "-- Select --", new { @class = " form-control" })
 
                         </div>*@
-                    </div>
-                    <div class="SingleInput">
-                        <label for="Billing">Billing Id<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Billing Id" id="BillingId" />
-                    </div>
-                    <div class="SingleInput">
-                        <label for="Multilpyer">Default NEMC<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="NEMC" id="NEMC" />
-                    </div>
-
-                    <div class="CheckBoxSection">
-                        <h4>Wharehouse / Terminal Access</h4>
-                        <div class="SingleInput">
-                            <label>WearHouse <span>*</span></label>
-                            @Html.DropDownList("WeareHouseId", new SelectList(ViewBag.Wearhouse, "WarehouseID", "WareHouseCode"), "-- Select --", new { @class = " form-control" })
                         </div>
+                        <div class="SingleInput">
+                            <label for="BillingId">Billing Id</label>
+                            @(Html.Kendo().TextBox().Name("BillingId").HtmlAttributes(new { @class = "form-control", @placeholder = "Billing Id", @style = "width:100%"}))
+
+                        </div>
+                        <div class="SingleInput">
+                            <label for="NEMC">Default NEMC</label>
+                            @(Html.Kendo().TextBox().Name("NEMC").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Default", @style = "width:100%" }))
+
+                        </div>
+                        <div class="CheckBoxSection">
+                            <h4>Wharehouse / Terminal Access</h4>
+                            <div class="SingleInput">
+                                <label>WearHouse </label>
+                                @Html.DropDownList("WeareHouseId", new SelectList(ViewBag.Wearhouse, "WarehouseID", "WareHouseCode"), "-- Select --", new { @class = " form-control" })
+                            </div>
+                        </div>
+
+
                     </div>
 
-
                 </div>
+
+
 
             </div>
 
 
 
-        </div>
+            <div class="col-xs-12 CreateUserSection pl-5">
+                <h4 class="text-left">Billing Adress</h4>
+                <div class="row CreateUserform">
+                    <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="SingleInput">
+                            <label for="Adress1">Adress 1</label>
+                            @(Html.Kendo().TextBox().Name("Adress1").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress1", @style = "width:100%" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="Adress2">Adress 2</label>
+                            @(Html.Kendo().TextBox().Name("Adress2").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress2", @style = "width:100%" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="Adress3">Adress 3</label>
+                            @(Html.Kendo().TextBox().Name("Adress3").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress3", @style = "width:100%" }))
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="Adress4">Adress 4</label>
+                            @(Html.Kendo().TextBox().Name("Adress4").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress4", @style = "width:100%" }))
+
+                        </div>
 
 
 
-        <div class="col-xs-12 CreateUserSection pl-5">
-            <h4 class="text-left">Billing Adress</h4>
-            <div class="row CreateUserform">
-                <div class="col-sm-6 col-xs-12 form-group">
-                    <div class="SingleInput">
-                        <label for="Adres1">Adress 1<span>*</span></label>
-                        <input type="text" class="form-control input-group" placeholder="Enter Adress Here" id="Adress1" />
+
                     </div>
+                    <div class="col-sm-6 col-xs-12 form-group">
 
-                    <div class="SingleInput">
-                        <label for="Adres2">Adress 2<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Adress 2" id="Adress2" />
+
+
+                        <div class="SingleInput">
+                            <label for="City">City</label>
+                            @(Html.Kendo().TextBox().Name("City").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="State">State</label>
+                            @(Html.Kendo().TextBox().Name("State").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%" }))
+
+                        </div>
+                        <div class="SingleInput">
+                            <label for="PostalCode">Postal Code</label>
+                            @(Html.Kendo().TextBox().Name("PostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter PostalCode", @style = "width:100%" }))
+
+                        </div>
+                        <div class="SingleInput">
+                            <label for="Country">Country</label>
+                            @(Html.Kendo().TextBox().Name("Country").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Country", @style = "width:100%" }))
+
+                        </div>
+
                     </div>
-
-                    <div class="SingleInput">
-                        <label for="Adres3">Adress 3<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Adress 3" id="Adress3" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="Adres4">Adress 4<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Adress 4" id="Adress4" />
-                    </div>
-
-
-
 
                 </div>
-                <div class="col-sm-6 col-xs-12 form-group">
 
 
-
-                    <div class="SingleInput">
-                        <label for="city">City<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Your City" id="City" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="state">State<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Your State" id="State" />
-                    </div>
-                    <div class="SingleInput">
-                        <label for="postalCode">Postal Code<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Your Postal Code" id="PostalCode" />
-                    </div>
-                    <div class="SingleInput">
-                        <label for="country">Country<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Your Country" id="Country" />
-                    </div>
-
-                </div>
 
             </div>
 
-          
-
-        </div>
 
 
+            <div class="col-xs-12 CreateUserSection pl-5">
+                <h4 class="text-left">Shipping  Adress</h4>
+                <div class="row CreateUserform">
+                    <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="SingleInput">
+                            <label for="UsePrev">Use Billing Adresses </label>
+                            <input onclick="setBillingValue()" type="checkbox" id="UsePrev" />
 
-        <div class="col-xs-12 CreateUserSection pl-5">
-            <h4 class="text-left">Shipping  Adress</h4>
-            <div class="row CreateUserform">
-                <div class="col-sm-6 col-xs-12 form-group">
-                    <div class="SingleInput">
-                        <label for="usePrev">Use Billing Adresses <span>*</span></label>
-                        <input onclick="setBillingValue()" type="checkbox" id="UsePrev" />
+                        </div>
+                        <div class="SingleInput">
+                            <label for="ShippingAdress1">Adress 1</label>
+                            @(Html.Kendo().TextBox().Name("ShippingAdress1").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAdress1", @style = "width:100%" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="ShippingAdress2">Adress 2</label>
+                            @(Html.Kendo().TextBox().Name("ShippingAdress2").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAdress2", @style = "width:100%" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="ShippingAdress3">Adress 3</label>
+                            @(Html.Kendo().TextBox().Name("ShippingAdress3").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAdress3", @style = "width:100%" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="ShippingAdress4">Adress 4</label>
+                            @(Html.Kendo().TextBox().Name("ShippingAdress4").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAdress4", @style = "width:100%" }))
+
+                        </div>
+
+
+
+
                     </div>
-                    <div class="SingleInput">
-                        <label for="ShippingAdres1">Adress 1<span>*</span></label>
-                        <input type="text" class="form-control input-group" placeholder="Enter Adress Here" id="ShippingAdress1" />
+                    <div class="col-sm-6 col-xs-12 form-group">
+
+
+
+                        <div class="SingleInput">
+                            <label for="ShippingCity">City</label>
+                            @(Html.Kendo().TextBox().Name("ShippingCity").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%" }))
+
+                        </div>
+
+                        <div class="SingleInput">
+                            <label for="ShippingState">State</label>
+                            @(Html.Kendo().TextBox().Name("ShippingState").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%" }))
+
+                        </div>
+                        <div class="SingleInput">
+                            <label for="ShippingPostalCode">Postal Code</label>
+                            @(Html.Kendo().TextBox().Name("ShippingPostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Postal Code", @style = "width:100%" }))
+
+                        </div>
+                        <div class="SingleInput">
+                            <label for="ShippingCountry">Country</label>
+                            @(Html.Kendo().TextBox().Name("ShippingCountry").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Country", @style = "width:100%" }))
+
+                        </div>
+
                     </div>
-
-                    <div class="SingleInput">
-                        <label for="ShippingAdres2">Adress 2<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Adress 2" id="ShippingAdress2" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="ShippingAdres3">Adress 3<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Adress 3" id="ShippingAdress3" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="ShippingAdres4">Adress 4<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Adress 4" id="ShippingAdress4" />
-                    </div>
-
-
-
 
                 </div>
-                <div class="col-sm-6 col-xs-12 form-group">
 
-
-
-                    <div class="SingleInput">
-                        <label for="Shippingcity">City<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Your City" id="ShippingCity" />
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button class="Button">Cancel</button>
+                        <button id="CreateUser" onclick="CreateUsers()" class="Button">Create</button>
                     </div>
-
-                    <div class="SingleInput">
-                        <label for="Shippingstate">State<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Your State" id="ShippingState" />
-                    </div>
-                    <div class="SingleInput">
-                        <label for="ShippingpostalCode">Postal Code<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Your Postal Code" id="ShippingPostalCode" />
-                    </div>
-                    <div class="SingleInput">
-                        <label for="Shippingcountry">Country<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Your Country" id="ShippingCountry" />
-                    </div>
-
                 </div>
 
             </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <button class="Button">Cancel</button>
-                    <button id="CreateUser" onclick="CreateUsers()" class="Button">Create</button>
-                </div>
-            </div>
-
-        </div>
+        </form>
 
     </div>
 
 
 </div>
-
-<script>
-    function CreateUsers() {
-        debugger;
-        var Email = $("#Email").val();
-        var Password = $("#Password").val();
-        var ConfirmPassword = $("#ConfirmPassword").val();
-        var Phone = $("#Phone").val();
-        var Mobile = $("#Mobile").val();
-        var IsEnabled = $("#IsEnabled").val();
-        var GroupId = $("#GroupId").val();
-        var WeareHouseId = $("#WeareHouseId").val();
-        var passwordCheck = false;
-        var confirmPasswordCheck = false;
-        var isActive = false;
-        
-
-
-        if (Email == "") {
-            $("#Email").css({ "border-color": "red" });
-        }
-        else {
-            EmailCheck = validateEmail(Email)
-            if (EmailCheck == true) {
-                $("#Email").css({ "border-color": "#ced4da" });
-
-            }
-            else {
-                $("#Email").css({ "border-color": "red" });
-            }
-
-        }
-        if (Password == "") {
-            $("#Password").css({ "border-color": "red" });
-
-
-        }
-        else {
-            passwordValidaion(Password);
-            if (passwordCheck == true) {
-                $("#Password").css({ "border-color": "#ced4da" });
-
-            }
-            else {
-                $("#Password").css({ "border-color": "red" });
-
-            }
-
-        }
-        if (ConfirmPassword == "") {
-            $("#ConfirmPassword").css({ "border-color": "red" });
-
-        }
-        else {
-            ConfirmPasswordValidation(Password);
-            if (confirmPasswordCheck == true) {
-                $("#ConfirmPassword").css({ "border-color": "#ced4da" });
-
-            }
-            else {
-                $("#ConfirmPassword").css({ "border-color": "red" });
-
-            }
-
-
-        }
-        if (Mobile == "") {
-            $("#Mobile").css({ "border-color": "red" });
-
-        }
-        else {
-            $("#Mobile").css({ "border-color": "#ced4da" });
-
-        }
-        
-        if (WeareHouseId == "") {
-            $("#WeareHouseId").css({ "border-color": "red" });
-
-        }
-        else {
-            $("#WeareHouseId").css({ "border-color": "#ced4da" });
-
-        }
-        if (GroupId == "") {
-            $("#GroupId").css({ "border-color": "red" });
-
-        }
-        else {
-            $("#GroupId").css({ "border-color": "#ced4da" });
-
-        }
-
-        
-
-        if (Email != "" && Password != "" && ConfirmPassword != ""
-            && Mobile != ""  && GroupId != ""
-            && WeareHouseId != "" && passwordCheck == true
-            && EmailCheck == true)
-        {
-            var UserDetail ={
-                Email : Email,
-                PhoneNumber : Phone,
-                EncryptedPassword: Password,
-                SecurityGroupID: GroupId,
-                Mobile : Mobile,
-                isActive : IsEnabled,
-                WarehouseID : WeareHouseId,
-
-            };
-            $.ajax({
-                url: "/Home/Contact",
-                type: "POST",
-                dataType: "JSON",
-                data: UserDetail,
-                beforeSend: function () {
-
-                    $("#CreateUser").text("Loading - Please Wait..");
-                    $("#CreateUser").css("disabled", true);
-                },
-                success: function (result) {
-
-                },
-                error: function (error) {
-                    console.log(error);
-                },
-                complete: function () {
-
-                    $("#CreateUser").text("Create");
-                    $("#CreateUser").css("disabled", false);
-                    window.location.href = "/Home/About";
-
-                }
-            })
-
-        }
-    
-
-
-        function validateEmail(email) {
-            var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-
-        function passwordValidaion(Password) {
-            var lowerCaseLetters = /[a-z]/g;
-            var upperCaseLetters = /[A-Z]/g;
-            var numbers = /[0-9]/g;
-
-            if (Password.match(lowerCaseLetters) && Password.match(upperCaseLetters) && Password.match(numbers) && Password.length>=8)
-            {
-                passwordCheck = true;
-            }
-
-
-
-        }
-
-        function ConfirmPasswordValidation(Password) {
-            if (Password == ConfirmPassword) {
-                confirmPasswordCheck = true
-
-            }
-        }
-
-
-    }
-
-</script>

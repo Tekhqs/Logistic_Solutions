@@ -202,6 +202,7 @@
     <Content Include="Content\Images\RefImages\RevenueStatistics.jpg" />
     <Content Include="Content\Images\RefImages\Shipping.jpg" />
     <Content Include="Content\Images\RefImages\Untitled.png" />
+    <Content Include="Content\Jquery-Ui.min.css" />
     <Content Include="Content\kendo\Black\editor.png" />
     <Content Include="Content\kendo\Black\imagebrowser.png" />
     <Content Include="Content\kendo\Black\indeterminate.gif" />
@@ -670,9 +671,17 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Bootstrap.min.js" />
     <Content Include="Scripts\datatable.min.js" />
+    <Content Include="Scripts\HiCharts\Accessibility.js" />
+    <Content Include="Scripts\HiCharts\ExportDAta.js" />
+    <Content Include="Scripts\HiCharts\Exporting.js" />
+    <Content Include="Scripts\HiCharts\HighCharts.js" />
+    <Content Include="Scripts\HiCharts\HighChartsMore.js" />
+    <Content Include="Scripts\HiCharts\Series-Label.js" />
+    <Content Include="Scripts\HiCharts\SolidGauge.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Jquery-Ui.min.js" />
     <Content Include="Scripts\Jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

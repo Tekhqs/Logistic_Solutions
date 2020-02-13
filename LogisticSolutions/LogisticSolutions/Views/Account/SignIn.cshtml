@@ -69,12 +69,12 @@
         var loginFormValidate = $("#id-loginForm").kendoValidator().data("kendoValidator");
 
        $("#btnLogin").click(function () {
-            ///Validate login form
+           ///Validate login form
+           debugger;
 
             if (!loginFormValidate.validate()) {
                 return false;
-            }
-
+           }
             let loginButtonText = false;
             const postData = {
                 prmUserId: $("#id-TxtUserId").val(),

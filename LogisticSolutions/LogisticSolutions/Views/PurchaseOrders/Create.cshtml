@@ -16,9 +16,8 @@
                 </li>
 
                 <li>Dashboard<span class="slash">/</span></li>
-                <li>Users<span class="slash">/</span></li>
-                <li>User Management<span class="slash">/</span></li>
-                <li>Create User</li>
+                <li>Purchase Orders<span class="slash">/</span></li>
+                <li>Create Purchase Orders</li>
             </ul>
         </div>
 
@@ -30,144 +29,202 @@
             <button class="Button">RF</button>
             <button class="Button">Edit History</button>
         </div>
+        <form id="FormPurchaseOrder">
+            <div class="col-xs-12 CreateUserSection pl-5">
+                <h4 class="text-left">Create Order</h4>
+                <div class="row CreateUserform">
+                    <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="SingleInput">
+                            <label for="PPONumber" class="required">PO Number<span>*</span></label>
 
-        <div class="col-xs-12 CreateUserSection pl-5">
-            <h4 class="text-left">Create Order</h4>
-            <div class="row CreateUserform">
-                <div class="col-sm-6 col-xs-12 form-group">
-                    <div class="SingleInput">
-                        <label for="poNumber">PO Number<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Account ID" id="PONumber" />
+                            @(Html.Kendo().TextBox().Name("PPONumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter PO Number", @required = "required", @validationMessage = "PO Number is required", @style = "width:100%", @type="number" }))
+
+                        </div>
+                        <div class="SingleInput">
+                            <label for="POStatus">Status</label>
+                            <select id="POStatus" class="form-control">
+                                <option> Open </option>
+                                <option> Inprocess </option>
+                                <option> Hold </option>
+                                <option> Completed </option>
+                                <option> Void </option>
+                            </select>
+                        </div>
+
+
+
+
+
                     </div>
-                    <div class="SingleInput">
-                        <label for="status">Status<span>*</span></label>
-                        <select id="Status" class="form-control">
-                            <option> Open </option>
-                            <option> Inprocess </option>
-                            <option> Hold </option>
-                            <option> Completed </option>
-                            <option> Void </option>
-                        </select>
-                    </div>
+                    <div class="col-sm-6 col-xs-12 form-group">
 
+                        <div class="SingleInput">
+                            <label for="POAccountNo">Account Number</label>
+                    @(Html.Kendo().TextBox().Name("POAccountNo").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Account Number", @style = "width:100%", @type = "text" }))
 
+                        </div>
 
+                        <div class="SingleInput">
+                            <label for="POSuplierNo">Supplier Number<span>*</span></label>
+                        @(Html.Kendo().TextBox().Name("POSuplierNo").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Supplier Number", @style = "width:100%", @type = "text" }))
 
+                        </div>
 
-                </div>
-                <div class="col-sm-6 col-xs-12 form-group">
-
-                    <div class="SingleInput">
-                        <label for="acountNo">Account Number<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Partner description" id="AccountNo" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="supplierNo">Supplier<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Partner description" id="SuplierNo" />
-                    </div>
-
-
-
-                </div>
-
-            </div>
-
-
-
-        </div>
-
-
-
-        <div class="col-xs-12 CreateUserSection pl-5">
-            <h4 class="text-left">Partners</h4>
-            <div class="row CreateUserform">
-                <div class="col-sm-6 col-xs-12 form-group">
-                    <div class="SingleInput">
-                        <label for="acount">Account<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Partner description" id="Account" />
-                    </div>
-
-                    <div class="SingleInput">
-                        <label for="supplier">Supplier<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Partner description" id="Suplier" />
-                    </div>
-
-
-
-
-
-
-                </div>
-                <div class="col-sm-6 col-xs-12 form-group">
-
-
-                    <div class="SingleInput">
-                        <label for="blft">Career</label>
-                        <input id="Career" style="color:#0056b3" class="form-control" />
 
                     </div>
 
                 </div>
 
-            </div>
-
-
-
-        </div>
-
-
-
-
-
-        <div class="col-xs-12 CreateUserSection pl-5">
-            <h4 class="text-left">Dates</h4>
-            <div class="row CreateUserform">
-                <div class="col-sm-6 col-xs-12 form-group">
-                    <div class="SingleInput">
-                        <label for="arrivalDate">Expected Arrival Date<span>*</span></label>
-                        <input type="datetime" class="form-control" placeholder="Date" id="ArrivalDate" />
-                    </div>
-
-                </div>
 
 
             </div>
 
 
 
-        </div>
+            <div class="col-xs-12 CreateUserSection pl-5">
+                <h4 class="text-left">Partners</h4>
+                <div class="row CreateUserform">
+                    <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="SingleInput">
+                            <label for="POAccount">Account<span>*</span></label>
+                            @(Html.Kendo().DropDownList()
+                                                                  .Name("POAccount")
+                                                                  .DataTextField("Status")
+                                                                  .DataValueField("OrderId")
+                                                                  .HtmlAttributes(new { style = "width:100%" })
+                                                                  .Filter("contains")
+                                                                  .OptionLabel("Select")
+                                                                  .DataSource(source =>
+                                                                  {
+                                                                      source.Read(read =>
+                                                                      {
+                                                                          read.Action("UserData", "Home");
+                                                                      })
+                                                                      .ServerFiltering(true);
+                                                                  })
+                                                                   .HtmlAttributes(new { @required = "required", @validationMessage = "Account is required" })
 
-        <div class="col-xs-12 CreateUserSection pl-5">
-            <h4 class="text-left">Other Instuctions</h4>
-            <div class="row CreateUserform">
-                <div class="col-sm-6 col-xs-12 form-group">
-                    <div class="SingleInput">
-                        <textarea type="datetime" class="form-control" placeholder="Add Instructions Here" id="ArrivalDate"></textarea>
+                            )
+                        </div>
+                        <div class="SingleInput">
+                            <label for="POSupplier">Supplier</label>
+                            @(Html.Kendo().DropDownList()
+                                                                      .Name("POSupplier")
+                                                                      .DataTextField("Status")
+                                                                      .DataValueField("OrderId")
+                                                                      .HtmlAttributes(new { style = "width:100%" })
+                                                                      .Filter("contains")
+                                                                      .OptionLabel("Select")
+                                                                      .DataSource(source =>
+                                                                      {
+                                                                          source.Read(read =>
+                                                                          {
+                                                                              read.Action("UserData", "Home");
+                                                                          })
+                                                                          .ServerFiltering(true);
+                                                                      })
+                                                                     .HtmlAttributes(new { @required = "required", @validationMessage = "Supplier is required" })
+
+
+                            )
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <div class="col-sm-6 col-xs-12 form-group">
+
+
+                        <div class="SingleInput">
+                            <label for="POCarrier">Carrier</label>
+
+                            @(Html.Kendo().DropDownList()
+                                                              .Name("POCarrier")
+                                                              .DataTextField("Status")
+                                                              .DataValueField("OrderId")
+                                                              .HtmlAttributes(new { style = "width:100%" })
+                                                              .Filter("contains")
+                                                              .OptionLabel("Select")
+                                                              .DataSource(source =>
+                                                              {
+                                                                  source.Read(read =>
+                                                                  {
+                                                                      read.Action("UserData", "Home");
+                                                                  })
+                                                                  .ServerFiltering(true);
+                                                              })
+                                                               .HeaderTemplate("<div onclick=\"ClickForModalCareer()\" style=\"cursor:pointer\" class=\"dropdown-header k-widget k-header \">" +
+                                   " <a  style=\"font-size:16px; text-decoration:none;\" class=\"linkColor\" > <i  style=\"margin-right:15px\" class=\"fas fa-plus\"></i> Add New</a>" +
+                                   "</div>")
+                            )
+
+                        </div>
+
                     </div>
 
                 </div>
 
 
+
             </div>
 
 
 
-        </div>
 
 
-        <div class="col-xs-12 CreateUserSection pl-5">
+            <div class="col-xs-12 CreateUserSection pl-5">
+                <h4 class="text-left">Dates</h4>
+                <div class="row CreateUserform">
+                    <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="SingleInput">
+                            <label for="POArrivalDate">Expected Arrival Date</label>
+     @(Html.Kendo().TextBox().Name("POArrivalDate").HtmlAttributes(new { @class = "form-control datepicker", @placeholder = "Enter Expected Arrival Date", @style = "width:100%", @type = "date" }))
+
+                        </div>
+
+                    </div>
 
 
-            <div class="row">
-                <div class="col-xs-12">
-                    <button class="Button">Cancel</button>
-                    <button id="CreateUser" onclick="CreateUsers()" class="Button">Create</button>
                 </div>
+
+
+
             </div>
 
-        </div>
+            <div class="col-xs-12 CreateUserSection pl-5">
+                <h4 class="text-left">Other Instuctions</h4>
+                <div class="row CreateUserform">
+                    <div class="col-sm-12 col-xs-12 form-group">
+                        <div class="SingleInput">
+                            @Html.TextArea("POInstruction", "", new { @class = "form-control ", @placeholder = "Add Instuctions", style = "width: 100%;" })
 
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+            <div class="col-xs-12 CreateUserSection pl-5">
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button class="Button">Cancel</button>
+                        <button id="POCreate" onclick="CreatePurchaseO()" class="Button">Create</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
     </div>
 
 
@@ -177,7 +234,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="CreatUserModalLabel"> Create Career</h5>
+                <h5 class="modal-title" id="CreatUserModalLabel"> Create Carrier</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -188,37 +245,33 @@
                         <div class="col-sm-6 col-xs-12 form-group">
                             <div class="CheckBoxSection">
                                 <div class="SingleInput">
-                                    <label for="IsEnabled">Enabled <span>*</span></label>
+                                    <label for="IsEnabled">Enabled </label>
                                     <input type="checkbox" id="IsEnabled" />
                                 </div>
 
-                                @*<div class="SingleInput">
-                                        <label>User Role <span>*</span></label>
-                                        @Html.DropDownList("RoleId", new SelectList(ViewBag.UserRole, "UserRoleID", "UserRoleName"), "-- Select --", new { @class = " form-control" })
-
-                                    </div>*@
+                              
                             </div>
                             <div class="SingleInput">
-                                <label for="Description">Description<span>*</span></label>
+                                <label for="Description">Description</label>
                                 <input type="text" class="form-control" placeholder="Enter Description" id="Description" />
                             </div>
                             <div class="SingleInput">
-                                <label for="AccountId">Account ID<span>*</span></label>
+                                <label for="AccountId">Account ID</label>
                                 <input type="text" class="form-control" placeholder="Account ID" id="AccountId" />
                             </div>
                             <div class="SingleInput">
-                                <label for="AccountId">Billing ID<span>*</span></label>
+                                <label for="AccountId">Billing ID</label>
                                 <input type="text" class="form-control" placeholder="Billing" />
                             </div>
                             <div class="SingleInput">
                                 <label for="name">
-                                    Contact Name<span>*</span>
+                                    Contact Name
                                 </label>
                                 <input type="email" class="form-control input-group" placeholder="Enter Email Here" id="Name" />
                             </div>
                             <div class="SingleInput">
                                 <label for="Email">
-                                    Contact Email<span>*</span>
+                                    Contact Email
                                 </label>
                                 <input type="email" class="form-control input-group" placeholder="Enter Email Here" id="Email" />
                             </div>
@@ -284,22 +337,22 @@
                     <div class="row CreateUserform">
                         <div class="col-sm-6 col-xs-12 form-group">
                             <div class="SingleInput">
-                                <label for="Adres1">Adress 1<span>*</span></label>
+                                <label for="Adres1">Adress 1</label>
                                 <input type="text" class="form-control input-group" placeholder="Enter Adress Here" id="Adress1" />
                             </div>
 
                             <div class="SingleInput">
-                                <label for="Adres2">Adress 2<span>*</span></label>
+                                <label for="Adres2">Adress 2</label>
                                 <input type="text" class="form-control" placeholder="Adress 2" id="Adress2" />
                             </div>
 
                             <div class="SingleInput">
-                                <label for="Adres3">Adress 3<span>*</span></label>
+                                <label for="Adres3">Adress 3</label>
                                 <input type="text" class="form-control" placeholder="Adress 3" id="Adress3" />
                             </div>
 
                             <div class="SingleInput">
-                                <label for="Adres4">Adress 4<span>*</span></label>
+                                <label for="Adres4">Adress 4</label>
                                 <input type="text" class="form-control" placeholder="Adress 4" id="Adress4" />
                             </div>
 
@@ -312,20 +365,20 @@
 
 
                             <div class="SingleInput">
-                                <label for="city">City<span>*</span></label>
+                                <label for="city">City</label>
                                 <input type="text" class="form-control" placeholder="Enter Your City" id="City" />
                             </div>
 
                             <div class="SingleInput">
-                                <label for="state">State<span>*</span></label>
+                                <label for="state">State</label>
                                 <input type="text" class="form-control" placeholder="Enter Your State" id="State" />
                             </div>
                             <div class="SingleInput">
-                                <label for="postalCode">Postal Code<span>*</span></label>
+                                <label for="postalCode">Postal Code</label>
                                 <input type="text" class="form-control" placeholder="Enter Your Postal Code" id="PostalCode" />
                             </div>
                             <div class="SingleInput">
-                                <label for="country">Country<span>*</span></label>
+                                <label for="country">Country</label>
                                 <input type="text" class="form-control" placeholder="Enter Your Country" id="Country" />
                             </div>
 
@@ -344,26 +397,26 @@
                     <div class="row CreateUserform">
                         <div class="col-sm-6 col-xs-12 form-group">
                             <div class="SingleInput">
-                                <label for="usePrev">Use Billing Adresses <span>*</span></label>
+                                <label for="usePrev">Use Billing Adresses </label>
                                 <input onclick="setBillingValue()" type="checkbox" id="UsePrev" />
                             </div>
                             <div class="SingleInput">
-                                <label for="ShippingAdres1">Adress 1<span>*</span></label>
+                                <label for="ShippingAdres1">Adress 1</label>
                                 <input type="text" class="form-control input-group" placeholder="Enter Adress Here" id="ShippingAdress1" />
                             </div>
 
                             <div class="SingleInput">
-                                <label for="ShippingAdres2">Adress 2<span>*</span></label>
+                                <label for="ShippingAdres2">Adress 2</label>
                                 <input type="text" class="form-control" placeholder="Adress 2" id="ShippingAdress2" />
                             </div>
 
                             <div class="SingleInput">
-                                <label for="ShippingAdres3">Adress 3<span>*</span></label>
+                                <label for="ShippingAdres3">Adress 3</label>
                                 <input type="text" class="form-control" placeholder="Adress 3" id="ShippingAdress3" />
                             </div>
 
                             <div class="SingleInput">
-                                <label for="ShippingAdres4">Adress 4<span>*</span></label>
+                                <label for="ShippingAdres4">Adress 4</label>
                                 <input type="text" class="form-control" placeholder="Adress 4" id="ShippingAdress4" />
                             </div>
 
@@ -376,20 +429,20 @@
 
 
                             <div class="SingleInput">
-                                <label for="Shippingcity">City<span>*</span></label>
+                                <label for="Shippingcity">City</label>
                                 <input type="text" class="form-control" placeholder="Enter Your City" id="ShippingCity" />
                             </div>
 
                             <div class="SingleInput">
-                                <label for="Shippingstate">State<span>*</span></label>
+                                <label for="Shippingstate">State</label>
                                 <input type="text" class="form-control" placeholder="Enter Your State" id="ShippingState" />
                             </div>
                             <div class="SingleInput">
-                                <label for="ShippingpostalCode">Postal Code<span>*</span></label>
+                                <label for="ShippingpostalCode">Postal Code</label>
                                 <input type="text" class="form-control" placeholder="Enter Your Postal Code" id="ShippingPostalCode" />
                             </div>
                             <div class="SingleInput">
-                                <label for="Shippingcountry">Country<span>*</span></label>
+                                <label for="Shippingcountry">Country</label>
                                 <input type="text" class="form-control" placeholder="Enter Your Country" id="ShippingCountry" />
                             </div>
 
@@ -411,7 +464,7 @@
             <div class="modal-footer">
                 <button class="Button" data-dismiss="modal">Close</button>
                 <button class="Button">Save changes</button>
-                <button id="ClikeMeToOpenCareer" style="display:none" class="dropdown-item" data-toggle="modal" data-target="#CreatCareerModal">Change Password</button>
+                <button id="ClikeMeToOpenCareer" style="display:none" class="dropdown-item" data-toggle="modal" data-target="#CreatCareerModal"></button>
 
 
 
@@ -420,30 +473,4 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        
-        $("#Career").kendoDropDownList({
-            filter: "startswith",
-            dataTextField: "ProductName",
-            dataValueField: "ProductID",
-            headerTemplate: '<div onclick="ClickForModalCareer()" style="cursor:pointer" class="dropdown-header k-widget k-header ">' +
-                ' <a  style="font-size:16px; text-decoration:none;" class="linkColor" > <i  style="margin-right:15px" class="fas fa-plus"></i> Add New</a>' +
-                '</div>',
-            optionLabel: "Select",
-            dataSource: {
-                type: "odata",
-                serverFiltering: true,
-                transport: {
-                    read: {
-                        url: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Products",
-                    }
-                }
-            }
-        });
-    });
-
-
-
-</script>
 
