@@ -225,7 +225,7 @@ function setBillingValue() {
 
 function setCBillingValue() {
 
-
+    debugger;
     $('#CUsePrev').val();
     if ($('#CUsePrev').is(":checked")) {
         var Adress1 = $("#CAdress1").val();
@@ -258,6 +258,48 @@ function setCBillingValue() {
         $("#CShippingCountry").val("");
     }
 }
+
+
+//CareerBillingValues
+
+
+
+function setABillingValue() {
+
+    debugger;
+    $('#AUsePrev').val();
+    if ($('#AUsePrev').is(":checked")) {
+        var Adress1 = $("#AAdress1").val();
+        var Adress2 = $("#AAdress2").val();
+        var Adress3 = $("#AAdress3").val();
+        var Adress4 = $("#AAdress4").val();
+        var City = $("#ACity").val();
+        var State = $("#AState").val();
+        var PostalCode = $("#APostalCode").val();
+        var Country = $("#ACountry").val();
+        $("#AShippingAdress1").val(Adress1);
+        $("#AShippingAdress2").val(Adress2);
+        $("#AShippingAdress3").val(Adress3);
+        $("#AShippingAdress4").val(Adress4);
+        $("#AShippingCity").val(City);
+        $("#AShippingState").val(State);
+        $("#AShippingPostalCode").val(PostalCode);
+        $("#AShippingCountry").val(Country);
+    }
+
+    else {
+
+        $("#AShippingAdress1").val("");
+        $("#AShippingAdress2").val("");
+        $("#AShippingAdress3").val("");
+        $("#AShippingAdress4").val("");
+        $("#AShippingCity").val("");
+        $("#AShippingState").val("");
+        $("#AShippingPostalCode").val("");
+        $("#AShippingCountry").val("");
+    }
+}
+
 
 
 
@@ -300,6 +342,17 @@ function CreateShippingO() {
 function CreateUsers() {
 
     var ROFormValidate = $("#FormUser").kendoValidator().data("kendoValidator");
+    if (!ROFormValidate.validate()) {
+        return false;
+    }
+
+
+}
+
+//AccountCreate
+function CreateAccount() {
+
+    var ROFormValidate = $("#FormAccount").kendoValidator().data("kendoValidator");
     if (!ROFormValidate.validate()) {
         return false;
     }

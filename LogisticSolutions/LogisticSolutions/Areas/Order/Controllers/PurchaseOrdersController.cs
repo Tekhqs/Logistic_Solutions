@@ -1,17 +1,13 @@
-﻿using DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace LogisticSolutions.Controllers
+namespace LogisticSolutions.Areas.Order.Controllers
 {
-    public class ShippingOrdersController : Controller
+    public class PurchaseOrdersController:Controller
     {
-        LogisticSolutionDevDBEntities db = new LogisticSolutionDevDBEntities();
-
-        // GET: ShippingOrders
         public ActionResult Index()
         {
             IList<order> OrderList = new List<order>() {
@@ -54,10 +50,9 @@ namespace LogisticSolutions.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.Group = db.tblSecurityGroups.ToList();
-            ViewBag.Wearhouse = db.tblWarehouseMasters.ToList();
             return View();
         }
+
         public class order
         {
             public string OrderId { get; set; }

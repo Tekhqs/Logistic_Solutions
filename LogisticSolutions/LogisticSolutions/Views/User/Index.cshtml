@@ -1,0 +1,130 @@
+﻿@model IEnumerable<DAL.tblUserProfile>
+
+@{
+    Layout = "~/Views/Shared/_LayoutLS.cshtml";
+}
+
+
+<section class="btnTopSection">
+    <div class="row">
+        <div class="col-md-5 TiteSEction pl-5">
+            <a class="LayoutActionLink" href="#">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+            <a class="LayoutActionLink" href="#">
+                more
+            </a>
+        </div>
+        <div class="col-md-7 LinksSEction">
+            <a class="LayoutActionLink" href="#">
+                Export to Excel
+            </a>
+            <a class="LayoutActionLink" href="/User/Create">
+                Add new User +
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="TableSection ">
+    <div class="row">
+        <div class="col-md-2 TiteSEction pl-5">
+            <p class="LayoutsH1">
+                User List
+            </p>
+        </div>
+        <div class="col-md-10 LinksSEction">
+            <a class="LayoutActionLink" href="#">
+                Today
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Week
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Month
+            </a>
+        </div>
+
+    </div>
+    <table id="example" class="display nowrap" style="width:100%">
+        <thead class="THeader">
+            <tr>
+                <th> <input type="checkbox" class="TblCHk">User Id</th>
+                @*<th>User</th>*@
+                <th>Email Adress</th>
+                <th>Status</th>
+                <th>Date Created</th>
+                <th>User Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><input type="checkbox" class="TblCHk">@item.UserID</td>
+                    @*@if (item.UserROle == "User")
+                        {
+                            <td>@item.User <p class="roles yellow">@item.UserROle</p></td>
+
+                        }*@
+
+                    @*else
+                        {
+                            <td>Steve Horton <p class="roles DarkGrey">@item.UserROle</p></td>
+
+                        }*@
+
+                    <td>@item.Email</td>
+                    @if (item.isActive == true)
+                    {
+                        <td><i class="fas fa-dot-circle activeDOt parrot"></i>Active <p class="LastSeen">Since 3 hours</p></td>
+
+                    }
+                    else
+                    {
+
+                        <td><i class="fas fa-dot-circle activeDOt red"></i>Inactive <p class="LastSeen">Since 3 hours</p></td>
+
+                    }
+                    @*else
+                        {
+                            <td><i class="fas fa-dot-circle activeDOt GeryDark"></i>@item.Status <p class="LastSeen">Since @item.SinceActivetime hours</p></td>
+
+                         }*@
+                    @*@if (item.plans == "Basic")
+                        {
+                            <td><span class="red">@item.plans</span></td>
+
+                        }
+                        else if (item.plans == "Advanced")
+                        {
+
+                            <td><span class="parrot">@item.plans</span></td>
+
+                        }
+                        else
+                        {
+                            <td><span>@item.plans</span></td>
+
+                        }*@
+
+                    <td>@item.CreatedOn</td>
+                    <td><span class="red">click here</span></td>
+                    <td class="ActionsEdit"><a href="/Home/UserEdit/@item.UserID"> <i class="far fa-edit"></i></a> <i class="fas fa-trash-alt red"></i></td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace LogisticSolutions.Controllers
+namespace LogisticSolutions.Areas.Order.Controllers
 {
-    public class ReceivingOrdesController : Controller
+    public class ReceiveOrdersController : Controller
     {
         // GET: ReceivingOrdes
         public ActionResult Index()

@@ -170,12 +170,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\BusinessPartner\BusinessPartnerAreaRegistration.cs" />
+    <Compile Include="Areas\BusinessPartner\Controllers\api\BusinessPartnerController.cs" />
+    <Compile Include="Areas\BusinessPartner\Controllers\BusinessPartnersController.cs" />
+    <Compile Include="Areas\Order\Controllers\api\PurchaseOrderController.cs" />
+    <Compile Include="Areas\Order\Controllers\api\ReceiveOrderController.cs" />
+    <Compile Include="Areas\Order\Controllers\api\ShipOrderController.cs" />
+    <Compile Include="Areas\Order\Controllers\PurchaseOrdersController.cs" />
+    <Compile Include="Areas\Order\OrderAreaRegistration.cs" />
     <Compile Include="AuthorizationFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PurchaseOrdersController.cs" />
-    <Compile Include="Controllers\ReceivingOrdesController.cs" />
-    <Compile Include="Controllers\ShippingOrdersController.cs" />
+    <Compile Include="Areas\Order\Controllers\ReceiveOrdersController.cs" />
+    <Compile Include="Areas\Order\Controllers\ShipOrdersController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="EncryptDecrypt.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -668,6 +676,22 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Areas\Order\Views\web.config" />
+    <Content Include="Areas\BusinessPartner\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Order\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Order\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Order\Views\PurchaseOrders\Create.cshtml" />
+    <Content Include="Areas\Order\Views\PurchaseOrders\Index.cshtml" />
+    <Content Include="Areas\Order\Views\ReceiveOrders\Create.cshtml" />
+    <Content Include="Areas\Order\Views\ReceiveOrders\Index.cshtml" />
+    <Content Include="Areas\Order\Views\ShipOrders\Create.cshtml" />
+    <Content Include="Areas\Order\Views\ShipOrders\Index.cshtml" />
+    <Content Include="Areas\BusinessPartner\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\BusinessPartner\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\BusinessPartner\Views\BusinessPartners\index.cshtml" />
+    <Content Include="Areas\BusinessPartner\Views\BusinessPartners\create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Bootstrap.min.js" />
     <Content Include="Scripts\datatable.min.js" />
@@ -3041,15 +3065,13 @@
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Home\UserEdit.cshtml" />
-    <Content Include="Views\PurchaseOrders\Index.cshtml" />
-    <Content Include="Views\ReceivingOrdes\Index.cshtml" />
-    <Content Include="Views\ShippingOrders\Index.cshtml" />
-    <Content Include="Views\ReceivingOrdes\Create.cshtml" />
-    <Content Include="Views\ShippingOrders\Create.cshtml" />
-    <Content Include="Views\PurchaseOrders\Create.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\BusinessPartner\Models\" />
+    <Folder Include="Areas\Order\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

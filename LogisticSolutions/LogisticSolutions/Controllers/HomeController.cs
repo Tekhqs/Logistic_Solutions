@@ -64,7 +64,6 @@ namespace LogisticSolutions.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
             ViewBag.Group = db.tblSecurityGroups.ToList();
             ViewBag.Wearhouse = db.tblWarehouseMasters.ToList();
 

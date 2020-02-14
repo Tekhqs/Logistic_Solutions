@@ -165,22 +165,23 @@
                         <div class="SingleInput">
                             <label for="SOCarrier">Carrier</label>
                             @(Html.Kendo().DropDownList()
-                               .Name("SOCarrier")
-                          .DataValueField("OrderId")
-                         .HtmlAttributes(new { style = "width:100%" })
-                          .Filter("contains")
-                         .OptionLabel("Select")
-                         .DataSource(source =>
-                {
-                           source.Read(read =>
-                            {
-                         read.Action("UserData", "Home");
-                         })
-                         .ServerFiltering(true);
-                        })
-                          .HeaderTemplate("<div onclick=\"ClickForModalCareer()\" style=\"cursor:pointer\" class=\"dropdown-header k-widget k-header \">" +
-                              " <a  style=\"font-size:16px; text-decoration:none;\" class=\"linkColor\" > <i  style=\"margin-right:15px\" class=\"fas fa-plus\"></i> Add New</a>" +
-                            "</div>")
+                                                                       .Name("SOCarrier")
+                                                                       .DataTextField("Status")
+                                                                       .DataValueField("OrderId")
+                                                                       .HtmlAttributes(new { style = "width:100%" })
+                                                                       .Filter("contains")
+                                                                       .OptionLabel("Select")
+                                                                       .DataSource(source =>
+                                                                       {
+                                                                           source.Read(read =>
+                                                                           {
+                                                                               read.Action("UserData", "Home");
+                                                                           })
+                                                                           .ServerFiltering(true);
+                                                                       })
+                                                                        .HeaderTemplate("<div onclick=\"ClickForModalCareer()\" style=\"cursor:pointer\" class=\"dropdown-header k-widget k-header \">" +
+                                            " <a  style=\"font-size:16px; text-decoration:none;\" class=\"linkColor\" > <i  style=\"margin-right:15px\" class=\"fas fa-plus\"></i> Add New</a>" +
+                                            "</div>")
                             )
 
                         </div>

@@ -329,24 +329,27 @@
 
                             </div>
                             <div class="SingleInput">
-                                <label for="name">
+                                <label for="CName">
                                     Contact Name
                                 </label>
-                                <input type="email" class="form-control input-group" placeholder="Enter Email Here" id="Name" />
+                                @(Html.Kendo().TextBox().Name("CName").HtmlAttributes(new { @class = "form-control", @placeholder = "Billing Id", @style = "width:100%" }))
+
 
                             </div>
                             <div class="SingleInput">
-                                <label for="Email">
+                                <label for="CEmail">
                                     Contact Email
                                 </label>
-                                <input type="email" class="form-control input-group" placeholder="Enter Email Here" id="Email" />
+                                @(Html.Kendo().TextBox().Name("CEmail").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Email", @required = "required", @data_email_msg = "Email format is not valid", @validationMessage = "Email is required", @style = "width:100%", @type = "email" }))
+
                             </div>
 
 
 
                             <div class="SingleInput">
-                                <label for="Phone">Contact Phone</label>
-                                <input type="tel" class="form-control" placeholder="Optional" id="Phone" />
+                                <label for="CPhone">Contact Phone</label>
+                                @(Html.Kendo().TextBox().Name("CPhone").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Phone", @style = "width:100%", @type = "tel" }))
+
                             </div>
 
 
@@ -364,11 +367,14 @@
 
                             <div class="SingleInput">
                                 <label for="scac">SCAC</label>
-                                <input type="text" class="form-control" placeholder="SCAC" />
+                                @(Html.Kendo().TextBox().Name("Cscac").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  SCAC", @style = "width:100%", @type = "text" }))
+
                             </div>
                             <div class="SingleInput">
-                                <label for="scac">MC #</label>
+                                <label for="CMCno">MC #</label>
                                 <input type="text" class="form-control" placeholder="MC #" />
+                                @(Html.Kendo().TextBox().Name("CMCno.").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  MC #", @style = "width:100%", @type = "number" }))
+
                             </div>
                             <div class="SingleInput">
                                 <label for="status">Type</label>
@@ -403,23 +409,24 @@
                     <div class="row CreateUserform">
                         <div class="col-sm-6 col-xs-12 form-group">
                             <div class="SingleInput">
-                                <label for="Adres1">Adress 1</label>
-                                <input type="text" class="form-control input-group" placeholder="Enter Adress Here" id="Adress1" />
+                                <label for="CAdress1">Adress 1</label>
+                                @(Html.Kendo().TextBox().Name("CAdress1").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress1", @style = "width:100%" }))
+
                             </div>
 
                             <div class="SingleInput">
-                                <label for="Adres2">Adress 2</label>
-                                <input type="text" class="form-control" placeholder="Adress 2" id="Adress2" />
+                                <label for="CAdress2">Adress 2</label>
+                                @(Html.Kendo().TextBox().Name("CAdress2").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress2", @style = "width:100%" }))
                             </div>
 
                             <div class="SingleInput">
-                                <label for="Adres3">Adress 3</label>
-                                <input type="text" class="form-control" placeholder="Adress 3" id="Adress3" />
+                                <label for="CAdress3">Adress 3</label>
+                                @(Html.Kendo().TextBox().Name("CAdress3").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress3", @style = "width:100%" }))
                             </div>
 
                             <div class="SingleInput">
-                                <label for="Adres4">Adress 4</label>
-                                <input type="text" class="form-control" placeholder="Adress 4" id="Adress4" />
+                                <label for="CAdress4">Adress 4</label>
+                                @(Html.Kendo().TextBox().Name("CAdress4").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress4", @style = "width:100%" }))
                             </div>
 
 
@@ -431,21 +438,23 @@
 
 
                             <div class="SingleInput">
-                                <label for="city">City</label>
-                                <input type="text" class="form-control" placeholder="Enter Your City" id="City" />
+                                <label for="CCity">City</label>
+                                @(Html.Kendo().TextBox().Name("CCity").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%" }))
                             </div>
 
                             <div class="SingleInput">
-                                <label for="state">State</label>
+                                <label for="CState">State</label>
                                 <input type="text" class="form-control" placeholder="Enter Your State" id="State" />
+                                @(Html.Kendo().TextBox().Name("CState").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%" }))
+
                             </div>
                             <div class="SingleInput">
-                                <label for="postalCode">Postal Code</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Postal Code" id="PostalCode" />
+                                <label for="CPostalCode">Postal Code</label>
+                                @(Html.Kendo().TextBox().Name("CPostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter PostalCode", @style = "width:100%" }))
                             </div>
                             <div class="SingleInput">
-                                <label for="country">Country</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Country" id="Country" />
+                                <label for="CCountry">Country</label>
+                                @(Html.Kendo().TextBox().Name("CCountry").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Country", @style = "width:100%" }))
                             </div>
 
                         </div>
@@ -463,27 +472,27 @@
                     <div class="row CreateUserform">
                         <div class="col-sm-6 col-xs-12 form-group">
                             <div class="SingleInput">
-                                <label for="usePrev">Use Billing Adresses </label>
-                                <input onclick="setBillingValue()" type="checkbox" id="UsePrev" />
+                                <label for="CusePrev">Use Billing Adresses </label>
+                                <input onclick="setCBillingValue()" type="checkbox" id="CUsePrev" />
                             </div>
                             <div class="SingleInput">
-                                <label for="ShippingAdres1">Adress 1</label>
-                                <input type="text" class="form-control input-group" placeholder="Enter Adress Here" id="ShippingAdress1" />
-                            </div>
-
-                            <div class="SingleInput">
-                                <label for="ShippingAdres2">Adress 2</label>
-                                <input type="text" class="form-control" placeholder="Adress 2" id="ShippingAdress2" />
+                                <label for="CShippingAdress1">Adress 1</label>
+                                @(Html.Kendo().TextBox().Name("CShippingAdress1").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAdress1", @style = "width:100%" }))
                             </div>
 
                             <div class="SingleInput">
-                                <label for="ShippingAdres3">Adress 3</label>
-                                <input type="text" class="form-control" placeholder="Adress 3" id="ShippingAdress3" />
+                                <label for="CShippingAdress2">Adress 2</label>
+                                @(Html.Kendo().TextBox().Name("CShippingAdress2").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAdress2", @style = "width:100%" }))
                             </div>
 
                             <div class="SingleInput">
-                                <label for="ShippingAdres4">Adress 4</label>
-                                <input type="text" class="form-control" placeholder="Adress 4" id="ShippingAdress4" />
+                                <label for="CShippingAdress3">Adress 3</label>
+                                @(Html.Kendo().TextBox().Name("CShippingAdress3").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAdress3", @style = "width:100%" }))
+                            </div>
+
+                            <div class="SingleInput">
+                                <label for="CShippingAdress4">Adress 4</label>
+                                @(Html.Kendo().TextBox().Name("CShippingAdress4").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAdress4", @style = "width:100%" }))
                             </div>
 
 
@@ -495,21 +504,21 @@
 
 
                             <div class="SingleInput">
-                                <label for="Shippingcity">City</label>
-                                <input type="text" class="form-control" placeholder="Enter Your City" id="ShippingCity" />
+                                <label for="CShippingcity">City</label>
+                                @(Html.Kendo().TextBox().Name("CShippingCity").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%" }))
                             </div>
 
                             <div class="SingleInput">
-                                <label for="Shippingstate">State</label>
-                                <input type="text" class="form-control" placeholder="Enter Your State" id="ShippingState" />
+                                <label for="Shippingstate">CState</label>
+                                @(Html.Kendo().TextBox().Name("CShippingState").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%" }))
                             </div>
                             <div class="SingleInput">
-                                <label for="ShippingpostalCode">Postal Code</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Postal Code" id="ShippingPostalCode" />
+                                <label for="CShippingpostalCode">Postal Code</label>
+                                @(Html.Kendo().TextBox().Name("CShippingPostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Postal Code", @style = "width:100%" }))
                             </div>
                             <div class="SingleInput">
-                                <label for="Shippingcountry">Country</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Country" id="ShippingCountry" />
+                                <label for="CShippingcountry">Country</label>
+                                @(Html.Kendo().TextBox().Name("CShippingCountry").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Country", @style = "width:100%" }))
                             </div>
 
                         </div>
