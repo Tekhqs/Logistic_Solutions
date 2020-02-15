@@ -180,6 +180,7 @@
     <Compile Include="Areas\Order\OrderAreaRegistration.cs" />
     <Compile Include="AuthorizationFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\api\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Order\Controllers\ReceiveOrdersController.cs" />
     <Compile Include="Areas\Order\Controllers\ShipOrdersController.cs" />

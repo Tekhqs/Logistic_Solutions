@@ -52,6 +52,53 @@ namespace LogisticSolutions.Areas.Order.Controllers
         {
             return View();
         }
+        public JsonResult UserData(string text)
+        {
+            IList<order> result = new List<order>() {
+                new order(){
+                   OrderId  ="55670-122-PA",
+                   ShippingAdress="New Adarish Para Road, Rangpur ",
+                   ShippingDate="28 feb 2020",
+                   Status="Pending",
+                   type="Online"
+
+                },
+                new order(){
+                   OrderId  ="55670-122-PA",
+                   ShippingAdress="New Adarish Para Road, Rangpur ",
+                   ShippingDate="28 feb 2020",
+                   Status="Deliverd",
+                   type="Offline"
+
+                },
+                new order(){
+                   OrderId  ="55670-122-PA",
+                   ShippingAdress="New Adarish Para Road, Rangpur ",
+                   ShippingDate="28 feb 2020",
+                   Status="pu",
+                   type="Online"
+
+                },
+                new order(){
+                   OrderId  ="55670-122-PA",
+                   ShippingAdress="New Adarish Para Road, Rangpur ",
+                   ShippingDate="28 feb 2020",
+                   Status="Paid",
+                   type="Offline"
+
+                },
+
+            };
+            if (!string.IsNullOrEmpty(text))
+            {
+                result = result.Where(p => p.Status.ToUpper().Contains(text.ToUpper())).ToList();
+
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+
+        }
+
 
         public class order
         {

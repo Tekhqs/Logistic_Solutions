@@ -928,10 +928,6 @@ $.ajax({
                         y: result.revenue
                     }]
                 },
-
-
-
-
             ]
         });
     },
