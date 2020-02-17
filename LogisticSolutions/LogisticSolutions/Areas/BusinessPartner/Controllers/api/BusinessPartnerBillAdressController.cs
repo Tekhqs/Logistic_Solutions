@@ -8,44 +8,38 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 
-namespace LogisticSolutions.Areas.Order.Controllers
+namespace LogisticSolutions.Areas.BusinessPartner.Controllers.api
 {
-    public class ShipOrderController : ApiController
+    public class BusinessPartnerBillAdressController : ApiController
     {
         LogisticSolutionDevDBEntities db = new LogisticSolutionDevDBEntities();
-        // GET: api/ShipOrder
+        // GET: api/BusinessPartnerBillAdress
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/ShipOrder/5
+        // GET: api/BusinessPartnerBillAdress/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/ShipOrder
-        [ResponseType(typeof(tblShippingOrder))]
-        public IHttpActionResult Post(tblShippingOrder shippingOrder)
+        // POST: api/BusinessPartnerBillAdress
+        [ResponseType(typeof(tblPartnerBillingAddress))]
+        public IHttpActionResult Post(tblPartnerBillingAddress partnerbillingAddress, int PartnerID)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            //var partnerID = db.tblPartners.Where(x => x.AccountID == shippingOrder.AccountID).Select(x => x.PartnerID);
-            //shippingOrder.PartnerID = Convert.ToInt32(partnerID);
-
-            shippingOrder.isDeleted = false;
-            shippingOrder.isActive = true;
-            shippingOrder.StartDate = Convert.ToDateTime(shippingOrder.StartDate);
-            shippingOrder.CancelDate = Convert.ToDateTime(shippingOrder.CancelDate);
-            shippingOrder.ActualShipDate = Convert.ToDateTime(shippingOrder.ActualShipDate);
-            shippingOrder.DeliverDate = Convert.ToDateTime(shippingOrder.DeliverDate);
-            shippingOrder.CreatedOn = System.DateTime.Now;
-            shippingOrder.CreatedBy = 1;// Convert.ToInt32(HttpContext.Current.Session["UserId"]);
-
-            db.tblShippingOrders.Add(shippingOrder);
+            partnerbillingAddress.PartnerID = PartnerID;
+            partnerbillingAddress.isDeleted = false;
+            partnerbillingAddress.isActive = true;
+            partnerbillingAddress.CreatedOn = System.DateTime.Now;
+            partnerbillingAddress.CreatedBy = 1;// Convert.ToInt32(HttpContext.Current.Session["UserId"]);
+            partnerbillingAddress.UpdatedBy = 1;// Convert.ToInt32(HttpContext.Current.Session["UserId"]);
+            db.tblPartnerBillingAddresses.Add(partnerbillingAddress);
 
             try
             {
@@ -65,15 +59,16 @@ namespace LogisticSolutions.Areas.Order.Controllers
                 }
                 throw;
             }
-            return CreatedAtRoute("DefaultApi", new { id = shippingOrder.ShippingOrderID }, shippingOrder);
+
+            return CreatedAtRoute("DefaultApi", new { id = partnerbillingAddress.BillingAddressID }, partnerbillingAddress);
         }
 
-        // PUT: api/ShipOrder/5
+        // PUT: api/BusinessPartnerBillAdress/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/ShipOrder/5
+        // DELETE: api/BusinessPartnerBillAdress/5
         public void Delete(int id)
         {
         }

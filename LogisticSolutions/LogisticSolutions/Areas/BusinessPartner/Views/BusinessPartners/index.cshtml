@@ -1,7 +1,87 @@
-﻿
+﻿@model IEnumerable<DAL.tblPartner>
+
 @{
-    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_LayoutLS.cshtml";
 }
 
-<h2>index</h2>
+
+<section class="btnTopSection">
+    <div class="row">
+        <div class="col-md-5 TiteSEction pl-5">
+            <a class="LayoutActionLink" href="#">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+            <a class="LayoutActionLink" href="#">
+                more
+            </a>
+        </div>
+        <div class="col-md-7 LinksSEction">
+            <a class="LayoutActionLink" href="#">
+                Export to Excel
+            </a>
+            <a class="LayoutActionLink" href="/BusinessPartner/BusinessPartners/Create">
+                Add new Business Partner +
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="TableSection ">
+    <div class="row">
+        <div class=" col-md-4 pl-5">
+            <p class="LayoutsH1">
+                Business Partner List
+            </p>
+        </div>
+        <div class="col-md-8 LinksSEction">
+            <a class="LayoutActionLink" href="#">
+                Today
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Week
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Month
+            </a>
+        </div>
+
+    </div>
+    <table id="example" class="display" style="width:auto">
+        <thead class="THeader">
+            <tr>
+                @*<th> <input type="checkbox" class="TblCHk"></th>*@
+                <th>Account ID</th>
+                <th>Billing ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Billing Address</th>
+                <th>Shipping Address</th>
+                @*<th>Partner Details</th>*@
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td><input type="checkbox" class="TblCHk">@item.AccountID</td>*@
+                    <td>@item.AccountID</td>
+                    <td>@item.BillingID</td>
+                    <td>@item.ContactName</td>
+                    <td>@item.ContactPhone</td>
+                    <td>@item.tblPartnerBillingAddress.Address1</td>
+                    <td>@item.tblPartnerShippingAddress.ShipAddress1</td>
+                 
+                    @*<td><span class="red">click here</span></td>*@
+                    <td class="ActionsEdit"><a href="/Home/UserEdit/@item.AccountID"> <i class="far fa-edit"></i></a> <i class="fas fa-trash-alt red"></i></td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</section>
 

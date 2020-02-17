@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<DAL.tblShippingOrder>
+
+@{
     Layout = "~/Views/Shared/_LayoutLS.cshtml";
 }
 
@@ -58,54 +60,59 @@
         </div>
 
     </div>
-    <table id="example" class="display nowrap" style="width:100%">
+    <table id="example" class="display" style="width:auto">
         <thead class="THeader">
 
             <tr>
-                <th> <input type="checkbox" class="TblCHk">OrderId</th>
-                <th>Shipping Adress</th>
+                <th> <input type="checkbox" class="TblCHk" /></th>
+                <th>Order ID</th>
+                <th>Account ID</th>
+                <th>Shipping Address</th>
                 <th>Shipping Date</th>
                 <th>Status</th>
-                <th>Type</th>
-                <th>User Details</th>
+                <th>Carrier Type</th>
+                <th>Order Details</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in ViewBag.orders)
+            @foreach (var item in Model)
             {
                 <tr>
-
-                    <td><input type="checkbox" class="TblCHk">@item.OrderId</td>
-                    <td>@item.ShippingAdress</td>
-                    <td>@item.ShippingDate</td>
-                    @if (item.Status == "Pending")
+                    @{ 
+                        string fullAddress =item.tblPartnerShippingAddress.ShipAddress1+", " + item.tblPartnerShippingAddress.ShipCityName + ", " + item.tblPartnerShippingAddress.ShipState_Province + ", " + item.tblPartnerShippingAddress.ShipZip_PostalCode + ", " + item.tblPartnerShippingAddress.tblCountry.CountryName;
+                    }
+                   
+                    <td><input type="checkbox" class="TblCHk" /></td>
+                    <td>@item.ShippingOrderNumber</td>
+                    <td>@item.AccountID</td>
+                    <td>@fullAddress</td>
+                    <td>@item.ActualShipDate.Value.ToShortDateString()</td>
+                    @if (item.ShippingStatus == "Open")
                     {
-                        <td><span class="red"> @item.Status</span></td>
+                        <td><span class="green"> @item.ShippingStatus</span></td>
 
                     }
-                    else if (item.Status == "Unpaid")
+                    else if (item.ShippingStatus == "Inprocess")
                     {
 
-                        <td><span class="purple"> @item.Status</span></td>
+                        <td><span class="skyBlue"> @item.ShippingStatus</span></td>
+
+                    }
+                    else if (item.ShippingStatus == "Hold")
+                    {
+
+                        <td><span class="red"> @item.ShippingStatus</span></td>
 
                     }
                     else
                     {
-                        <td><span class="green"> @item.Status</span></td>
+                        <td><span> @item.ShippingStatus</span></td>
 
                     }
-                    @if (item.type == "Online")
-                    {
-                        <td><span class="skyBlue"> @item.type</span></td>
+                    <td><span class="orange"> @item.tblShippingCarrier.CarrierType</span></td>
 
-                    }
 
-                    else
-                    {
-                        <td><span class="orange"> @item.type</span></td>
-
-                    }
                     <td><span class="red">click here</span></td>
                     <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
                 </tr>

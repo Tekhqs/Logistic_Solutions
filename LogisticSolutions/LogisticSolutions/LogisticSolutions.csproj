@@ -171,7 +171,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\BusinessPartner\BusinessPartnerAreaRegistration.cs" />
+    <Compile Include="Areas\BusinessPartner\Controllers\api\BusinessPartnerBillAdressController.cs" />
     <Compile Include="Areas\BusinessPartner\Controllers\api\BusinessPartnerController.cs" />
+    <Compile Include="Areas\BusinessPartner\Controllers\api\BusinessPartnerShipAdressController.cs" />
     <Compile Include="Areas\BusinessPartner\Controllers\BusinessPartnersController.cs" />
     <Compile Include="Areas\Order\Controllers\api\PurchaseOrderController.cs" />
     <Compile Include="Areas\Order\Controllers\api\ReceiveOrderController.cs" />
@@ -691,8 +693,8 @@
     <Content Include="Areas\Order\Views\ShipOrders\Index.cshtml" />
     <Content Include="Areas\BusinessPartner\Views\_ViewStart.cshtml" />
     <Content Include="Areas\BusinessPartner\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\BusinessPartner\Views\BusinessPartners\index.cshtml" />
-    <Content Include="Areas\BusinessPartner\Views\BusinessPartners\create.cshtml" />
+    <Content Include="Areas\BusinessPartner\Views\BusinessPartners\Index.cshtml" />
+    <Content Include="Areas\BusinessPartner\Views\BusinessPartners\Create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Bootstrap.min.js" />
     <Content Include="Scripts\datatable.min.js" />

@@ -14,49 +14,55 @@ namespace LogisticSolutions.Areas.Order.Controllers
         // GET: ShippingOrders
         public ActionResult Index()
         {
-            IList<order> OrderList = new List<order>() {
-                new order(){
-                   OrderId  ="55670-122-PA",
-                   ShippingAdress="New Adarish Para Road, Rangpur ",
-                   ShippingDate="28 feb 2020",
-                   Status="Pending",
-                   type="Online"
+            var shipOrder = db.tblShippingOrders.ToList();
 
-                },
-                new order(){
-                   OrderId  ="55670-122-PA",
-                   ShippingAdress="New Adarish Para Road, Rangpur ",
-                   ShippingDate="28 feb 2020",
-                   Status="Deliverd",
-                   type="Offline"
-
-                },
-                new order(){
-                   OrderId  ="55670-122-PA",
-                   ShippingAdress="New Adarish Para Road, Rangpur ",
-                   ShippingDate="28 feb 2020",
-                   Status="Unpaid",
-                   type="Online"
-
-                },
-                new order(){
-                   OrderId  ="55670-122-PA",
-                   ShippingAdress="New Adarish Para Road, Rangpur ",
-                   ShippingDate="28 feb 2020",
-                   Status="Paid",
-                   type="Offline"
-
-                },
-
-            };
-            ViewBag.orders = OrderList;
-            return View();
+            return View(shipOrder);
         }
         public ActionResult Create()
         {
-            ViewBag.Group = db.tblSecurityGroups.ToList();
-            ViewBag.Wearhouse = db.tblWarehouseMasters.ToList();
+            var source = db.tblOrderSources.Select(c => new
+            {
+                SourceID = c.SourceID,
+                SourceName = c.SourceName
+            })
+            .OrderBy(x => x.SourceName).ToList();
+
+            ViewBag.ShipSourceChannel = new SelectList(source, "SourceID", "SourceName");
+
+            var account = db.tblPartners.Select(c => new
+            {
+                //PartnerID = c.PartnerID,
+                AccountID = c.AccountID
+            })
+            .OrderBy(x => x.AccountID).ToList();
+
+            ViewBag.Account = new SelectList(account, "AccountID", "AccountID");
+
+            var shippingCarrier = db.tblShippingCarriers.Select(c => new
+            {
+                ShippingCarrierID = c.ShippingCarrierID,
+                CarrierType = c.CarrierType
+            })
+            .OrderBy(x => x.CarrierType).ToList();
+
+            ViewBag.ShippingCarrier = new SelectList(shippingCarrier, "ShippingCarrierID", "CarrierType");
+
             return View();
+        }
+        public JsonResult GetPartnerAddress(string accountID)
+        {
+            List<tblPartner> partnerAddress = db.tblPartners.Where(x => x.AccountID == accountID).ToList();
+
+
+            return Json(
+            partnerAddress.Select(x => new
+            {
+                BillingAddressID = x.BillingAddressID,
+                ShippingAddressID = x.ShippingAddressID,
+                BillingAddress1 = x.tblPartnerBillingAddress.Address1 + " " + x.tblPartnerBillingAddress.CityName + " " + x.tblPartnerBillingAddress.State_Province + " " + x.tblPartnerBillingAddress.Zip_PostalCode + " " + x.tblPartnerBillingAddress.tblCountry.CountryName,
+                ShippingAddress1 = x.tblPartnerShippingAddress.ShipAddress1 + " " + x.tblPartnerShippingAddress.ShipCityName + " " + x.tblPartnerShippingAddress.ShipState_Province + " " + x.tblPartnerShippingAddress.ShipZip_PostalCode +" "+ x.tblPartnerShippingAddress.tblCountry.CountryName,
+                PartnerID = x.PartnerID,
+            }), JsonRequestBehavior.AllowGet);
         }
         public class order
         {
