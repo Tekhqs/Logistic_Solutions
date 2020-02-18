@@ -206,15 +206,17 @@
                         <div class="col-sm-6 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOEArrivalDate">Start Date</label>
-                                @(Html.Kendo().TextBox().Name("StartDate").HtmlAttributes(new { @class = "form-control datepicker", @placeholder = "Enter Expected Arrival Date", @style = "width:100%" }))
-                                @*@(Html.Kendo().DatePicker().Name("StartDate").Value(System.DateTime.Today).Format("MM/dd/yy")
-                                   .HtmlAttributes(new { @title = "From Date", @class = "form-control txtNewTransactionHistoryFromDate" })//.Events(x => x.Change("onTranHistoryTabLoad"))
-                                )*@
+                                @*@(Html.Kendo().TextBox().Name("StartDate").HtmlAttributes(new { @class = "form-control datepicker", @placeholder = "Enter Expected Arrival Date", @style = "width:100%" }))*@
+                                @(Html.Kendo().DatePicker().Name("StartDate").Value(System.DateTime.Today).Format("MM/dd/yy")
+                                   .HtmlAttributes(new { @class = "form-control classShipOrderDate",@style="max-width:100% !important" })
+                                )
                                 <span class="k-invalid-msg" data-for="StartDate"></span>
                             </div>
                             <div class="form-group">
                                 <label for="SOAArrivalDate">Actual Ship Date</label>
-                                @(Html.Kendo().TextBox().Name("ActualShipDate").HtmlAttributes(new { @class = "form-control datepicker", @placeholder = "Enter Actual Arrival Date", @style = "width:100%" }))
+                               @(Html.Kendo().DatePicker().Name("ActualShipDate").Value(System.DateTime.Today).Format("MM/dd/yy")
+                                   .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                                )
                                 <span class="k-invalid-msg" data-for="ActualShipDate"></span>
                             </div>
 
@@ -222,12 +224,16 @@
                         <div class="col-sm-6 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOCancelDate">Cancel  Date</label>
-                                @(Html.Kendo().TextBox().Name("CancelDate").HtmlAttributes(new { @class = "form-control datepicker", @placeholder = "Enter  Cancel Date", @style = "width:100%" }))
+                               @(Html.Kendo().DatePicker().Name("CancelDate").Value(System.DateTime.Today).Format("MM/dd/yy")
+                                   .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                            )
                                 <span class="k-invalid-msg" data-for="CancelDate"></span>
                             </div>
                             <div class="form-group">
                                 <label for="SOCancelDate">Deliver Date</label>
-                                @(Html.Kendo().TextBox().Name("DeliverDate").HtmlAttributes(new { @class = "form-control datepicker", @placeholder = "Enter  Deliver by Date", @style = "width:100%" }))
+                               @(Html.Kendo().DatePicker().Name("DeliverDate").Value(System.DateTime.Today).Format("MM/dd/yy")
+                                   .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                                )
                                 <span class="k-invalid-msg" data-for="DeliverDate"></span>
                             </div>
                         </div>

@@ -3,28 +3,36 @@
 @{
     Layout = "~/Views/Shared/_LayoutLS.cshtml";
 }
-
-
 <section class="btnTopSection">
-    <div class="row">
-        <div class="col-md-5 TiteSEction pl-5">
-            <a class="LayoutActionLink" href="#">
-                <i class="fas fa-sync-alt"></i>
-            </a>
-            <a class="LayoutActionLink" href="#">
-                more
-            </a>
-        </div>
-        <div class="col-md-7 LinksSEction">
-            <a class="LayoutActionLink" href="#">
-                Export to Excel
-            </a>
-            <a class="LayoutActionLink" href="/BusinessPartner/BusinessPartners/Create">
-                Add new Business Partner +
-            </a>
+    <div class="col-12">
 
+        <div class=" col-md-4">
+            <p class="LayoutsH1">
+                Billing Details
+            </p>
         </div>
-
+        <div class="form-group ml-5 mt-2">
+            <button type="button" class="LayoutActionLink" onclick="openDetail(this)" data-index="InBound">
+                Inbound Handling (Recieving)
+            </button>
+            <button type="button" class="LayoutActionLink" onclick="openDetail(this)" data-index="Storage">
+                Storage
+            </button>
+            <button type="button" class="LayoutActionLink" onclick="openDetail(this)" data-index="OutBound">
+                Outbound Fulfillment Service(Shipping Orders) (up to 400 SKU)
+            </button>
+        </div>
+        <div class="form-group ml-5 mt-2">
+            <button type="button" class="LayoutActionLink" onclick="openDetail(this)" data-index="RMS">
+                Return Management Services
+            </button>
+            <button type="button" class="LayoutActionLink" onclick="openDetail(this)" data-index="OtherService">
+                Other Services
+            </button>
+            <button type="button" class="LayoutActionLink" onclick="openDetail(this)" data-index="LaborCharges">
+                Labor Charges (Inspection, Rework, Replenishment & etc.)
+            </button>
+        </div>
     </div>
 
 </section>
@@ -36,6 +44,9 @@
             </p>
         </div>
         <div class="col-md-8 LinksSEction">
+            <a class="LayoutActionLink" href="/BusinessPartner/BusinessPartners/Create">
+                Add new Business Partner +
+            </a>
             <a class="LayoutActionLink" href="#">
                 Today
             </a>
@@ -44,6 +55,9 @@
             </a>
             <a class="LayoutActionLink" href="#">
                 Month
+            </a>
+            <a class="LayoutActionLink" href="#">
+                Export to Excel
             </a>
         </div>
 
@@ -73,9 +87,9 @@
                     <td>@item.ContactPhone</td>
                     <td>@item.tblPartnerBillingAddress.Address1</td>
                     <td>@item.tblPartnerShippingAddress.ShipAddress1</td>
-                 
+
                     @*<td><span class="red">click here</span></td>*@
-                    <td class="ActionsEdit"><a href="/Home/UserEdit/@item.AccountID"> <i class="far fa-edit"></i></a> <i class="fas fa-trash-alt red"></i></td>
+                    <td class="ActionsEdit"><a href="/BusinessPartner/BusinessPartners/Update?=@item.AccountID"> <i class="far fa-edit"></i></a> <i class="fas fa-trash-alt red"></i></td>
                 </tr>
             }
 
@@ -84,4 +98,94 @@
         </tbody>
     </table>
 </section>
+<div class="modal" id="billinDetailModal" data-easein="shake" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg" data-easein="shake" style="max-width: 1157px;">
+        <div class="modal-content" style="height:920px;">
+            <!-- Modal Header -->
+            <div class="modal-header">
 
+                <h3 id="billDetailHeader" class="col-12 row justify-content-center pt-4">Inbound Handling (Recieving) </h3>
+
+                <button type="button" class="close pt-4" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <table id="example" class="classRateTable" style="width:auto">
+                    <thead class="THeader">
+                        <tr>
+                            <th>Description</th>
+                            <th>General Rate</th>
+                            <th>Additional Charge</th>
+                            <th>Discount(%)</th>
+                            <th>Promo Code</th>
+                            <th>Unit</th>
+                            <th>Remarks</th>
+                            @*<th>Actions</th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.ShippingRateInBoundHandling)
+                        {
+                            <tr>
+                                <td>@item.Description</td>
+                                <td>@item.GeneralRate</td>
+                                <td>@item.AdditionalCharge</td>
+                                <td>@item.DiscountPercentage</td>
+                                <td>@item.PromoCode</td>
+                                <td>@item.Unit</td>
+                                <td>@item.Remarks</td>
+                                @*<td class="ActionsEdit"><a href="/BusinessPartner/BusinessPartners/Update?=@item.PartnerID"> <i class="far fa-edit"></i></a> </td>*@
+                                @*<i class="fas fa-trash-alt red"></i>*@
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer justify-content-between Rectangle-Customer" style="padding-left:25px;">
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function openDetail(btn) {
+        debugger;
+        var btn = $(btn).attr('data-index');
+        var heading = "";
+        if (btn == "InBound")
+        {
+            heading = "Inbound Handling (Recieving)";
+            
+        }
+        else if (btn == "Storage")
+        {
+            heading = "Storage";
+        }
+        else if (btn == "OutBound")
+        {
+            heading = "Outbound Fulfillment Service(Shipping Orders) (up to 400 SKU)";
+        }
+        else if (btn == "RMS")
+        {
+            heading = "Return Management Services";
+        }
+        else if (btn == "OtherService")
+        {
+            heading = "Other Services";
+        }
+        else if (btn == "LaborCharges")
+        {
+            heading = "Labor Charges (Inspection, Rework, Replenishment & etc.)";
+        }
+        $("#billDetailHeader").text(heading);
+        $('#billinDetailModal').modal('show');
+    }
+</script>

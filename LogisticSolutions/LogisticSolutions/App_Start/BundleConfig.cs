@@ -32,7 +32,7 @@ namespace LogisticSolutions
          "~/Scripts/bootstrap.min.js",
          "~/Scripts/respond.min.js",
          "~/Scripts/jquery.validate.min.js",
-
+         "~/Scripts/HiCharts/HighCharts.js",
               "~/Scripts/kendo/kendo.all.min.js",
           "~/Scripts/kendo/kendo.web.min.js",
           "~/Scripts/kendo/kendo.aspnetmvc.min.js",

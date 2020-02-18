@@ -13,7 +13,7 @@ namespace LogisticSolutions.Areas.BusinessPartner.Controllers
         public ActionResult Index()
         {
             var partner = db.tblPartners.ToList();
-
+            ViewBag.ShippingRateInBoundHandling = db.tblPartnerShippingRates.ToList();
             return View(partner);
         }
         public ActionResult Create()

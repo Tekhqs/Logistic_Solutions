@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_LayoutLS.cshtml";
 }
 
-
 <section class="btnTopSection">
     <div class="row">
         <div class="col-8 TiteSEction pl-5">
@@ -64,14 +63,13 @@
         <thead class="THeader">
 
             <tr>
-                <th> <input type="checkbox" class="TblCHk" /></th>
                 <th>Order ID</th>
                 <th>Account ID</th>
-                <th>Shipping Address</th>
+                <th style="width:22%">Shipping Address</th>
                 <th>Shipping Date</th>
                 <th>Status</th>
                 <th>Carrier Type</th>
-                <th>Order Details</th>
+                @*<th>Order Details</th>*@
                 <th>Actions</th>
             </tr>
         </thead>
@@ -83,7 +81,6 @@
                         string fullAddress =item.tblPartnerShippingAddress.ShipAddress1+", " + item.tblPartnerShippingAddress.ShipCityName + ", " + item.tblPartnerShippingAddress.ShipState_Province + ", " + item.tblPartnerShippingAddress.ShipZip_PostalCode + ", " + item.tblPartnerShippingAddress.tblCountry.CountryName;
                     }
                    
-                    <td><input type="checkbox" class="TblCHk" /></td>
                     <td>@item.ShippingOrderNumber</td>
                     <td>@item.AccountID</td>
                     <td>@fullAddress</td>
@@ -113,7 +110,7 @@
                     <td><span class="orange"> @item.tblShippingCarrier.CarrierType</span></td>
 
 
-                    <td><span class="red">click here</span></td>
+                    @*<td><span class="red">click here</span></td>*@
                     <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
                 </tr>
 
