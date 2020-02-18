@@ -32,7 +32,7 @@
                 <div class="col-xs-12 CreateUserSection pl-5">
 
                     <div class="row CreateUserform">
-                        <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="col-sm-4 col-xs-12 form-group">
 
                             <div class="form-group">
                                 <label for="Description">Description <span>*</span></label>
@@ -57,6 +57,21 @@
                                 <span class="k-invalid-msg" data-for="ContactName"></span>
 
                             </div>
+                            
+
+                        </div>
+                        <div class="col-sm-4 col-xs-12 form-group">
+                            <div class="form-group">
+                                <label for="ContactPhone">Contact Fax</label>
+                                @(Html.Kendo().TextBox().Name("ContactFax").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Fax", @style = "width:100%" }))
+                                <span class="k-invalid-msg" data-for="ContactFax"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="DefaultNMFC">Default NEMC</label>
+                                @(Html.Kendo().TextBox().Name("DefaultNMFC").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Default", @style = "width:100%" }))
+                                <span class="k-invalid-msg" data-for="DefaultNMFC"></span>
+                            </div>
+
                             <div class="form-group">
                                 <label for="ContactEmail">
                                     Contact Email
@@ -71,25 +86,17 @@
                                 <span class="k-invalid-msg" data-for="ContactPhone"></span>
                             </div>
 
-                        </div>
-                        <div class="col-sm-6 col-xs-12 form-group">
-                            <div class="form-group">
-                                <label for="ContactPhone">Contact Fax</label>
-                                @(Html.Kendo().TextBox().Name("ContactFax").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Fax", @style = "width:100%" }))
-                                <span class="k-invalid-msg" data-for="ContactFax"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="DefaultNMFC">Default NEMC</label>
-                                @(Html.Kendo().TextBox().Name("DefaultNMFC").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Default", @style = "width:100%" }))
-                                <span class="k-invalid-msg" data-for="DefaultNMFC"></span>
-                            </div>
 
+                        </div>
+
+
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="BillingRateMultiplier">Billing Rate Multiplier</label>
                                 @(Html.Kendo().TextBox().Name("BillingRateMultiplier").HtmlAttributes(new { @class = "form-control", @placeholder = "Multiplier", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="BillingRateMultiplier"></span>
                             </div>
-                         
+
                             <div class="form-group">
                                 <label for="CustomerID">CustomerID</label>
                                 @(Html.Kendo().DropDownList().Name("CustomerID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Customer).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select"))
@@ -98,7 +105,7 @@
                             <div class="form-group">
                                 <label for="isBonded">Bounded</label>
                                 @(Html.Kendo().CheckBox().Name("isBonded").Checked(true).HtmlAttributes(new { @style = "width:30px !important; height: 20px !important" }))
-                               
+
                                 <span class="k-invalid-msg" data-for="isBonded"></span>
                             </div>
                             <div class="form-group">
@@ -107,14 +114,16 @@
 
                                 <span class="k-invalid-msg" data-for="isEnabled"></span>
                             </div>
+
                         </div>
 
+
+                        </div>
                     </div>
-                </div>
                 <div class="col-xs-12 CreateUserSection pl-5">
                     <h4 class="text-left">Billing Adress</h4>
                     <div class="row CreateUserform">
-                        <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="Adress1">Adress 1</label>
                                 @(Html.Kendo().TextBox().Name("Address1").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress 1", @style = "width:100%" }))
@@ -126,21 +135,28 @@
                                 @(Html.Kendo().TextBox().Name("Address2").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress 2", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="Adress2"></span>
                             </div>
+                            
+
+                        </div>
+                        <div class="col-sm-4 col-xs-12 form-group">
+
+
+                            <div class="form-group">
+                                <label for="ACity">City</label>
+                                @(Html.Kendo().TextBox().Name("CityName").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%" }))
+                                <span class="k-invalid-msg" data-for="CityName"></span>
+                            </div>
                             <div class="form-group">
                                 <label for="ACountry">Country</label>
                                 @(Html.Kendo().DropDownList().Name("CountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select"))
                                 <span class="k-invalid-msg" data-for="CountryID"></span>
                             </div>
 
+
                         </div>
-                        <div class="col-sm-6 col-xs-12 form-group">
-                           
-                           
-                            <div class="form-group">
-                                <label for="ACity">City</label>
-                                @(Html.Kendo().TextBox().Name("CityName").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%" }))
-                                <span class="k-invalid-msg" data-for="CityName"></span>
-                            </div>
+
+
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="AState">State</label>
                                 @(Html.Kendo().TextBox().Name("State_Province").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%" }))
@@ -151,15 +167,15 @@
                                 @(Html.Kendo().TextBox().Name("Zip_PostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter PostalCode", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="Zip_PostalCode"></span>
                             </div>
-                          
-                        </div>
-                    </div>
 
-                </div>
+                        </div>
+                        </div>
+
+                    </div>
                 <div class="col-xs-12 CreateUserSection pl-5">
                     <h4 class="text-left">Shipping  Adress</h4>
                     <div class="row CreateUserform">
-                        <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="AusePrev">Use Billing Adresses </label>
                                 <input onclick="setABillingValue()" type="checkbox" id="AUsePrev" />
@@ -176,20 +192,24 @@
                                 <span class="k-invalid-msg" data-for="ShipAddress2"></span>
                             </div>
 
-                            <div class="form-group">
-                                <label for="AShippingcountry">Country</label>
-                                @(Html.Kendo().DropDownList().Name("ShipCountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select"))
-                                <span class="k-invalid-msg" data-for="ShipCountryID"></span>
-
-                            </div>
+                            
                         </div>
-                        <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="AShippingcity">City</label>
                                 @(Html.Kendo().TextBox().Name("ShipCityName").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="ShipCityName"></span>
                             </div>
 
+                            <div class="form-group">
+                                <label for="AShippingcountry">Country</label>
+                                @(Html.Kendo().DropDownList().Name("ShipCountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select"))
+                                <span class="k-invalid-msg" data-for="ShipCountryID"></span>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="AShippingstate">State</label>
                                 @(Html.Kendo().TextBox().Name("ShipState_Province").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%" }))
@@ -200,16 +220,15 @@
                                 @(Html.Kendo().TextBox().Name("ShipZip_PostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Postal Code", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="ShipZip_PostalCode"></span>
                             </div>
-                      
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="Button">Cancel</button>
+                                <button id="CreateUser" onclick="PostBusinessPartner()" class="Button" type="button">Create</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <button class="Button">Cancel</button>
-                            <button id="CreateUser" onclick="PostBusinessPartner()" class="Button" type="button">Create</button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </form>
