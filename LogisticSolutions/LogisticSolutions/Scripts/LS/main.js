@@ -125,12 +125,11 @@ function ChangePassword() {
             data: { COldPassword, CPassword },
             beforeSend: function () {
 
-                $("#CreateUser").text("Loading - Please Wait..");
-                $("#CreateUser").css("disabled", true);
             },
             success: function (result) {
                 if (result == true) {
                     $("#COldPasswordL").text("");
+                    location.reload();
                 }
                 else {
 
@@ -338,16 +337,6 @@ function CreateShippingO() {
 } 
 
 
-//UserCreate
-function CreateUsers() {
-
-    var ROFormValidate = $("#FormUser").kendoValidator().data("kendoValidator");
-    if (!ROFormValidate.validate()) {
-        return false;
-    }
-
-
-}
 
 //AccountCreate
 function CreateAccount() {

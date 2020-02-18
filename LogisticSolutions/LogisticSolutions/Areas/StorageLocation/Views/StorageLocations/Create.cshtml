@@ -1,0 +1,276 @@
+﻿
+@model DAL.tblWarehouseMaster
+
+@{
+    Layout = "~/Views/Shared/_LayoutLS.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="FormBody col-md-12">
+        <div class="col-md-12 bread">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="fas fa-angle-left"></i>
+                </li>
+
+                <li>Dashboard<span class="slash">/</span></li>
+                <li>Warehouse<span class="slash">/</span></li>
+                <li>Create Storage Locations</li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 PageTabs pl-5">
+            <button class="Button">General</button>
+            <button class="Button">Acounts</button>
+            <button class="Button">Shippers</button>
+            <button class="Button">Zendesk</button>
+            <button class="Button">RF</button>
+            <button class="Button">Edit History</button>
+        </div>
+        <form id="FormStorageLocation">
+            <div id="divAddWareHouse">
+                <div class="col-xs-12 CreateUserSection pl-5">
+                    <h4 class="text-left">Create WareHouse</h4>
+                    <div class="row CreateUserform">
+
+                        <div class="col-sm-4 col-xs-12 form-group">
+
+
+
+                            <div class="form-group">
+                                <label for="Aisle">Aisle</label>
+                                @(Html.Kendo().TextBox().Name("Aisle").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Aisle", @style = "width:100%" }))
+
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="Address1">Bay </label>
+                                @(Html.Kendo().TextBox().Name("Address1").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Bay", @style = "width:100%" }))
+                            </div>
+
+
+
+
+
+                            <div class="form-group">
+                                <label for="Address2">Level</label>
+                                @(Html.Kendo().TextBox().Name("Level").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Level", @style = "width:100%" }))
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Slot">Slot </label>
+                                @(Html.Kendo().TextBox().Name("Slot").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Slot", @style = "width:100%" }))
+
+                            </div>
+                            <div class="form-group">
+                                <label for="isActive">Seperator </label>
+                                @(Html.Kendo().TextBox().Name("Seperator").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Seperator", @style = "width:100%" }))
+
+                            </div>
+                            <div class="form-group">
+                                <label for="CityName">Zone </label>
+                                @(Html.Kendo().TextBox().Name("Zone").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Zone", @style = "width:100%" }))
+                            </div>
+
+                            <div class="form-group">
+                                <label for="CityName">Height </label>
+                                @(Html.Kendo().TextBox().Name("TotalShippedWeight").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Height" }))
+                                <select id="SOQtyS" name="TotalShippedWeightUnit" class="form-control ml-2" style="max-width: 23%!important">
+                                    <option value="Kilograms"> cm </option>
+                                    <option value="grams"> grams</option>
+                                    <option value="Meter"> Meter </option>
+                                    <option value="cm"> Centimeter </option>
+                                    <option value="inches"> inches</option>
+                                    <option value="l"> Litre </option>
+                                    <option value="ml"> millilitre </option>
+                                    <option value="mm"> millimeter </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 form-group">
+
+
+
+
+                        
+
+
+
+
+
+                            <div class="form-group">
+                                <label for="State_Province">Width(IN)</label>
+                                @(Html.Kendo().TextBox().Name("TotalShippedWeight").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Width(IN)" }))
+                                <select id="SOQtyS" name="TotalShippedWeightUnit" class="form-control ml-2" style="max-width: 23%!important">
+                                    <option value="Kilograms"> cm </option>
+                                    <option value="grams"> grams</option>
+                                    <option value="Meter"> Meter </option>
+                                    <option value="cm"> Centimeter </option>
+                                    <option value="inches"> inches</option>
+                                    <option value="l"> Litre </option>
+                                    <option value="ml"> millilitre </option>
+                                    <option value="mm"> millimeter </option>
+                                </select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="FaxNumber">Length(IN) </label>
+                                @(Html.Kendo().TextBox().Name("TotalShippedWeight").HtmlAttributes(new { @class = "form-control", @placeholder = "Length(IN) " }))
+                                <select id="SOQtyS" name="TotalShippedWeightUnit" class="form-control ml-2" style="max-width: 23%!important">
+                                    <option value="Kilograms"> mm </option>
+                                    <option value="grams"> grams</option>
+                                    <option value="Meter"> Meter </option>
+                                    <option value="cm"> Centimeter </option>
+                                    <option value="inches"> inches</option>
+                                    <option value="l"> Litre </option>
+                                    <option value="ml"> millilitre </option>
+                                    <option value="mm"> millimeter </option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Remarks">Weight(LBS) </label>
+                                @(Html.Kendo().TextBox().Name("TotalShippedWeight").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Weight(LBS)" }))
+                                <select id="SOQtyS" name="TotalShippedWeightUnit" class="form-control ml-2" style="max-width: 23%!important">
+                                    <option value="Kilograms"> Kg </option>
+                                    <option value="grams"> grams</option>
+                                    <option value="Meter"> Meter </option>
+                                    <option value="cm"> Centimeter </option>
+                                    <option value="inches"> inches</option>
+                                    <option value="l"> Litre </option>
+                                    <option value="ml"> millilitre </option>
+                                    <option value="mm"> millimeter </option>
+                                </select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="Remarks">item Velocity </label>
+                                <select class="form-control Multis" id="required2" style="width:100%" multiple="multiple" data-placeholder="Select attendees...">
+                                    <option selected>Any/Unknown</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="Remarks">Status </label>
+                                <select class="form-control Multis" id="required2" style="width:100%" multiple="multiple" data-placeholder="Select attendees...">
+                                    <option selected>Allow Hold</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+
+
+                                </select>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="Zip_PostalCode">Mode  </label>
+                                <select class="form-control Multis" id="required2" style="width:100%" multiple="multiple" data-placeholder="Select attendees...">
+                                    <option selected>Mode Recv Dock</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+
+
+                                </select>
+
+
+                            </div>
+                          
+
+
+                        </div>
+
+                        <div class="col-sm-4 col-xs-12 form-group">
+
+
+
+                            <div class="form-group">
+                                <label for="Email">Item Code </label>
+                                @(Html.Kendo().TextBox().Name("Email").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Item Code", @style = "width:100%" }))
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="PhoneNumber">Lot Code </label>
+                                @(Html.Kendo().TextBox().Name("PhoneNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Lot Code", @style = "width:100%" }))
+
+                            </div>
+                            <div class="form-group">
+                                <label for="PhoneNumber">Sublot Code </label>
+                                @(Html.Kendo().TextBox().Name("PhoneNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Sublot Code", @style = "width:100%" }))
+
+                            </div>
+                            <div class="form-group">
+                                <label for="PhoneNumber">UPC  </label>
+                                @(Html.Kendo().TextBox().Name("PhoneNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Sublot Code", @style = "width:100%" }))
+
+                            </div>
+                            <div class="form-group">
+                                <label for="PhoneNumber">UOM  </label>
+                                @(Html.Kendo().TextBox().Name("PhoneNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter UOM", @style = "width:100%" }))
+
+                            </div>
+                            <div class="form-group">
+                                <label for="PhoneNumber">Case Pak Qty  </label>
+                                @(Html.Kendo().TextBox().Name("PhoneNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Case Pak Qty ", @style = "width:100%" }))
+
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="Button">Cancel</button>
+                                <button id="SaveWareHouse" onclick="CreateWareHouse()" class="Button">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+        </form>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        // create MultiSelect from select HTML element
+        var required2 = $(".Multis").kendoMultiSelect().data("kendoMultiSelect");
+
+        var optional = $("#optional").kendoMultiSelect({
+            autoClose: false
+        }).data("kendoMultiSelect");
+
+    });
+</script>
