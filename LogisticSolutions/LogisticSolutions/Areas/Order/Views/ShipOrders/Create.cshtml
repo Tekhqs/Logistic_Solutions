@@ -35,7 +35,7 @@
                 <div class="col-xs-12 CreateUserSection pl-5">
                     <h4 class="text-left">Create Shipping Order</h4>
                     <div class="row CreateUserform">
-                        <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOrderNumber">Transaction Number</label>
                                 @(Html.Kendo().TextBox().Name("TransactionNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Transaction Number", @style = "width:100%" }))
@@ -70,20 +70,21 @@
                                 <span class="k-invalid-msg" data-for="SWC"></span>
                             </div>
 
+                        </div>
+                        <div class="col-sm-4 col-xs-12 form-group">
+                            
+
                             <div class="form-group">
                                 <label for="SOSalesONumber">Sales Order Number</label>
                                 @(Html.Kendo().TextBox().Name("SalesOrderNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Sales Order Number", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="SalesOrderNumber"></span>
                             </div>
-                         
+
                             <div class="form-group">
                                 <label for="PONumber">PO Number</label>
                                 @(Html.Kendo().TextBox().Name("PONumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter PO Number", @style = "width:100%", @type = "number" }))
                                 <span class="k-invalid-msg" data-for="PONumber"></span>
                             </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12 form-group">
-                          
                             <div class="form-group">
                                 <label for="BLNumber">BL Number</label>
                                 @(Html.Kendo().TextBox().Name("BLNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter BL Number", @style = "width:100%" }))
@@ -100,6 +101,10 @@
                                 </select>
                                 <span class="k-invalid-msg" data-for="SWC"></span>
                             </div>
+                            
+
+                        </div>
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOQtyP">Quantity Planned</label>
                                 <select id="SOQtyP" name="QuantityPlanned" class="form-control">
@@ -121,8 +126,8 @@
                                 <span class="k-invalid-msg" data-for="QuantityShipped"></span>
                             </div>
                             @*<div class="form-group">
-                                <label>LPNs: &nbsp; 0</label>
-                            </div>*@
+            <label>LPNs: &nbsp; 0</label>
+        </div>*@
                             <div class="form-group">
                                 <label for="BLNumber">LPNs</label>
                                 @(Html.Kendo().TextBox().Name("LPNs").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter LPNs", @style = "width:100%" }))
@@ -152,7 +157,7 @@
                 <div class="col-xs-12 CreateUserSection pl-5">
                     <h4 class="text-left">Partners</h4>
                     <div class="row CreateUserform">
-                        <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOAccount">Account <span>*</span></label>
                                 @(Html.Kendo().DropDownList().Name("AccountID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Account).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Account ID"))
@@ -164,16 +169,17 @@
                                 <label for="SOShipper">Shipper</label>
                                 @(Html.Kendo().DropDownList().Name("OrderShipper").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Account).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Shipper"))
 
-                                <input type="text" id="PartID" name="PartnerID" style="display:none"/>
+                                <input type="text" id="PartID" name="PartnerID" style="display:none" />
                                 <span class="k-invalid-msg" data-for="PartnerID"></span>
                             </div>
+                            
+                        </div>
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOCarrier">Carrier</label>
                                 @(Html.Kendo().DropDownList().Name("ShippingCarrierID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.ShippingCarrier).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Shipping Carrier"))
                                 <span class="k-invalid-msg" data-for="ShippingCarrierID"></span>
                             </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOBillFT">Bill Freight To</label>
                                 @(Html.Kendo().DropDownList().Name("OrderBillFreightTo").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Account).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Partner"))
@@ -181,6 +187,10 @@
 
                                 <span class="k-invalid-msg" data-for="SWC"></span>
                             </div>
+                           
+                        </div>
+
+                        <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-row pl-1">
                                 <label for="AddShipTo">Ship To</label>
                                 <label id="shipAddressDetails" class="col-md-2 d-none">
@@ -195,7 +205,7 @@
                                 <label id="billAddressDetails" class="col-md-2 d-none">
 
                                 </label>
-                                <input type="text" id="billAddID" name="BillingAddressID"style="display:none" />
+                                <input type="text" id="billAddID" name="BillingAddressID" style="display:none" />
                             </div>
                         </div>
                     </div>
@@ -203,39 +213,46 @@
                 <div class="col-xs-12 CreateUserSection pl-5">
                     <h4 class="text-left">Dates</h4>
                     <div class="row CreateUserform">
-                        <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="col-sm-3 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOEArrivalDate">Start Date</label>
                                 @*@(Html.Kendo().TextBox().Name("StartDate").HtmlAttributes(new { @class = "form-control datepicker", @placeholder = "Enter Expected Arrival Date", @style = "width:100%" }))*@
                                 @(Html.Kendo().DatePicker().Name("StartDate").Value(System.DateTime.Today).Format("MM/dd/yy")
-                                   .HtmlAttributes(new { @class = "form-control classShipOrderDate",@style="max-width:100% !important" })
+                                           .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
                                 )
                                 <span class="k-invalid-msg" data-for="StartDate"></span>
                             </div>
+                            
+
+                        </div>
+                        <div class="col-sm-3 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOAArrivalDate">Actual Ship Date</label>
-                               @(Html.Kendo().DatePicker().Name("ActualShipDate").Value(System.DateTime.Today).Format("MM/dd/yy")
-                                   .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                                @(Html.Kendo().DatePicker().Name("ActualShipDate").Value(System.DateTime.Today).Format("MM/dd/yy")
+                                                    .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
                                 )
                                 <span class="k-invalid-msg" data-for="ActualShipDate"></span>
                             </div>
-
+                            
                         </div>
-                        <div class="col-sm-6 col-xs-12 form-group">
+                        <div class="col-sm-3 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOCancelDate">Cancel  Date</label>
-                               @(Html.Kendo().DatePicker().Name("CancelDate").Value(System.DateTime.Today).Format("MM/dd/yy")
-                                   .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
-                            )
+                                @(Html.Kendo().DatePicker().Name("CancelDate").Value(System.DateTime.Today).Format("MM/dd/yy")
+                                                            .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                                )
                                 <span class="k-invalid-msg" data-for="CancelDate"></span>
                             </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOCancelDate">Deliver Date</label>
-                               @(Html.Kendo().DatePicker().Name("DeliverDate").Value(System.DateTime.Today).Format("MM/dd/yy")
-                                   .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                                @(Html.Kendo().DatePicker().Name("DeliverDate").Value(System.DateTime.Today).Format("MM/dd/yy")
+                                                            .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
                                 )
                                 <span class="k-invalid-msg" data-for="DeliverDate"></span>
                             </div>
+
                         </div>
                     </div>
                 </div>
