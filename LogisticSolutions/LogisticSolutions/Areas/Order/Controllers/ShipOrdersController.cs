@@ -14,7 +14,7 @@ namespace LogisticSolutions.Areas.Order.Controllers
         // GET: ShippingOrders
         public ActionResult Index()
         {
-            var shipOrder = db.tblShippingOrders.ToList();
+            var shipOrder = db.tblShippingOrders.OrderByDescending(x=>x.CreatedOn).ToList();
 
             return View(shipOrder);
         }

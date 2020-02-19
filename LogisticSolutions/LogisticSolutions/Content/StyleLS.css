@@ -89,7 +89,12 @@ body {
     margin-left: 7px !important;
     height: 40px !important;
 }
-
+.lblRateDetail {
+    font-size: 15px;
+    font-family:Arial;
+    font-weight: bold;
+    color:darkred;
+}
 .Actions {
     padding-top: 15px;
 }

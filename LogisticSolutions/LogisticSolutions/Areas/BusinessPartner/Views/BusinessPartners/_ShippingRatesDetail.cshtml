@@ -1,0 +1,39 @@
+﻿<div id="tblShipDetail">
+
+    <table id="example" class="classRateTable" style="width:auto">
+        <thead class="THeader">
+            <tr>
+                <th>Description</th>
+                <th>General Rate</th>
+                <th>Additional Charge</th>
+                <th>Discount(%)</th>
+                <th>Promo Code</th>
+                <th>Unit</th>
+                <th>Remarks</th>
+                @*<th>Actions</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.ShippingRateInBoundHandling)
+            {
+                <tr>
+                    <td>@item.Description</td>
+                    <td>@item.GeneralRate</td>
+                    <td>@item.AdditionalCharge</td>
+                    <td>@item.DiscountPercentage</td>
+                    <td>@item.PromoCode</td>
+                    <td>@item.Unit</td>
+                    <td>@item.Remarks</td>
+                    @*<td class="ActionsEdit"><a href="/BusinessPartner/BusinessPartners/Update?=@item.PartnerID"> <i class="far fa-edit"></i></a> </td>*@
+                    @*<i class="fas fa-trash-alt red"></i>*@
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+

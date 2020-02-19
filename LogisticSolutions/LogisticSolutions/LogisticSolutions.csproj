@@ -210,6 +210,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Datatable.min.css" />
     <Content Include="Content\FontAwsome.css" />
+    <Content Include="Content\Images\ajax-loader-dotted.gif" />
     <Content Include="Content\Images\RefImages\DailyRecveiveRod.jpg" />
     <Content Include="Content\Images\RefImages\DailySendReceive.jpg" />
     <Content Include="Content\Images\RefImages\DailyShippingOrder.jpg" />
@@ -710,12 +711,16 @@
     <Content Include="Areas\WareHouse\Views\WareHouses\index.cshtml" />
     <Content Include="Areas\WareHouse\Views\web.config" />
     <Content Include="Areas\WareHouse\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\BusinessPartner\Views\BusinessPartners\_ShippingRatesDetail.cshtml" />
     <None Include="Properties\PublishProfiles\LogisticSolutionSanbox - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LogisticSolutionSanbox - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LogisticSolutionSanbox - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\logisticsolutionsandbox - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\logisticsolutionsandbox - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\logisticsolutionsandbox - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\LogisticsSolutionAPISandbox - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\LogisticsSolutionAPISandbox - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\LogisticsSolutionAPISandbox - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Bootstrap.min.js" />
     <Content Include="Scripts\datatable.min.js" />
@@ -1903,6 +1908,7 @@
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-HK.min.js" />
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-TW.min.js" />
     <Content Include="Scripts\kendo\pako_deflate.min.js" />
+    <Content Include="Scripts\LS\businessPartner.js" />
     <Content Include="Scripts\LS\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Popper.min.js" />

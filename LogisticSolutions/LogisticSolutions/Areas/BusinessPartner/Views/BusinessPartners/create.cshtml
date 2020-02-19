@@ -27,7 +27,7 @@
             <button class="Button">RF</button>
             <button class="Button">Edit History</button>
         </div>
-        <form id="FormAccount">
+        <form id="addBusinessPartnerForm">
             <div id="divAddBusinessPartner">
                 <div class="col-xs-12 CreateUserSection pl-5">
 
@@ -46,14 +46,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="BillingID">Billing ID</label>
-                                @(Html.Kendo().TextBox().Name("BillingID").HtmlAttributes(new { @class = "form-control", @placeholder = "Billing Id", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("BillingID").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Billing Id", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="BillingID"></span>
                             </div>
                             <div class="form-group">
                                 <label for="ContactName">
                                     Contact Name
                                 </label>
-                                @(Html.Kendo().TextBox().Name("ContactName").HtmlAttributes(new { @class = "form-control", @placeholder = "Billing Id", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("ContactName").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Billing Id", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="ContactName"></span>
 
                             </div>
@@ -82,7 +82,7 @@
 
                             <div class="form-group">
                                 <label for="ContactPhone">Contact Phone</label>
-                                @(Html.Kendo().TextBox().Name("ContactPhone").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  Phone", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("ContactPhone").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Enter  Phone", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="ContactPhone"></span>
                             </div>
 
@@ -99,7 +99,7 @@
 
                             <div class="form-group">
                                 <label for="CustomerID">CustomerID</label>
-                                @(Html.Kendo().DropDownList().Name("CustomerID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Customer).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select"))
+                                @(Html.Kendo().DropDownList().Name("CustomerID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Customer).HtmlAttributes(new { style = "width:100%", @required = "required" }).OptionLabel("Select"))
                                 <span class="k-invalid-msg" data-for="CustomerID"></span>
                             </div>
                             <div class="form-group">
@@ -126,8 +126,8 @@
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="Adress1">Adress 1</label>
-                                @(Html.Kendo().TextBox().Name("Address1").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Adress 1", @style = "width:100%" }))
-                                <span class="k-invalid-msg" data-for="Adress1"></span>
+                                @(Html.Kendo().TextBox().Name("Address1").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Enter Adress 1", @style = "width:100%" }))
+                                <span class="k-invalid-msg" data-for="Address1"></span>
                             </div>
 
                             <div class="form-group">
@@ -148,7 +148,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="ACountry">Country</label>
-                                @(Html.Kendo().DropDownList().Name("CountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select"))
+                                @(Html.Kendo().DropDownList().Name("CountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%" , @required = "required" }).OptionLabel("Select"))
                                 <span class="k-invalid-msg" data-for="CountryID"></span>
                             </div>
 
@@ -181,8 +181,8 @@
                                 <input onclick="setABillingValue()" type="checkbox" id="AUsePrev" />
                             </div>
                             <div class="form-group">
-                                <label for="AShippingAdress1">Adress 1</label>
-                                @(Html.Kendo().TextBox().Name("ShipAddress1").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAdress1", @style = "width:100%" }))
+                                <label for="AShippingAdress1">Address 1</label>
+                                @(Html.Kendo().TextBox().Name("ShipAddress1").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Enter ShippingAdress1", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="ShipAddress1"></span>
                             </div>
 
@@ -203,7 +203,7 @@
 
                             <div class="form-group">
                                 <label for="AShippingcountry">Country</label>
-                                @(Html.Kendo().DropDownList().Name("ShipCountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select"))
+                                @(Html.Kendo().DropDownList().Name("ShipCountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%", @required="required" }).OptionLabel("Select"))
                                 <span class="k-invalid-msg" data-for="ShipCountryID"></span>
 
                             </div>
@@ -236,110 +236,110 @@
 </div>
 <script type="text/javascript">
 
-    var partnerID = "";
-    var BillingAddressID = "";
-    var ShippingAddressID = "";
-    var businessPartner = "";
+    //var partnerID = "";
+    //var BillingAddressID = "";
+    //var ShippingAddressID = "";
+    //var businessPartner = "";
 
-    (function ($) {
-        $.fn.serializeFormJSON = function () {
+    //(function ($) {
+    //    $.fn.serializeFormJSON = function () {
 
-            var o = {};
-            var a = this.serializeArray();
-            $.each(a, function () {
-                if (o[this.name]) {
-                    if (!o[this.name].push) {
-                        o[this.name] = [o[this.name]];
-                    }
-                    o[this.name].push(this.value || '');
-                } else {
-                    o[this.name] = this.value || '';
-                }
-            });
-            return o;
-        };
-    })(jQuery);
-    function toJSONString(divid) {
+    //        var o = {};
+    //        var a = this.serializeArray();
+    //        $.each(a, function () {
+    //            if (o[this.name]) {
+    //                if (!o[this.name].push) {
+    //                    o[this.name] = [o[this.name]];
+    //                }
+    //                o[this.name].push(this.value || '');
+    //            } else {
+    //                o[this.name] = this.value || '';
+    //            }
+    //        });
+    //        return o;
+    //    };
+    //})(jQuery);
+    //function toJSONString(divid) {
 
-        var obj = {};
-        //var elements = $('#step-1').querySelectorAll("input, select, textarea");
-        var elements = $('#' + divid + '').children();
-        $('#' + divid + '').find('input:text,input:radio:checked,input:checkbox:checked, input:password, input:file, select, textarea').each(function () {
-            // $(this).val('');
-            if ($(this)) {
-                var name = $(this).prop('name');
-                obj[name] = $(this).val();
-            }
-        });
-        return obj;
-    }
-    function updateBusinessPartnerBillShipAddress(businessPartner, partnerID, BillingAddressID, ShippingAddressID) {
+    //    var obj = {};
+    //    //var elements = $('#step-1').querySelectorAll("input, select, textarea");
+    //    var elements = $('#' + divid + '').children();
+    //    $('#' + divid + '').find('input:text,input:radio:checked,input:checkbox:checked, input:password, input:file, select, textarea').each(function () {
+    //        // $(this).val('');
+    //        if ($(this)) {
+    //            var name = $(this).prop('name');
+    //            obj[name] = $(this).val();
+    //        }
+    //    });
+    //    return obj;
+    //}
+    //function updateBusinessPartnerBillShipAddress(businessPartner, partnerID, BillingAddressID, ShippingAddressID) {
 
-        $.ajax({
-            type: 'PUT',
-            data: JSON.stringify(businessPartner),
-            url: "/api/BusinessPartner?PartnerID=" + partnerID + "&BillingAddressID=" + BillingAddressID + "&ShippingAddressID=" + ShippingAddressID,
-            contentType: "application/json; charset=utf-8",
-            dataType: 'json',
-            success: function (data) {
+    //    $.ajax({
+    //        type: 'PUT',
+    //        data: JSON.stringify(businessPartner),
+    //        url: "/api/BusinessPartner?PartnerID=" + partnerID + "&BillingAddressID=" + BillingAddressID + "&ShippingAddressID=" + ShippingAddressID,
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: 'json',
+    //        success: function (data) {
                
-                window.location.href = '/BusinessPartner/BusinessPartners/Index';
-            }
-        });
-    }
-    function saveBillingAddress(businessPartner, partnerID) {
-        if (businessPartner.Address1 == "" || businessPartner.Address1 == undefined)
-            return;
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(businessPartner),
-            url: "/api/BusinessPartnerBillAdress?PartnerID=" + partnerID,
-            contentType: "application/json; charset=utf-8",
-            dataType: 'json',
-            success: function (data) {
+    //            window.location.href = '/BusinessPartner/BusinessPartners/Index';
+    //        }
+    //    });
+    //}
+    //function saveBillingAddress(businessPartner, partnerID) {
+    //    if (businessPartner.Address1 == "" || businessPartner.Address1 == undefined)
+    //        return;
+    //    $.ajax({
+    //        type: 'POST',
+    //        data: JSON.stringify(businessPartner),
+    //        url: "/api/BusinessPartnerBillAdress?PartnerID=" + partnerID,
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: 'json',
+    //        success: function (data) {
 
-                partnerID = data.PartnerID;
-                BillingAddressID = data.BillingAddressID;
+    //            partnerID = data.PartnerID;
+    //            BillingAddressID = data.BillingAddressID;
 
-                saveShippingAddress(businessPartner, partnerID, BillingAddressID)
-            }
-        });
-    }
-    function saveShippingAddress(businessPartner, partnerID, BillingAddressID) {
+    //            saveShippingAddress(businessPartner, partnerID, BillingAddressID)
+    //        }
+    //    });
+    //}
+    //function saveShippingAddress(businessPartner, partnerID, BillingAddressID) {
 
-        if (businessPartner.ShipAddress1 == "" || businessPartner.ShipAddress2 == undefined)
-            return;
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(businessPartner),
-            url: "/api/BusinessPartnerShipAdress?PartnerID=" + partnerID,
-            contentType: "application/json; charset=utf-8",
-            dataType: 'json',
-            success: function (data) {
-                ShippingAddressID = data.ShippingAddressID;
+    //    if (businessPartner.ShipAddress1 == "" || businessPartner.ShipAddress2 == undefined)
+    //        return;
+    //    $.ajax({
+    //        type: 'POST',
+    //        data: JSON.stringify(businessPartner),
+    //        url: "/api/BusinessPartnerShipAdress?PartnerID=" + partnerID,
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: 'json',
+    //        success: function (data) {
+    //            ShippingAddressID = data.ShippingAddressID;
 
-                updateBusinessPartnerBillShipAddress(businessPartner, partnerID, BillingAddressID, ShippingAddressID)
-            }
-        });
-    }
-    function PostBusinessPartner()
-    {
-         businessPartner = toJSONString('divAddBusinessPartner');
-         console.log(businessPartner);
+    //            updateBusinessPartnerBillShipAddress(businessPartner, partnerID, BillingAddressID, ShippingAddressID)
+    //        }
+    //    });
+    //}
+    //function PostBusinessPartner()
+    //{
+    //     businessPartner = toJSONString('divAddBusinessPartner');
+    //     console.log(businessPartner);
 
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(businessPartner),
-            url: "/api/BusinessPartner",
-            contentType: "application/json; charset=utf-8",
-            dataType: 'json',
-            success: function (data) {
-                partnerID = data.PartnerID;
-                saveBillingAddress(businessPartner, partnerID)
+    //    $.ajax({
+    //        type: 'POST',
+    //        data: JSON.stringify(businessPartner),
+    //        url: "/api/BusinessPartner",
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: 'json',
+    //        success: function (data) {
+    //            partnerID = data.PartnerID;
+    //            saveBillingAddress(businessPartner, partnerID)
 
 
-            }
-        });
-    }
+    //        }
+    //    });
+    //}
 
 </script>

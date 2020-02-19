@@ -21,7 +21,7 @@ namespace LogisticSolutions
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
-                    "~/Scripts/LS/main.js"));
+                    "~/Scripts/LS/main.js", "~/Scripts/LS/businessPartner.js"));
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/respond.js"));

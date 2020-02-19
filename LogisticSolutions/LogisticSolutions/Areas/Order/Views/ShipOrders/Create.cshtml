@@ -38,12 +38,12 @@
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOrderNumber">Transaction Number</label>
-                                @(Html.Kendo().TextBox().Name("TransactionNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Transaction Number", @style = "width:100%" }))
-                                <span class="k-invalid-msg" data-for="SourceID"></span>
+                                @(Html.Kendo().TextBox().Name("TransactionNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Transaction Number", @required = "required", @style = "width:100%" }))
+                                <span class="k-invalid-msg" data-for="TransactionNumber"></span>
                             </div>
                             <div class="form-group">
                                 <label for="SourceID">Source/Channel</label>
-                                @(Html.Kendo().DropDownList().Name("SourceID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.ShipSourceChannel).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Source/Channel"))
+                                @(Html.Kendo().DropDownList().Name("SourceID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.ShipSourceChannel).HtmlAttributes(new { style = "width:100%", @required = "required" }).OptionLabel("Select Source/Channel"))
                                 <span class="k-invalid-msg" data-for="SourceID"></span>
                             </div>
                             <div class="form-group">
@@ -55,13 +55,13 @@
                                     <option value="Completed"> Completed </option>
                                     <option value="Void"> Void </option>
                                 </select>
-                                <span class="k-invalid-msg" data-for="SourceID"></span>
+                                <span class="k-invalid-msg" data-for="ShippingStatus"></span>
                             </div>
 
 
                             <div class="form-group">
                                 <label for="ShippingOrderNumber">Order Number</label>
-                                @(Html.Kendo().TextBox().Name("ShippingOrderNumber").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Order Number", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("ShippingOrderNumber").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Enter Order Number", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="ShippingOrderNumber"></span>
                             </div>
                             <div class="form-group">
@@ -160,14 +160,14 @@
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOAccount">Account <span>*</span></label>
-                                @(Html.Kendo().DropDownList().Name("AccountID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Account).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Account ID"))
+                                @(Html.Kendo().DropDownList().Name("AccountID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Account).HtmlAttributes(new { style = "width:100%", @required = "required" }).OptionLabel("Select Account ID"))
 
                                 <span class="k-invalid-msg" data-for="SWC"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="SOShipper">Shipper</label>
-                                @(Html.Kendo().DropDownList().Name("OrderShipper").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Account).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Shipper"))
+                                @(Html.Kendo().DropDownList().Name("OrderShipper").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Account).HtmlAttributes(new { style = "width:100%", @required = "required" }).OptionLabel("Select Shipper"))
 
                                 <input type="text" id="PartID" name="PartnerID" style="display:none" />
                                 <span class="k-invalid-msg" data-for="PartnerID"></span>
@@ -177,12 +177,12 @@
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOCarrier">Carrier</label>
-                                @(Html.Kendo().DropDownList().Name("ShippingCarrierID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.ShippingCarrier).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Shipping Carrier"))
+                                @(Html.Kendo().DropDownList().Name("ShippingCarrierID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.ShippingCarrier).HtmlAttributes(new { style = "width:100%", @required = "required" }).OptionLabel("Select Shipping Carrier"))
                                 <span class="k-invalid-msg" data-for="ShippingCarrierID"></span>
                             </div>
                             <div class="form-group">
                                 <label for="SOBillFT">Bill Freight To</label>
-                                @(Html.Kendo().DropDownList().Name("OrderBillFreightTo").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Account).HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Partner"))
+                                @(Html.Kendo().DropDownList().Name("OrderBillFreightTo").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Account).HtmlAttributes(new { style = "width:100%", @required = "required" }).OptionLabel("Select Partner"))
 
 
                                 <span class="k-invalid-msg" data-for="SWC"></span>
@@ -324,22 +324,53 @@
         });
         return obj;
     }
-    function saveShippingOrder() {
+    function saveShippingOrder()
+    {
         shippingOrder = toJSONString('divAddShippingOrder');
         console.log(shippingOrder);
 
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(shippingOrder),
-            url: "/api/ShipOrder",
-            contentType: "application/json; charset=utf-8",
-            dataType: 'json',
-            success: function (data) {
-                ShippingOrderID = data.ShippingOrderID;
-
-                window.location.href = '/Order/ShipOrders/Index';
+        var orderAddForm = $("#FormShippingOrder").kendoValidator({
+            messages: {
+                custom: "Billing Country is Required",
+                custom1: "Shipping Country is Required",
+            },
+            rules: {
+                custom: function (select) {
+                    if (select.is("[name=CountryID]")) {
+                        return select.val() != "-1";
+                    }
+                    return true;
+                },
+                custom1: function (select) {
+                    if (select.is("[name=ShipCountryID]")) {
+                        return select.val() != "-1";
+                    }
+                    return true;
+                }
             }
-        });
+        }).data("kendoValidator");
+        if (!orderAddForm.validate())
+        {
+            return false;
+        }
+        else {
+
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(shippingOrder),
+                url: "/api/ShipOrder",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (data) {
+                    ShippingOrderID = data.ShippingOrderID;
+
+                    window.location.href = '/Order/ShipOrders/Index';
+                }
+            });
+        }
+        
+
+       
     }
     $("#AccountID").change(function ()
     {

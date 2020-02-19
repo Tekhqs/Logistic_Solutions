@@ -12,8 +12,8 @@ namespace LogisticSolutions.Areas.BusinessPartner.Controllers
         LogisticSolutionDevDBEntities db = new LogisticSolutionDevDBEntities();
         public ActionResult Index()
         {
-            var partner = db.tblPartners.ToList();
-            ViewBag.ShippingRateInBoundHandling = db.tblPartnerShippingRates.ToList();
+            var partner = db.tblPartners.OrderByDescending(x=>x.CreatedOn).ToList();
+            
             return View(partner);
         }
         public ActionResult Create()
@@ -38,6 +38,12 @@ namespace LogisticSolutions.Areas.BusinessPartner.Controllers
             
 
             return View();
+        }
+
+        public PartialViewResult _ShippingRatesDetail(int shippingRateTypeID)
+        {
+            ViewBag.ShippingRateInBoundHandling = db.tblPartnerShippingRates.Where(x=>x.ShippingRateTypeID == shippingRateTypeID).ToList();
+            return PartialView();
         }
     }
 }
