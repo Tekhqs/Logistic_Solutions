@@ -60,7 +60,7 @@ var businessPartner = "";
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
             success: function (data) {
-
+                debugger;
                 partnerID = data.PartnerID;
                 BillingAddressID = data.BillingAddressID;
 
@@ -69,7 +69,7 @@ var businessPartner = "";
         });
     }
     function saveShippingAddress(businessPartner, partnerID, BillingAddressID) {
-
+        debugger;
         if (businessPartner.ShipAddress1 == "" || businessPartner.ShipAddress2 == undefined)
             return;
         $.ajax({
@@ -79,6 +79,7 @@ var businessPartner = "";
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
             success: function (data) {
+                debugger;
                 ShippingAddressID = data.ShippingAddressID;
 
                 updateBusinessPartnerBillShipAddress(businessPartner, partnerID, BillingAddressID, ShippingAddressID)
@@ -124,9 +125,25 @@ var businessPartner = "";
                     url: "/api/BusinessPartner",
                     contentType: "application/json; charset=utf-8",
                     dataType: 'json',
+                    error: function (error) {
+                        debugger;
+                        if (error.statusText == "Conflict") {
+                            $("#ExistsID").css({ "display": "block" });
+
+                            document.body.scrollTop = 0; // For Safari
+                            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                        }
+                        
+                    },
                     success: function (data) {
-                        partnerID = data.PartnerID;
-                        saveBillingAddress(businessPartner, partnerID)
+                        debugger;
+                       
+                        
+                            partnerID = data.PartnerID;
+                            saveBillingAddress(businessPartner, partnerID);
+                       
+
+                       
 
 
                     }

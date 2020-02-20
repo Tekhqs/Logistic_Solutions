@@ -463,63 +463,7 @@ $(document).ready(function () {
 
             function renderIcons() {
 
-                // Move icon
-                if (!this.series[0].icon) {
-                    this.series[0].icon = this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8])
-                        .attr({
-                            stroke: '#303030',
-                            'stroke-linecap': 'round',
-                            'stroke-linejoin': 'round',
-                            'stroke-width': 2,
-                            zIndex: 10
-                        })
-                        .add(this.series[2].group);
-                }
-                this.series[0].icon.translate(
-                    this.chartWidth / 2 - 10,
-                    this.plotHeight / 2 - this.series[0].points[0].shapeArgs.innerR -
-                    (this.series[0].points[0].shapeArgs.r - this.series[0].points[0].shapeArgs.innerR) / 2
-                );
-
-                // Exercise icon
-                if (!this.series[1].icon) {
-                    this.series[1].icon = this.renderer.path(
-                        ['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8,
-                            'M', 8, -8, 'L', 16, 0, 8, 8]
-                    )
-                        .attr({
-                            stroke: '#ffffff',
-                            'stroke-linecap': 'round',
-                            'stroke-linejoin': 'round',
-                            'stroke-width': 2,
-                            zIndex: 10
-                        })
-                        .add(this.series[2].group);
-                }
-                this.series[1].icon.translate(
-                    this.chartWidth / 2 - 10,
-                    this.plotHeight / 2 - this.series[1].points[0].shapeArgs.innerR -
-                    (this.series[1].points[0].shapeArgs.r - this.series[1].points[0].shapeArgs.innerR) / 2
-                );
-
-                // Stand icon
-                if (!this.series[2].icon) {
-                    this.series[2].icon = this.renderer.path(['M', 0, 8, 'L', 0, -8, 'M', -8, 0, 'L', 0, -8, 8, 0])
-                        .attr({
-                            stroke: '#303030',
-                            'stroke-linecap': 'round',
-                            'stroke-linejoin': 'round',
-                            'stroke-width': 2,
-                            zIndex: 10
-                        })
-                        .add(this.series[2].group);
-                }
-
-                this.series[2].icon.translate(
-                    this.chartWidth / 2 - 10,
-                    this.plotHeight / 2 - this.series[2].points[0].shapeArgs.innerR -
-                    (this.series[2].points[0].shapeArgs.r - this.series[2].points[0].shapeArgs.innerR) / 2
-                );
+           
             }
 
             Highcharts.chart('graph8', {
@@ -840,34 +784,31 @@ function setABillingValue() {
     debugger;
     $('#AUsePrev').val();
     if ($('#AUsePrev').is(":checked")) {
-        var Adress1 = $("#AAdress1").val();
-        var Adress2 = $("#AAdress2").val();
-        var Adress3 = $("#AAdress3").val();
-        var Adress4 = $("#AAdress4").val();
-        var City = $("#ACity").val();
-        var State = $("#AState").val();
-        var PostalCode = $("#APostalCode").val();
-        var Country = $("#ACountry").val();
-        $("#AShippingAdress1").val(Adress1);
-        $("#AShippingAdress2").val(Adress2);
-        $("#AShippingAdress3").val(Adress3);
-        $("#AShippingAdress4").val(Adress4);
-        $("#AShippingCity").val(City);
-        $("#AShippingState").val(State);
-        $("#AShippingPostalCode").val(PostalCode);
-        $("#AShippingCountry").val(Country);
+        var Adress1 = $("#Address1").val();
+        var Adress2 = $("#Address2").val();
+      
+        var City = $("#CityName").val();
+        var State = $("#State_Province").val();
+        var PostalCode = $("#Zip_PostalCode").val();
+        var Country = $("#CountryID").val();
+        $("#ShipAddress1").val(Adress1);
+        $("#ShipAddress2").val(Adress2);
+     
+        $("#ShipCityName").val(City);
+        $("#ShipState_Province").val(State);
+        $("#ShipZip_PostalCode").val(PostalCode);
+        $("#ShipCountryID").val(Country);
     }
 
     else {
 
-        $("#AShippingAdress1").val("");
-        $("#AShippingAdress2").val("");
-        $("#AShippingAdress3").val("");
-        $("#AShippingAdress4").val("");
-        $("#AShippingCity").val("");
-        $("#AShippingState").val("");
-        $("#AShippingPostalCode").val("");
-        $("#AShippingCountry").val("");
+        $("#ShipAddress1").val("");
+        $("#ShipAddress2").val("");
+     
+        $("#ShipCityName").val("");
+        $("#ShipState_Province").val("");
+        $("#ShipZip_PostalCode").val("");
+        $("#ShipCountryID").val("");
     }
 }
 

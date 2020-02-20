@@ -1,6 +1,7 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
@@ -64,13 +65,49 @@ namespace LogisticSolutions.Areas.BusinessPartner.Controllers.api
         }
 
         // PUT: api/BusinessPartnerBillAdress/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(int BillingAddressID, tblPartnerBillingAddress partnerbillingAddress)
         {
+            
+
+            try
+            {
+                var Billadress = db.tblPartnerBillingAddresses.FirstOrDefault(c => c.BillingAddressID == BillingAddressID);
+                Billadress.Address1 = partnerbillingAddress.Address1;
+                Billadress.Address2 = partnerbillingAddress.Address2;
+                Billadress.CityName = partnerbillingAddress.CityName;
+                Billadress.State_Province = partnerbillingAddress.State_Province;
+                Billadress.CountryID = partnerbillingAddress.CountryID;
+                Billadress.Zip_PostalCode = partnerbillingAddress.Zip_PostalCode;
+                Billadress.UpdatedBy = 1;
+                Billadress.UpdatedOn = DateTime.Now;
+                db.Entry(Billadress).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PartnerBillAdressExists(BillingAddressID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+
+            return StatusCode(HttpStatusCode.NoContent);
+
+
         }
 
         // DELETE: api/BusinessPartnerBillAdress/5
         public void Delete(int id)
         {
+        }
+        private bool PartnerBillAdressExists(int id)
+        {
+            return db.tblPartnerBillingAddresses.Count(e => e.PartnerID == id) > 0;
         }
     }
 }

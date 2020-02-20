@@ -1,6 +1,7 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
@@ -64,8 +65,44 @@ namespace LogisticSolutions.Areas.BusinessPartner.Controllers.api
         }
 
         // PUT: api/BusinessPartnerShipAdress/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(int ShippingAddressID, tblPartnerShippingAddress partnerShippingAddress)
         {
+            
+
+            try
+            {
+                var Shipadress = db.tblPartnerShippingAddresses.FirstOrDefault(c => c.ShippingAddressID == ShippingAddressID);
+                Shipadress.ShipAddress1 = partnerShippingAddress.ShipAddress1;
+                Shipadress.ShipAddress2 = partnerShippingAddress.ShipAddress2;
+                Shipadress.ShipCityName = partnerShippingAddress.ShipCityName;
+                Shipadress.ShipState_Province = partnerShippingAddress.ShipState_Province;
+                Shipadress.ShipCountryID = partnerShippingAddress.ShipCountryID;
+                Shipadress.ShipZip_PostalCode = partnerShippingAddress.ShipZip_PostalCode;
+                Shipadress.UpdatedBy = 6;
+                Shipadress.UpdatedOn = DateTime.Now;
+                db.Entry(Shipadress).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PartnerShipAdressExists(ShippingAddressID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+
+            return StatusCode(HttpStatusCode.NoContent);
+
+
+        }
+        private bool PartnerShipAdressExists(int id)
+        {
+            return db.tblPartnerBillingAddresses.Count(e => e.PartnerID == id) > 0;
         }
 
         // DELETE: api/BusinessPartnerShipAdress/5

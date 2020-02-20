@@ -1,4 +1,7 @@
-﻿@{
+﻿@model DAL.tblPartner
+
+
+@{
     Layout = "~/Views/Shared/_LayoutLS.cshtml";
 }
 
@@ -43,9 +46,10 @@
 
         </div>
         <div id="ExistsID" style="display:none; width: 84% !important;" class="alert alert-danger ml-5" role="alert">
-              Account ID Already Exist. Please Try different one !!
-        
+            Account ID Already Exist. Please Try different one !!
+
         </div>
+
         <form id="addBusinessPartnerForm">
             <div id="divAddBusinessPartner">
                 <div class="col-xs-12 CreateUserSection pl-5">
@@ -59,9 +63,10 @@
                                 <span class="k-invalid-msg" data-for="Description"></span>
                             </div>
                             <div class="form-group">
-                                <label for="AccountID">Account ID <span>*</span></label>
-                                @(Html.Kendo().TextBox().Name("AccountID").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  AccountId", @required = "required", @validationMessage = "AccountId is required", @style = "width:100%" }))
-                                <span class="k-invalid-msg" data-for="AccountID"></span>
+                                <label for="AccountID">Account ID</label>
+                                @*@(Html.Kendo().TextBox().Name("AccountID").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter  AccountId", @required = "required", @validationMessage = "AccountId is required", @style = "width:100%" }))*@
+                                <label for="AccountID" style="font-weight:bold">@Model.AccountID</label>
+
                             </div>
                             <div class="form-group">
                                 <label for="BillingID">Billing ID</label>
@@ -72,7 +77,7 @@
                                 <label for="ContactName">
                                     Contact Name
                                 </label>
-                                @(Html.Kendo().TextBox().Name("ContactName").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Contact Name", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("ContactName").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Enter Contact Name", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="ContactName"></span>
 
                             </div>
@@ -112,7 +117,7 @@
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="BillingRateMultiplier">Billing Rate Multiplier</label>
-                                @(Html.Kendo().TextBox().Name("BillingRateMultiplier").HtmlAttributes(new { @class = "form-control", @placeholder = "Multiplier", @style = "width:100%", @type="number"}))
+                                @(Html.Kendo().TextBox().Name("BillingRateMultiplier").HtmlAttributes(new { @class = "form-control", @placeholder = "Multiplier", @style = "width:100%" }))
                                 <span class="k-invalid-msg" data-for="BillingRateMultiplier"></span>
                             </div>
 
@@ -141,7 +146,6 @@
                 </div>
 
 
-
                 <div class="col-xs-12 CreateUserSection pl-5">
                     <h4 class="text-left">Billing Address</h4>
 
@@ -150,13 +154,13 @@
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="Address1">Address 1</label>
-                                @(Html.Kendo().TextBox().Name("Address1").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Enter Address 1", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("Address1").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Enter Address 1", @style = "width:100%", @value = Model.tblPartnerBillingAddress.Address1 }))
                                 <span class="k-invalid-msg" data-for="Address1"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="AAddress2">Address 2</label>
-                                @(Html.Kendo().TextBox().Name("Address2").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Address 2", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("Address2").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Address 2", @style = "width:100%", @value = Model.tblPartnerBillingAddress.Address2 }))
                                 <span class="k-invalid-msg" data-for="Address2"></span>
                             </div>
 
@@ -167,12 +171,12 @@
 
                             <div class="form-group">
                                 <label for="ACity">City</label>
-                                @(Html.Kendo().TextBox().Name("CityName").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("CityName").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%", @value = Model.tblPartnerBillingAddress.CityName }))
                                 <span class="k-invalid-msg" data-for="CityName"></span>
                             </div>
                             <div class="form-group">
                                 <label for="ACountry">Country</label>
-                                @(Html.Kendo().DropDownList().Name("CountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%", @required = "required" }).OptionLabel("Select"))
+                                @(Html.Kendo().DropDownList().Name("CountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%", @required = "required", @value = Model.tblPartnerBillingAddress.CountryID }).OptionLabel("Select"))
                                 <span class="k-invalid-msg" data-for="CountryID"></span>
                             </div>
 
@@ -183,12 +187,12 @@
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="AState">State</label>
-                                @(Html.Kendo().TextBox().Name("State_Province").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("State_Province").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%", @value = Model.tblPartnerBillingAddress.State_Province }))
                                 <span class="k-invalid-msg" data-for="State_Province"></span>
                             </div>
                             <div class="form-group">
                                 <label for="APostalCode">Postal Code</label>
-                                @(Html.Kendo().TextBox().Name("Zip_PostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Postal Code", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("Zip_PostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter PostalCode", @style = "width:100%", @value = Model.tblPartnerBillingAddress.Zip_PostalCode }))
                                 <span class="k-invalid-msg" data-for="Zip_PostalCode"></span>
                             </div>
 
@@ -206,13 +210,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="AShippingAddress1">Address 1</label>
-                                @(Html.Kendo().TextBox().Name("ShipAddress1").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Enter Shipping Address1", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("ShipAddress1").HtmlAttributes(new { @class = "form-control", @required = "required", @placeholder = "Enter ShippingAddress1", @style = "width:100%", @value = Model.tblPartnerShippingAddress.ShipAddress1 }))
                                 <span class="k-invalid-msg" data-for="ShipAddress1"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="AShippingAddress2">Address 2</label>
-                                @(Html.Kendo().TextBox().Name("ShipAddress2").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Shipping Address2", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("ShipAddress2").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter ShippingAddress2", @style = "width:100%", @value = Model.tblPartnerShippingAddress.ShipAddress2 }))
                                 <span class="k-invalid-msg" data-for="ShipAddress2"></span>
                             </div>
 
@@ -221,13 +225,13 @@
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="AShippingcity">City</label>
-                                @(Html.Kendo().TextBox().Name("ShipCityName").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("ShipCityName").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter City", @style = "width:100%", @value = Model.tblPartnerShippingAddress.ShipCityName }))
                                 <span class="k-invalid-msg" data-for="ShipCityName"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="AShippingcountry">Country</label>
-                                @(Html.Kendo().DropDownList().Name("ShipCountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%", @required = "required" }).OptionLabel("Select"))
+                                @(Html.Kendo().DropDownList().Name("ShipCountryID").DataTextField("Text").DataValueField("Value").BindTo(ViewBag.Country).HtmlAttributes(new { style = "width:100%", @required = "required", @value = Model.tblPartnerShippingAddress.ShipCountryID }).OptionLabel("Select"))
                                 <span class="k-invalid-msg" data-for="ShipCountryID"></span>
 
                             </div>
@@ -236,12 +240,12 @@
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="AShippingstate">State</label>
-                                @(Html.Kendo().TextBox().Name("ShipState_Province").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("ShipState_Province").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter State", @style = "width:100%", @value = Model.tblPartnerShippingAddress.ShipState_Province }))
                                 <span class="k-invalid-msg" data-for="ShipState_Province"></span>
                             </div>
                             <div class="form-group">
                                 <label for="AShippingpostalCode">Postal Code</label>
-                                @(Html.Kendo().TextBox().Name("ShipZip_PostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Postal Code", @style = "width:100%" }))
+                                @(Html.Kendo().TextBox().Name("ShipZip_PostalCode").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter Postal Code", @style = "width:100%", @value = Model.tblPartnerShippingAddress.ShipZip_PostalCode }))
                                 <span class="k-invalid-msg" data-for="ShipZip_PostalCode"></span>
                             </div>
                         </div>
@@ -249,7 +253,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <button class="Button">Cancel</button>
-                            <button id="CreateUser" onclick="PostBusinessPartner()" class="Button" type="button">Create</button>
+                            <button id="CreateUser" onclick="partnerEdit()" class="Button" type="button">Update</button>
                         </div>
                     </div>
                 </div>
@@ -260,3 +264,129 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+
+    (function ($) {
+        $.fn.serializeFormJSON = function () {
+
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function () {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+    })(jQuery);
+    function toJSONString(divid) {
+
+        var obj = {};
+        //var elements = $('#step-1').querySelectorAll("input, select, textarea");
+        var elements = $('#' + divid + '').children();
+        $('#' + divid + '').find('input:text,input:radio:checked,input:checkbox:checked, input:password, input:file, select, textarea').each(function () {
+            // $(this).val('');
+            if ($(this)) {
+                var name = $(this).prop('name');
+                obj[name] = $(this).val();
+            }
+        });
+        return obj;
+    }
+   
+    var BillingAddressID = '@Model.BillingAddressID';
+    var ShippingAddressID = '@Model.ShippingAddressID';
+    var PID = '@Model.PartnerID';
+    function partnerEdit() {
+        
+        businessPartner = toJSONString('divAddBusinessPartner');
+        console.log(businessPartner);
+        var businessPartnerForm = $("#addBusinessPartnerForm").kendoValidator({
+            messages: {
+                custom: "Billing Country is Required",
+                custom1: "Shipping Country is Required",
+            },
+            rules: {
+                custom: function (select) {
+                    if (select.is("[name=CountryID]")) {
+                        return select.val() != "-1";
+                    }
+                    return true;
+                },
+                custom1: function (select) {
+                    if (select.is("[name=ShipCountryID]")) {
+                        return select.val() != "-1";
+                    }
+                    return true;
+                }
+            }
+        }).data("kendoValidator");
+        if (!businessPartnerForm.validate()) {
+            return false;
+        }
+        else {
+
+            debugger;
+            var CheckEdit = true;
+
+
+            $.ajax({
+                type: 'PUT',
+                data: JSON.stringify(businessPartner),
+                url: "/api/BusinessPartner?PartnerID=" + PID + "&BillingAddressID=" + BillingAddressID + "&ShippingAddressID=" + ShippingAddressID + "&CheckEdit=" + CheckEdit,
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+               
+
+                 success: function (data) {
+                    editBillingAddress(businessPartner, BillingAddressID, ShippingAddressID)
+                }
+            });
+        }
+
+
+
+    }
+
+    function editBillingAddress(businessPartner, BillingAddressID, ShippingAddressID) {
+        businessPartner = toJSONString('divAddBusinessPartner');
+        console.log(businessPartner);
+        if (businessPartner.Address1 == "" || businessPartner.Address1 == undefined)
+            return;
+        $.ajax({
+            type: 'PUT',
+            data: JSON.stringify(businessPartner),
+            url: "/api/BusinessPartnerBillAdress?BillingAddressID=" + BillingAddressID,
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (data) {
+                editShippingAddress(businessPartner, ShippingAddressID)
+            }
+        });
+    }
+    function editShippingAddress(businessPartner, ShippingAddressID) {
+        businessPartner = toJSONString('divAddBusinessPartner');
+        console.log(businessPartner);
+        if (businessPartner.Address1 == "" || businessPartner.Address1 == undefined)
+            return;
+        $.ajax({
+            type: 'PUT',
+            data: JSON.stringify(businessPartner),
+            url: "/api/BusinessPartnerShipAdress?ShippingAddressID=" + ShippingAddressID,
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (data) {
+
+                window.location.href = '/BusinessPartner/BusinessPartners/Index';
+            }
+        });
+    }
+
+
+  
+</script>

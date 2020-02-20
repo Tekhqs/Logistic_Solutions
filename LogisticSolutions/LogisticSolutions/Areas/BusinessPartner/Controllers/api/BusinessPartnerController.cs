@@ -32,6 +32,14 @@ namespace LogisticSolutions.Areas.BusinessPartner.Controllers
         [ResponseType(typeof(tblPartner))]
         public IHttpActionResult Post(tblPartner partner)
         {
+            var AccountId = partner.AccountID;
+            int AccountExists = db.tblPartners.Count(c => c.AccountID.ToUpper() == AccountId.ToUpper());
+            if (AccountExists > 0)
+            {
+                return Conflict();
+
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -43,7 +51,6 @@ namespace LogisticSolutions.Areas.BusinessPartner.Controllers
             {
                 z = max;
                 z1 = "PTR_" + (Convert.ToInt32(z.Replace("PTR_", "")) + 1).ToString().PadLeft(5, '0');
-
             }
             else
             {
@@ -77,43 +84,92 @@ namespace LogisticSolutions.Areas.BusinessPartner.Controllers
                 }
                 throw;
             }
-            return CreatedAtRoute("DefaultApi", new { id = partner.PartnerID }, partner);
+            return CreatedAtRoute("DefaultApi", new { id = partner.PartnerID, accountExist=false }, partner);
         }
 
         // PUT: api/BusinessPartner/5
-        public IHttpActionResult Put(int PartnerID,int BillingAddressID, int ShippingAddressID, tblPartner partner)
+        public IHttpActionResult Put(int PartnerID,int BillingAddressID, int ShippingAddressID, tblPartner partner, bool? CheckEdit = false)
         {
-            tblPartner partner2 = db.tblPartners.Find(PartnerID);
-
-            if (PartnerID != partner2.PartnerID)
+           
+            if (CheckEdit==true)
             {
-                return BadRequest();
-            }
-            partner2.BillingAddressID = BillingAddressID;
-            partner2.ShippingAddressID = ShippingAddressID;
-            partner2.UpdatedOn = System.DateTime.Now;
-            partner2.UpdatedBy = 1;
 
-            db.Entry(partner2).State = System.Data.Entity.EntityState.Modified;
+                
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PartnerExists(PartnerID))
+                try
                 {
-                    return NotFound();
+                    var partnerData = db.tblPartners.FirstOrDefault(c => c.PartnerID == PartnerID);
+                    partnerData.Description = partner.Description;
+                    partnerData.ContactFax = partner.ContactFax;
+                    partnerData.BillingRateMultiplier = partner.BillingRateMultiplier;
+                    partnerData.DefaultNMFC = partner.DefaultNMFC;
+                    partnerData.CustomerID = partner.CustomerID;
+                    partnerData.BillingID = partner.BillingID;
+                    partnerData.ContactEmail = partner.ContactEmail;
+                    partnerData.ContactName = partner.ContactName;
+                    partnerData.ContactPhone = partner.ContactPhone;
+                    partnerData.isBonded = partner.isBonded;
+                    partnerData.isEnabled = partner.isEnabled;
+                    partnerData.UpdatedBy = 6;
+                    partnerData.UpdatedOn = DateTime.Now;
+
+                    db.Entry(partnerData).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!PartnerExists(PartnerID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
+            else
+            {
+                tblPartner partner2 = db.tblPartners.Find(PartnerID);
+
+                if (PartnerID != partner2.PartnerID)
+                {
+                    return BadRequest();
+                }
+                partner2.AccountID = partner.AccountID;
+
+
+
+                partner2.BillingAddressID = BillingAddressID;
+                partner2.ShippingAddressID = ShippingAddressID;
+                partner2.UpdatedOn = System.DateTime.Now;
+                partner2.UpdatedBy = 1;
+
+                db.Entry(partner2).State = System.Data.Entity.EntityState.Modified;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PartnerExists(PartnerID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+       
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+        [ResponseType(typeof(tblPartner))]
+       
 
         // DELETE: api/BusinessPartner/5
         public void Delete(int id)

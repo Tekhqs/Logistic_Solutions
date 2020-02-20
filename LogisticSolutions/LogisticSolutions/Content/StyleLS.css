@@ -306,7 +306,7 @@ body {
 
 
 
-.dataTables_wrapper{
+/*.dataTables_wrapper{
     padding:30px;
 }
 .dataTables_scroll .THeader th {
@@ -325,7 +325,7 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
     background-color:white !important
-}
+}*/
 .THeader{
     background:white
 }
@@ -515,18 +515,22 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
 
 .CreateUserform label {
     min-width: 30%;
-    display: inline-block;
+    display: block;
 }
 
-    .CreateUserform label span {
-        color: #2A3142;
-    }
+.CreateUserform label span {
+    color: #2A3142;
+}
 
 .CreateUserform input,
 .CreateUserform select,
 .CreateUserform .form-control {
-    max-width: 60%;
+    max-width: 100%;
     display: inline-block;
+}
+
+.k-widget.k-dropdown.k-header {
+    width: 100% !important
 }
 
 .CreateUserform .SingleInput {
@@ -625,4 +629,29 @@ span.k-widget.k-tooltip-validation {
         text-align: left;
         background-color: #2B3856;
         color: white;
+    }
+.PageTabs .alert {
+    width: 177px;
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    padding: .75rem 0.5rem;
+}
+        .PageTabs .alert:hover {
+
+            box-shadow: 4px 24px 28px -16px #666;
+            transition: all 0.4s ease-out;
+            text-decoration: none;
+            border: none;
+        }
+        .PageTabs .alert:focus {
+            background-color:  #2A3142;
+            color:white;
+            font-weight:600
+        }
+    .PageTabs i{
+        margin-right:10px;
     }

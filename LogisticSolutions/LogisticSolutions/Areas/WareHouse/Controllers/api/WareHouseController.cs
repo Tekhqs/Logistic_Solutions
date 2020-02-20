@@ -1,6 +1,7 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
@@ -74,6 +75,7 @@ namespace LogisticSolutions.Areas.WareHouse.Controllers.api
             }
             return CreatedAtRoute("DefaultApi", new { id = wareHouse.WarehouseID }, wareHouse);
 
+
         }
         [ResponseType(typeof(tblWarehouseMaster))]
         // PUT: api/WareHouse/5
@@ -105,21 +107,19 @@ namespace LogisticSolutions.Areas.WareHouse.Controllers.api
                 warehouse.UpdatedOn = DateTime.Now;
                 db.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (DbUpdateConcurrencyException)
             {
-                foreach (var eve in e.EntityValidationErrors)
+                if (!WarehouseExists(wareHouseId))
                 {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
+                    return NotFound();
                 }
-                throw;
+                else
+                {
+                    throw;
+                }
             }
-            return CreatedAtRoute("DefaultApi", new { id = warehouse.WarehouseID }, warehouse);
+
+            return StatusCode(HttpStatusCode.NoContent);
 
 
 
@@ -128,6 +128,11 @@ namespace LogisticSolutions.Areas.WareHouse.Controllers.api
         // DELETE: api/WareHouse/5
         public void Delete(int id)
         {
+        }
+
+        private bool WarehouseExists(int id)
+        {
+            return db.tblWarehouseMasters.Count(e => e.WarehouseID == id) > 0;
         }
     }
 }

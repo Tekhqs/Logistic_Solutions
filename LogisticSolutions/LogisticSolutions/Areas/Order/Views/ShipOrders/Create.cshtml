@@ -1,4 +1,5 @@
-﻿
+﻿@model DAL.tblShippingOrder
+
 
 @{
     Layout = "~/Views/Shared/_LayoutLS.cshtml";
@@ -72,7 +73,7 @@
 
                         </div>
                         <div class="col-sm-4 col-xs-12 form-group">
-                            
+
 
                             <div class="form-group">
                                 <label for="SOSalesONumber">Sales Order Number</label>
@@ -101,7 +102,7 @@
                                 </select>
                                 <span class="k-invalid-msg" data-for="SWC"></span>
                             </div>
-                            
+
 
                         </div>
                         <div class="col-sm-4 col-xs-12 form-group">
@@ -126,8 +127,8 @@
                                 <span class="k-invalid-msg" data-for="QuantityShipped"></span>
                             </div>
                             @*<div class="form-group">
-            <label>LPNs: &nbsp; 0</label>
-        </div>*@
+                                    <label>LPNs: &nbsp; 0</label>
+                                </div>*@
                             <div class="form-group">
                                 <label for="BLNumber">LPNs</label>
                                 @(Html.Kendo().TextBox().Name("LPNs").HtmlAttributes(new { @class = "form-control", @placeholder = "Enter LPNs", @style = "width:100%" }))
@@ -172,7 +173,7 @@
                                 <input type="text" id="PartID" name="PartnerID" style="display:none" />
                                 <span class="k-invalid-msg" data-for="PartnerID"></span>
                             </div>
-                            
+
                         </div>
                         <div class="col-sm-4 col-xs-12 form-group">
                             <div class="form-group">
@@ -187,7 +188,7 @@
 
                                 <span class="k-invalid-msg" data-for="SWC"></span>
                             </div>
-                           
+
                         </div>
 
                         <div class="col-sm-4 col-xs-12 form-group">
@@ -218,28 +219,28 @@
                                 <label for="SOEArrivalDate">Start Date</label>
                                 @*@(Html.Kendo().TextBox().Name("StartDate").HtmlAttributes(new { @class = "form-control datepicker", @placeholder = "Enter Expected Arrival Date", @style = "width:100%" }))*@
                                 @(Html.Kendo().DatePicker().Name("StartDate").Value(System.DateTime.Today).Format("MM/dd/yy")
-                                           .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                                                   .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
                                 )
                                 <span class="k-invalid-msg" data-for="StartDate"></span>
                             </div>
-                            
+
 
                         </div>
                         <div class="col-sm-3 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOAArrivalDate">Actual Ship Date</label>
                                 @(Html.Kendo().DatePicker().Name("ActualShipDate").Value(System.DateTime.Today).Format("MM/dd/yy")
-                                                    .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                                                            .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
                                 )
                                 <span class="k-invalid-msg" data-for="ActualShipDate"></span>
                             </div>
-                            
+
                         </div>
                         <div class="col-sm-3 col-xs-12 form-group">
                             <div class="form-group">
                                 <label for="SOCancelDate">Cancel  Date</label>
                                 @(Html.Kendo().DatePicker().Name("CancelDate").Value(System.DateTime.Today).Format("MM/dd/yy")
-                                                            .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                                                                    .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
                                 )
                                 <span class="k-invalid-msg" data-for="CancelDate"></span>
                             </div>
@@ -248,7 +249,7 @@
                             <div class="form-group">
                                 <label for="SOCancelDate">Deliver Date</label>
                                 @(Html.Kendo().DatePicker().Name("DeliverDate").Value(System.DateTime.Today).Format("MM/dd/yy")
-                                                            .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
+                                                                    .HtmlAttributes(new { @class = "form-control classShipOrderDate", @style = "max-width:100% !important" })
                                 )
                                 <span class="k-invalid-msg" data-for="DeliverDate"></span>
                             </div>
@@ -324,37 +325,11 @@
         });
         return obj;
     }
-    function saveShippingOrder()
-    {
+    function saveShippingOrder() {
         shippingOrder = toJSONString('divAddShippingOrder');
         console.log(shippingOrder);
-
-        var orderAddForm = $("#FormShippingOrder").kendoValidator({
-            messages: {
-                custom: "Billing Country is Required",
-                custom1: "Shipping Country is Required",
-            },
-            rules: {
-                custom: function (select) {
-                    if (select.is("[name=CountryID]")) {
-                        return select.val() != "-1";
-                    }
-                    return true;
-                },
-                custom1: function (select) {
-                    if (select.is("[name=ShipCountryID]")) {
-                        return select.val() != "-1";
-                    }
-                    return true;
-                }
-            }
-        }).data("kendoValidator");
-        if (!orderAddForm.validate())
-        {
-            return false;
-        }
-        else {
-
+        debugger;
+        if (Sid == "0" || Sid == 0) {
             $.ajax({
                 type: 'POST',
                 data: JSON.stringify(shippingOrder),
@@ -367,13 +342,27 @@
                     window.location.href = '/Order/ShipOrders/Index';
                 }
             });
-        }
-        
 
-       
+
+        }
+        else {
+            $.ajax({
+                type: 'PUT',
+                data: JSON.stringify(shippingOrder),
+                url: "/api/ShipOrder?Id=" + Sid,
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (data) {
+
+                    window.location.href = '/Order/ShipOrders/Index';
+                }
+            });
+
+        }
+
+
     }
-    $("#AccountID").change(function ()
-    {
+    $("#AccountID").change(function () {
         var accountID = $(this).val();
         $.ajax({
             url: "/ShipOrders/GetPartnerAddress?AccountID=" + accountID,
@@ -391,6 +380,9 @@
             }
         });
     })
+
+
+
 </script>
 
 

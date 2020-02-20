@@ -76,43 +76,43 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    @{ 
-                        string fullAddress =item.tblPartnerShippingAddress.ShipAddress1+", " + item.tblPartnerShippingAddress.ShipCityName + ", " + item.tblPartnerShippingAddress.ShipState_Province + ", " + item.tblPartnerShippingAddress.ShipZip_PostalCode + ", " + item.tblPartnerShippingAddress.tblCountry.CountryName;
-                    }
-                   
-                    <td>@item.ShippingOrderNumber</td>
-                    <td>@item.AccountID</td>
-                    <td>@fullAddress</td>
-                    <td>@item.ActualShipDate.Value.ToShortDateString()</td>
-                    @if (item.ShippingStatus == "Open")
-                    {
-                        <td><span class="green"> @item.ShippingStatus</span></td>
+            <tr>
+                @{
+                    string fullAddress = item.tblPartnerShippingAddress.ShipAddress1 + ", " + item.tblPartnerShippingAddress.ShipCityName + ", " + item.tblPartnerShippingAddress.ShipState_Province + ", " + item.tblPartnerShippingAddress.ShipZip_PostalCode + ", " + item.tblPartnerShippingAddress.tblCountry.CountryName;
+                }
 
-                    }
-                    else if (item.ShippingStatus == "Inprocess")
-                    {
+                <td>@item.ShippingOrderNumber</td>
+                <td>@item.AccountID</td>
+                <td>@fullAddress</td>
+                <td>@item.ActualShipDate.Value.ToShortDateString()</td>
+                @if (item.ShippingStatus == "Open")
+                {
+                    <td><span class="green"> @item.ShippingStatus</span></td>
 
-                        <td><span class="skyBlue"> @item.ShippingStatus</span></td>
+                }
+                else if (item.ShippingStatus == "Inprocess")
+                {
 
-                    }
-                    else if (item.ShippingStatus == "Hold")
-                    {
+                    <td><span class="skyBlue"> @item.ShippingStatus</span></td>
 
-                        <td><span class="red"> @item.ShippingStatus</span></td>
+                }
+                else if (item.ShippingStatus == "Hold")
+                {
 
-                    }
-                    else
-                    {
-                        <td><span> @item.ShippingStatus</span></td>
+                    <td><span class="red"> @item.ShippingStatus</span></td>
 
-                    }
-                    <td><span class="orange"> @item.tblShippingCarrier.CarrierType</span></td>
+                }
+                else
+                {
+                    <td><span> @item.ShippingStatus</span></td>
+
+                }
+                <td><span class="orange"> @item.tblShippingCarrier.CarrierType</span></td>
 
 
-                    @*<td><span class="red">click here</span></td>*@
-                    <td class="ActionsEdit"><i class="far fa-edit"></i> <i class="fas fa-trash-alt red"></i></td>
-                </tr>
+                @*<td><span class="red">click here</span></td>*@
+                <td class="ActionsEdit"><a href="/Order/ShipOrders/Create/@item.ShippingOrderID"><i class="far fa-edit"></i></a> <i class="fas fa-trash-alt red"></i></td>
+            </tr>
 
             }
 

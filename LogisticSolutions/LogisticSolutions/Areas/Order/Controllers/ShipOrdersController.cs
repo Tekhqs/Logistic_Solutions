@@ -18,7 +18,7 @@ namespace LogisticSolutions.Areas.Order.Controllers
 
             return View(shipOrder);
         }
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             var source = db.tblOrderSources.Select(c => new
             {
@@ -47,7 +47,19 @@ namespace LogisticSolutions.Areas.Order.Controllers
 
             ViewBag.ShippingCarrier = new SelectList(shippingCarrier, "ShippingCarrierID", "CarrierType");
 
-            return View();
+            if (id == null || id == 0)
+            {
+                tblShippingOrder order = new tblShippingOrder();
+
+                return View(order);
+            }
+            else
+            {
+                var order = db.tblShippingOrders.Where(c => c.ShippingOrderID == id).FirstOrDefault();
+                return View(order);
+
+            }
+
         }
         public JsonResult GetPartnerAddress(string accountID)
         {
